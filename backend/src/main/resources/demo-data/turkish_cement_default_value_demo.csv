@@ -1,0 +1,2 @@
+company_name,country,reporting_year,product_name,cbam_sector,cn_code,destination_country,calculation_mode,export_volume_tons,default_value_tco2e_per_ton,default_value_year,certificate_price_eur_per_tco2e,notes
+Marmara Cement Export Ltd.,Turkey,2026,Aluminous cement,cement,25233000,Germany,DEFAULT_VALUE,100,2.145,2026,76,No actual factory emissions data available; using Turkey 2026 CBAM default value with markup

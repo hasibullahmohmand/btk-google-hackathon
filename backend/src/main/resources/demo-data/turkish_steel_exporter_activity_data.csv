@@ -1,0 +1,6 @@
+facility_id,company_name,country,reporting_period,product_name,cbam_sector,cn_code,destination_country,activity_type,amount,unit,emission_category,data_source,notes
+TR-IST-STEEL-001,Anatolia Steel Works A.S.,Turkey,2026-03,Steel rebar,iron_steel,72142000,Germany,NATURAL_GAS,5000,m3,DIRECT,gas meter,Natural gas used in reheating furnace
+TR-IST-STEEL-001,Anatolia Steel Works A.S.,Turkey,2026-03,Steel rebar,iron_steel,72142000,Germany,DIESEL,1200,liter,DIRECT,fuel purchase invoice,Diesel used by internal logistics vehicles
+TR-IST-STEEL-001,Anatolia Steel Works A.S.,Turkey,2026-03,Steel rebar,iron_steel,72142000,Germany,ELECTRICITY,25000,kWh,INDIRECT,electricity meter,Grid electricity consumed by rolling mill
+TR-IST-STEEL-001,Anatolia Steel Works A.S.,Turkey,2026-03,Steel rebar,iron_steel,72142000,Germany,PRODUCTION_VOLUME,100,ton,PRODUCT_OUTPUT,ERP production record,Total steel rebar produced in reporting period
+TR-IST-STEEL-001,Anatolia Steel Works A.S.,Turkey,2026-03,Steel rebar,iron_steel,72142000,Germany,EXPORT_VOLUME,40,ton,EXPORT_OUTPUT,export invoice,Steel rebar exported to Germany
