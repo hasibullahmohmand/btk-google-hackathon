@@ -519,7 +519,7 @@ Done at Brussels, 17 August 2023.
 
 For the Commission The President Ursula VON DER LEYEN
 
-## ANNEX I
+# ANNEX I
 
 ## Information to be submitted in the CBAM reports
 
@@ -529,359 +529,359 @@ The reporting declarant shall follow the CBAM report structure listed in Table 1
 
 ## CBAM report structure
 
-| CBAM Report                                | CBAM Report   |
-|--------------------------------------------|---------------|
-| Report issue date                          |               |
-| Draft report ID                            |               |
-| Report ID                                  |               |
-| Reporting period                           |               |
-| Year                                       |               |
-| - Reporting declarant                      |               |
-| --Address                                  |               |
-| - Representative (*)                       |               |
-| --Address                                  |               |
-| - Importer (*)                             |               |
-| --Address                                  |               |
-| - Competent authority                      |               |
-| - Signatures                               |               |
-| --Report confirmation                      |               |
-| --Type of applicable reporting methodology |               |
-| - Remarks                                  |               |
-| - CBAM goods imported                      |               |
-| Goods item number                          |               |
-| --Representative (*)                       |               |
-| ----Address                                |               |
-| --Importer (*)                             |               |
-| ----Address                                |               |
-| --Commodity code                           |               |
-| Harmonized system sub-heading code         |               |
-| Combined nomenclature code                 |               |
-| ----Commodity details                      |               |
-| --Country of origin                        |               |
-| --Imported quantity per customs procedure  |               |
-| ----Procedure                              |               |
+| CBAM Report | CBAM Report |
+|--|---|
+| Report issue date  ||
+| Draft report ID ||
+| Report ID ||
+| Reporting period||
+| Year ||
+| - Reporting declarant||
+| --Address ||
+| - Representative (*) ||
+| --Address ||
+| - Importer (*)  ||
+| --Address ||
+| - Competent authority||
+| - Signatures||
+| --Report confirmation||
+| --Type of applicable reporting methodology ||
+| - Remarks ||
+| - CBAM goods imported||
+| Goods item number  ||
+| --Representative (*) ||
+| Address ||
+| --Importer (*)  ||
+| Address ||
+| --Commodity code||
+| Harmonized system sub-heading code||
+| Combined nomenclature code  ||
+| Commodity details||
+| --Country of origin||
+| --Imported quantity per customs procedure  ||
+| Procedure ||
 
-| ------Inwardprocessing information                  |
-|-----------------------------------------------------|
-| ----Areaof import                                   |
-| ----Goodsmeasure (per procedure)                    |
-| ----Goodsmeasure (inward processing)                |
-| ----Special references for goods                    |
-| --Goods measure (imported)                          |
-| --Goods imported total emissions                    |
-| --Supporting documents (for goods)                  |
-| ----Attachments                                     |
-| --Remarks                                           |
-| --CBAMgoods' emissions                              |
-| Emissions sequence number                           |
-| Country of production                               |
-| ----Thecompany name of the installation             |
-| ------Address                                       |
-| ------Contact details                               |
-| ----Installation                                    |
-| ------Address                                       |
-| ----Goodsmeasure (produced)                         |
-| ----Installation emissions                          |
-| ----Direct embedded emissions                       |
-| ----Indirect embedded emissions                     |
-| ----Production method & qualifying parameters       |
-| ------Direct emissions qualifying parameters        |
-| ------Indirect emissions qualifying parameters      |
-| ----Supporting documents (for emissions definition) |
-| ------Attachments                                   |
-| ----Carbon price due                                |
-| ------Goodscovered under carbon price due           |
-| --------Goodsmeasure (covered)                      |
-| ----Remarks                                         |
+| Inwardprocessing information|
+|-|
+| Areaof import  |
+| Goodsmeasure (per procedure)  |
+| Goodsmeasure (inward processing) |
+| Special references for goods  |
+| --Goods measure (imported)  |
+| --Goods imported total emissions  |
+| --Supporting documents (for goods)|
+| Attachments |
+| --Remarks |
+| --CBAMgoods' emissions |
+| Emissions sequence number|
+| Country of production|
+| Thecompany name of the installation|
+| Address |
+| Contact details|
+| Installation|
+| Address |
+| Goodsmeasure (produced) |
+| Installation emissions  |
+| Direct embedded emissions |
+| Indirect embedded emissions |
+| Production method & qualifying parameters |
+| Direct emissions qualifying parameters  |
+| Indirect emissions qualifying parameters|
+| Supporting documents (for emissions definition) |
+| Attachments  |
+| Carbon price due |
+| Goodscovered under carbon price due  |
+| --Goodsmeasure (covered)|
+| Remarks |
 
 Table 2
 
 ## Detailed information requirements in the CBAM report
 
-| CBAM Report                   |                               |
-|-------------------------------|-------------------------------|
-| Report issue date             | Report issue date             |
-| Draft report ID               | Draft report ID               |
-| Report ID                     | Report ID                     |
-| Reporting period              | Reporting period              |
-| Year                          | Year                          |
-| Total goods imported          | Total goods imported          |
-| Total emissions               | Total emissions               |
-| - Reporting declarant         | - Reporting declarant         |
-| Identification number         | Identification number         |
-| Name                          | Name                          |
-| Role                          | Role                          |
-| --Address                     | --Address                     |
+| CBAM Report ||
+|-|-|
+| Report issue date| Report issue date|
+| Draft report ID| Draft report ID|
+| Report ID | Report ID |
+| Reporting period | Reporting period |
+| Year  | Year  |
+| Total goods imported | Total goods imported |
+| Total emissions| Total emissions|
+| - Reporting declarant| - Reporting declarant|
+| Identification number| Identification number|
+| Name  | Name  |
+| Role  | Role  |
+| --Address | --Address |
 | Member State of establishment | Member State of establishment |
-| Sub-division                  | Sub-division                  |
-| City                          | City                          |
-| Street                        | Street                        |
-| Street additional line        | Street additional line        |
-| Number                        | Number                        |
-| Postcode                      | Postcode                      |
-| P.O. Box                      | P.O. Box                      |
-| Representative (*)            | Representative (*)            |
-| Identification number         | Identification number         |
-| Name                          | Name                          |
-| --Address                     | --Address                     |
+| Sub-division| Sub-division|
+| City  | City  |
+| Street| Street|
+| Street additional line  | Street additional line  |
+| Number| Number|
+| Postcode| Postcode|
+| P.O. Box| P.O. Box|
+| Representative (*) | Representative (*) |
+| Identification number| Identification number|
+| Name  | Name  |
+| --Address | --Address |
 | Member State of establishment | Member State of establishment |
-| Sub-division                  | Sub-division                  |
-| City                          | City                          |
-| Street                        | Street                        |
-| Street additional line        | Street additional line        |
-| Number                        | Number                        |
-| Postcode                      | Postcode                      |
-| P.O. Box                      | P.O. Box                      |
-| - Importer (*)                | - Importer (*)                |
-| Identification number         | Identification number         |
-| Name                          | Name                          |
+| Sub-division| Sub-division|
+| City  | City  |
+| Street| Street|
+| Street additional line  | Street additional line  |
+| Number| Number|
+| Postcode| Postcode|
+| P.O. Box| P.O. Box|
+| - Importer (*) | - Importer (*) |
+| Identification number| Identification number|
+| Name  | Name  |
 
-| --Address                                  |
-|--------------------------------------------|
-| Member State or country of establishment   |
-| Sub-division                               |
-| City                                       |
-| Street                                     |
-| Street additional line                     |
-| Number                                     |
-| Postcode                                   |
-| P.O. Box                                   |
-| - Competent authority                      |
-| Reference number                           |
-| - Signatures                               |
-| --Report confirmation                      |
-| Report global data confirmation            |
-| Use of data confirmation                   |
-| Date of signature                          |
-| Place of signature                         |
-| Signature                                  |
-| Position of person signing                 |
+| --Address |
+|--|
+| Member State or country of establishment |
+| Sub-division|
+| City |
+| Street |
+| Street additional line |
+| Number |
+| Postcode  |
+| P.O. Box  |
+| - Competent authority|
+| Reference number|
+| - Signatures|
+| --Report confirmation|
+| Report global data confirmation |
+| Use of data confirmation |
+| Date of signature  |
+| Place of signature |
+| Signature |
+| Position of person signing  |
 | --Type of applicable reporting methodology |
-| Other applicable reporting methodology     |
-| - Remarks                                  |
-| Additional information                     |
-| - CBAM goods imported                      |
-| Goods item number                          |
-| --Representative (*)                       |
-| Identification number                      |
-| Name                                       |
-| ----Address                                |
-| Member State of establishment              |
-| Sub-division                               |
-| City                                       |
-| Street                                     |
-| Street additional line                     |
-| Number                                     |
-| Postcode                                   |
-| P.O. Box                                   |
+| Other applicable reporting methodology |
+| - Remarks |
+| Additional information |
+| - CBAM goods imported|
+| Goods item number  |
+| --Representative (*) |
+| Identification number|
+| Name |
+| Address |
+| Member State of establishment |
+| Sub-division|
+| City |
+| Street |
+| Street additional line |
+| Number |
+| Postcode  |
+| P.O. Box  |
 
-| --Importer (*)                                  |
-|-------------------------------------------------|
-| Identification number                           |
-| Name                                            |
-| ----Address                                     |
-| Member State or country of establishment        |
-| Sub-division                                    |
-| City                                            |
-| Street                                          |
-| Street additional line                          |
-| Number                                          |
-| Postcode                                        |
-| P.O. Box                                        |
-| --Commodity code                                |
-| Harmonized system sub-heading code              |
-| Combined nomenclature code                      |
-| ----Commodity details                           |
-| Description of goods                            |
-| --Country of origin                             |
-| Country code                                    |
-| ---Imported quantity per customs procedure      |
-| Sequence number                                 |
-| ----Procedure                                   |
-| Requested procedure                             |
-| Previous procedure                              |
-| Inward processing information                   |
+| --Importer (*) |
+|-|
+| Identification number|
+| Name  |
+| Address |
+| Member State or country of establishment  |
+| Sub-division|
+| City  |
+| Street|
+| Street additional line  |
+| Number|
+| Postcode|
+| P.O. Box|
+| --Commodity code |
+| Harmonized system sub-heading code |
+| Combined nomenclature code|
+| Commodity details|
+| Description of goods |
+| --Country of origin  |
+| Country code|
+| ---Imported quantity per customs procedure|
+| Sequence number|
+| Procedure  |
+| Requested procedure  |
+| Previous procedure |
+| Inward processing information |
 | Member State of inward processing authorisation |
 | Inward processing waiver for bill of discharge  |
-| Authorisation                                   |
-| Globalisation time start                        |
-| Globalisation time end                          |
-| Deadline for submission of bill of discharge    |
-| ----Areaof import                               |
-| Area of import                                  |
-| Net mass                                        |
-| Type of measurement unit                        |
+| Authorisation  |
+| Globalisation time start|
+| Globalisation time end  |
+| Deadline for submission of bill of discharge|
+| Areaof import|
+| Area of import |
+| Net mass|
+| Type of measurement unit|
 
-| ----Goodsmeasure (inward processing)   |
-|----------------------------------------|
-| Net mass                               |
-| Supplementary units                    |
-| Type of measurement unit               |
-| ----Special references for goods       |
-| Additional information                 |
-| --Goods measure (imported)             |
-| Net mass                               |
-| Supplementary units                    |
-| Type of measurement unit               |
-| --Goods imported total emissions       |
-| Goods emissions per unit of product    |
-| Goods total emissions                  |
-| Goods direct emissions                 |
-| Goods indirect emissions               |
+| Goodsmeasure (inward processing) |
+||
+| Net mass|
+| Supplementary units  |
+| Type of measurement unit|
+| Special references for goods |
+| Additional information  |
+| --Goods measure (imported)|
+| Net mass|
+| Supplementary units  |
+| Type of measurement unit|
+| --Goods imported total emissions |
+| Goods emissions per unit of product|
+| Goods total emissions|
+| Goods direct emissions  |
+| Goods indirect emissions|
 | Type of measurement unit for emissions |
-| --Supporting documents (for goods)     |
-| Sequence number                        |
-| Type                                   |
-| Country of document issuance           |
-| Reference number                       |
-| Document line item number              |
-| Issuing authority name                 |
-| Validity start date                    |
-| Validity end date                      |
-| Description                            |
-| ----Attachments                        |
-| Filename                               |
-| Universal Resource Identified          |
+| --Supporting documents (for goods) |
+| Sequence number|
+| Type  |
+| Country of document issuance  |
+| Reference number |
+| Document line item number |
+| Issuing authority name  |
+| Validity start date  |
+| Validity end date|
+| Description |
+| Attachments|
+| Filename|
+| Universal Resource Identified |
 | Multipurpose Internet Mail Extensions  |
-| Included binary object                 |
-| Additional information                 |
-| --CBAMgoods' emissions                 |
-| Country of production                  |
+| Included binary object  |
+| Additional information  |
+| --CBAMgoods' emissions  |
+| Country of production|
 
-| ----Thecompany name of the installation   |
-|-------------------------------------------|
-| Operator ID                               |
-| Operator name                             |
-| ------Address                             |
-| Country code                              |
-| Sub-division                              |
-| City                                      |
-| Street                                    |
-| Street additional line                    |
-| Number                                    |
-| Postcode                                  |
-| P.O. Box                                  |
-| ------Contact details                     |
-| Name                                      |
-| Phone number                              |
-| e-mail                                    |
-| ----Installation                          |
-| Installation ID                           |
-| Installation name                         |
-| Economic activity                         |
-| ------Address                             |
-| Country of establishment                  |
-| Sub-division                              |
-| City                                      |
-| Street                                    |
-| Street additional line                    |
-| Number                                    |
-| Postcode                                  |
-| P.O. Box                                  |
-| Plot or parcel number                     |
-| UNLOCODE                                  |
-| Latitude                                  |
-| Longitude                                 |
-| Type of coordinates                       |
-| Net mass                                  |
-| Supplementary                             |
-| units                                     |
-| Type of measurement unit                  |
+| Thecompany name of the installation |
+|-|
+| Operator ID|
+| Operator name  |
+| Address  |
+| Country code |
+| Sub-division |
+| City  |
+| Street|
+| Street additional line  |
+| Number|
+| Postcode |
+| P.O. Box |
+| Contact details |
+| Name  |
+| Phone number |
+| e-mail|
+| Installation  |
+| Installation ID|
+| Installation name |
+| Economic activity |
+| Address  |
+| Country of establishment|
+| Sub-division |
+| City  |
+| Street|
+| Street additional line  |
+| Number|
+| Postcode |
+| P.O. Box |
+| Plot or parcel number |
+| UNLOCODE |
+| Latitude |
+| Longitude|
+| Type of coordinates |
+| Net mass |
+| Supplementary  |
+| units |
+| Type of measurement unit|
 
-| ----Installation emissions                       |
-|--------------------------------------------------|
-| Installation total emissions                     |
-| Installation direct emissions                    |
-| Installation indirect emissions                  |
-| Type of measurement unit for emissions           |
-| ----Direct embedded emissions                    |
-| Type of determination                            |
-| Type of determination (electricity)              |
-| Type of applicable reporting methodology         |
-| Applicable reporting methodology                 |
-| Specific (direct) embedded emissions             |
-| Other source indication                          |
-| Source of emission factor (for electricity)      |
-| Emission factor                                  |
-| Electricity imported                             |
+| Installation emissions |
+|--|
+| Installation total emissions |
+| Installation direct emissions  |
+| Installation indirect emissions|
+| Type of measurement unit for emissions  |
+| Direct embedded emissions  |
+| Type of determination |
+| Type of determination (electricity) |
+| Type of applicable reporting methodology|
+| Applicable reporting methodology  |
+| Specific (direct) embedded emissions|
+| Other source indication  |
+| Source of emission factor (for electricity)|
+| Emission factor |
+| Electricity imported  |
 | Total embedded emissions of electricity imported |
-| Type of measurement unit                         |
-| Source of emissions factor value                 |
-| Justification                                    |
-| Fulfilment of conditionality                     |
-| ----Indirect embedded emissions                  |
-| Type of determination                            |
-| Source of emission factor                        |
-| Emission factor                                  |
-| Specific (indirect) embedded emissions           |
-| Type of measurement unit                         |
-| Electricity consumed                             |
-| Source of electricity                            |
-| Source of emissions factor value                 |
-| ----Production method & qualifying parameters    |
-| Sequence number                                  |
-| Method ID                                        |
-| Method name                                      |
+| Type of measurement unit |
+| Source of emissions factor value  |
+| Justification|
+| Fulfilment of conditionality |
+| Indirect embedded emissions|
+| Type of determination |
+| Source of emission factor|
+| Emission factor |
+| Specific (indirect) embedded emissions  |
+| Type of measurement unit |
+| Electricity consumed  |
+| Source of electricity |
+| Source of emissions factor value  |
+| Production method & qualifying parameters|
+| Sequence number |
+| Method ID|
+| Method name  |
 | Identification number of the specific steel mill |
-| Additional Information                           |
+| Additional Information|
 
-| ------Direct emissions qualifying parameters        |
-|-----------------------------------------------------|
-| Sequence number                                     |
-| Parameter ID                                        |
-| Parameter name                                      |
-| Description                                         |
-| Type of parameter value                             |
-| Parameter value                                     |
-| Additional information                              |
-| ------Indirect emissions qualifying parameters      |
-| Sequence number                                     |
-| Parameter ID                                        |
-| Parameter name                                      |
-| Description                                         |
-| Type of parameter value                             |
-| Parameter value                                     |
-| Additional information                              |
-| ----Supporting documents (for emissions definition) |
-| Sequence number                                     |
-| Type of emissions document                          |
-| Country of document issuance                        |
-| Reference number                                    |
-| Document line item number                           |
-| Issuing authority name                              |
-| Validity start date                                 |
-| Validity end date                                   |
-| Description                                         |
-| ------Attachments                                   |
-| Filename                                            |
-| Universal Resource Identified                       |
-| Multipurpose Internet Mail Extensions               |
-| Included binary object                              |
-| Sequence                                            |
-| number                                              |
-| Type of instrument                                  |
-| Amount of carbon price due                          |
-| Currency                                            |
+| Direct emissions qualifying parameters  |
+|-|
+| Sequence number |
+| Parameter ID|
+| Parameter name  |
+| Description |
+| Type of parameter value  |
+| Parameter value |
+| Additional information |
+| Indirect emissions qualifying parameters|
+| Sequence number |
+| Parameter ID|
+| Parameter name  |
+| Description |
+| Type of parameter value  |
+| Parameter value |
+| Additional information |
+| Supporting documents (for emissions definition) |
+| Sequence number |
+| Type of emissions document  |
+| Country of document issuance|
+| Reference number|
+| Document line item number|
+| Issuing authority name |
+| Validity start date|
+| Validity end date  |
+| Description |
+| Attachments  |
+| Filename  |
+| Universal Resource Identified |
+| Multipurpose Internet Mail Extensions|
+| Included binary object |
+| Sequence  |
+| number |
+| Type of instrument |
+| Amount of carbon price due  |
+| Currency  |
 
-| Exchange rate                                                                  |
-|--------------------------------------------------------------------------------|
-| Amount (EURO)                                                                  |
-| Country code                                                                   |
-| ------Goodscovered under carbon price due                                      |
-| Sequence number                                                                |
-| Type of goods covered                                                          |
-| CN code of goods covered                                                       |
-| Quantity of emissions covered                                                  |
+| Exchange rate |
+|--|
+| Amount (EURO) |
+| Country code|
+| Goodscovered under carbon price due  |
+| Sequence number |
+| Type of goods covered|
+| CN code of goods covered |
+| Quantity of emissions covered |
 | Quantity covered by free allocations, any rebate or other form of compensation |
-| Supplementary information                                                      |
-| Additional information                                                         |
-| --------Goodsmeasure (covered)                                                 |
-| Net mass                                                                       |
-| Supplementary units                                                            |
-| Type of measurement unit                                                       |
-| ----Remarks                                                                    |
-| Sequence number                                                                |
-| Additional Information                                                         |
+| Supplementary information|
+| Additional information |
+| --Goodsmeasure (covered)|
+| Net mass  |
+| Supplementary units|
+| Type of measurement unit |
+| Remarks |
+| Sequence number |
+| Additional Information |
 
 (*) Note: Representatives/importers  shall  be  registered  either  at  CBAM  report  level  or  at  the  CBAM  goods  imported  level,  which  shall depend on whether the same or different representatives/importers are related to CBAM goods imported.
 
@@ -906,7 +906,7 @@ For the purpose of this Annex and of Annexes III, IV and VIII to IX the followin
 - (12) 'calibration' means the set of operations, which establishes, under specified conditions, the relations between values indicated  by  a  measuring  instrument  or  measuring  system,  or  values  represented  by  a  material  measure  or  a reference material and the corresponding values of a quantity realised by a reference standard;
 - (13) 'conservative'  means  that  a  set  of  assumptions  is  defined  in  order  to  ensure  that  no  under-estimation  of  reported emissions or over-estimation of production of heat, electricity or goods occurs;
 
-## ANNEX II
+# ANNEX II
 
 ## Definitions and production routes for goods
 
@@ -972,45 +972,45 @@ Table 1
 
 ## Mapping of CN codes to aggregated goods categories
 
-| CN code                                                                                                                                          | Aggregated goods category   | Greenhouse gas                   |
-|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------|
-| Cement                                                                                                                                           |                             |                                  |
-| 2507 00 80 - Other kaolinic clays                                                                                                                | Calcined clay               | Carbon dioxide                   |
-| 2523 10 00 - Cement clinkers                                                                                                                     | Cement clinker              | Carbon dioxide                   |
-| 2523 21 00 - White Portland cement, whether or not artificially coloured 2523 29 00 - Other Portland cement 2523 90 00 - Other hydraulic cements | Cement                      | Carbon dioxide                   |
-| 2523 30 00 - Aluminous cement                                                                                                                    | Aluminous cement            | Carbon dioxide                   |
-| Electricity                                                                                                                                      |                             |                                  |
-| 2716 00 00 - Electrical energy                                                                                                                   | Electricity                 | Carbon dioxide                   |
-| Fertiliser                                                                                                                                       |                             |                                  |
-| 2808 00 00 - Nitric acid; sulphonitric acids                                                                                                     | Nitric acid                 | Carbon dioxide and nitrous oxide |
+| CN code | Aggregated goods category | Greenhouse gas |
+|--|-||
+| Cement|  | |
+| 2507 00 80 - Other kaolinic clays| Calcined clay| Carbon dioxide |
+| 2523 10 00 - Cement clinkers| Cement clinker | Carbon dioxide |
+| 2523 21 00 - White Portland cement, whether or not artificially coloured 2523 29 00 - Other Portland cement 2523 90 00 - Other hydraulic cements | Cement| Carbon dioxide |
+| 2523 30 00 - Aluminous cement  | Aluminous cement | Carbon dioxide |
+| Electricity  |  | |
+| 2716 00 00 - Electrical energy | Electricity  | Carbon dioxide |
+| Fertiliser|  | |
+| 2808 00 00 - Nitric acid; sulphonitric acids  | Nitric acid  | Carbon dioxide and nitrous oxide |
 
-| 3102 10 - Urea, whether or not in aqueous solution                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Urea                   | Carbon dioxide                   |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|----------------------------------|
-| 2814 - Ammonia, anhydrous or in aqueous solution                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Ammonia                | Carbon dioxide                   |
-| 2834 21 00 - Nitrates of potassium 3102 - Mineral or chemical fertilisers, nitrogenous except 3102 10 (Urea) 3105 - Mineral or chemical fertilisers containing two or three of the fertilising elements nitrogen, phosphorus, and potassium; other fertilisers - Except: 3105 60 00 - Mineral or chemical fertilisers containing the two fertilising elements phosphorus and potassium                                                                                                               | Mixed fertilisers      | Carbon dioxide and nitrous oxide |
-| Iron and Steel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                        |                                  |
-| 2601 12 00 - Agglomerated iron ores and concentrates, other than roasted iron pyrites                                                                                                                                                                                                                                                                                                                                                                                                                | Sintered Ore           | Carbon dioxide                   |
-| 7201 - Pig iron and spiegeleisen in pigs, blocks, or other primary forms Some products under 7205 (Granules and powders, of pig iron, spiegeleisen, iron, or steel) may be covered here                                                                                                                                                                                                                                                                                                              | Pig Iron               | Carbon dioxide                   |
-| 7202 1 - Ferro-manganese                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | FeMn                   | Carbon dioxide                   |
-| 7202 4 - Ferro-chromium                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | FeCr                   | Carbon dioxide                   |
-| 7202 6 - Ferro-nickel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | FeNi                   | Carbon dioxide                   |
-| 7203 - Ferrous products obtained by direct reduction of iron ore and other spongy ferrous products                                                                                                                                                                                                                                                                                                                                                                                                   | DRI                    | Carbon dioxide                   |
-| 7206 - Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading 7203) 7207 - Semi-finished products of iron or non-alloy steel 7218 - Stainless steel in ingots or other primary forms; semi- finished products of stainless steel 7224 - Other alloy steel in ingots or other primary forms; semi-finished products of other alloy steel                                                                                                                                | Crude steel            | Carbon dioxide                   |
-| 7205 - Granules and powders, of pig iron, spiegeleisen, iron or steel (if not covered under category pig iron) 7208 - Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated 7209 - Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated 7210 - Flat-rolled products of iron or non-alloy steel, of a width of 600 mmor more, clad, plated or coated | Iron or steel products | Carbon dioxide                   |
+| 3102 10 - Urea, whether or not in aqueous solution | Urea | Carbon dioxide |
+||||
+| 2814 - Ammonia, anhydrous or in aqueous solution | Ammonia | Carbon dioxide |
+| 2834 21 00 - Nitrates of potassium 3102 - Mineral or chemical fertilisers, nitrogenous except 3102 10 (Urea) 3105 - Mineral or chemical fertilisers containing two or three of the fertilising elements nitrogen, phosphorus, and potassium; other fertilisers - Except: 3105 60 00 - Mineral or chemical fertilisers containing the two fertilising elements phosphorus and potassium | Mixed fertilisers| Carbon dioxide and nitrous oxide |
+| Iron and Steel || |
+| 2601 12 00 - Agglomerated iron ores and concentrates, other than roasted iron pyrites| Sintered Ore  | Carbon dioxide |
+| 7201 - Pig iron and spiegeleisen in pigs, blocks, or other primary forms Some products under 7205 (Granules and powders, of pig iron, spiegeleisen, iron, or steel) may be covered here | Pig Iron| Carbon dioxide |
+| 7202 1 - Ferro-manganese  | FeMn | Carbon dioxide |
+| 7202 4 - Ferro-chromium | FeCr | Carbon dioxide |
+| 7202 6 - Ferro-nickel | FeNi | Carbon dioxide |
+| 7203 - Ferrous products obtained by direct reduction of iron ore and other spongy ferrous products| DRI  | Carbon dioxide |
+| 7206 - Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading 7203) 7207 - Semi-finished products of iron or non-alloy steel 7218 - Stainless steel in ingots or other primary forms; semi- finished products of stainless steel 7224 - Other alloy steel in ingots or other primary forms; semi-finished products of other alloy steel  | Crude steel | Carbon dioxide |
+| 7205 - Granules and powders, of pig iron, spiegeleisen, iron or steel (if not covered under category pig iron) 7208 - Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated 7209 - Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated 7210 - Flat-rolled products of iron or non-alloy steel, of a width of 600 mmor more, clad, plated or coated | Iron or steel products | Carbon dioxide |
 
-| 7211 - Flat-rolled products of iron or non-alloy width of less than 600 mm, not clad, plated or coated 7212 - Flat-rolled products of iron or non-alloy width of less than 600 mm, clad, plated or coated 7213 - Bars and rods, hot-rolled, in irregularly wound of iron or non-alloy steel 7214 - Other bars and rods of iron or non-alloy further worked than forged, hot-rolled, hot-drawn extruded, but including those twisted after rolling 7215 - Other bars and rods of iron or non-alloy 7216 - Angles, shapes and sections of iron or non-alloy 7217 - Wire of iron or non-alloy steel 7219-Flat-rolled products of stainless steel,ofawidthof600 mmor more 7220 - Flat-rolled products of stainless steel, of a width than 600mm 7221 - Bars and rods, hot-rolled, in irregularly wound of stainless steel 7222 - Other bars and rods of stainless steel; angles, and sections of stainless steel 7223 - Wire of stainless steel 7225 - Flat-rolled products of other alloy steel, of 600 mmor more 7226 - Flat-rolled products of other alloy steel, of less than 600mm 7227 - Bars and rods, hot-rolled, in irregularly wound of other alloy steel 7228 - Other bars and rods of other alloy steel; angles, and sections, of other alloy steel; hollow drill bars alloy or non-alloy steel 7229 - Wire of other alloy steel 7301 - Sheet piling of iron or steel, whether or punched or made from assembled elements; welded shapes and sections, of iron or steel 7302 - Railway or tramway track construction iron or steel, the following: rails, check-rails and switch blades, crossing frogs, point rods and other pieces, sleepers (cross-ties), fish- plates, chairs, chair sole plates (base plates), rail clips, bedplates, ties material specialised for jointing or fixing rails 7303 - Tubes, pipes and hollow profiles, of cast 7304 - Tubes, pipes and hollow profiles, seamless, (other than cast iron) or steel 7305 - Other tubes and pipes (for example, welded, similarly closed), having circular cross-sections, diameter of which exceeds 406,4 mm, of iron or 7306 - Other tubes, pipes and hollow profiles (for   | open seam   |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| 7211 - Flat-rolled products of iron or non-alloy width of less than 600 mm, not clad, plated or coated 7212 - Flat-rolled products of iron or non-alloy width of less than 600 mm, clad, plated or coated 7213 - Bars and rods, hot-rolled, in irregularly wound of iron or non-alloy steel 7214 - Other bars and rods of iron or non-alloy further worked than forged, hot-rolled, hot-drawn extruded, but including those twisted after rolling 7215 - Other bars and rods of iron or non-alloy 7216 - Angles, shapes and sections of iron or non-alloy 7217 - Wire of iron or non-alloy steel 7219-Flat-rolled products of stainless steel,ofawidthof600 mmor more 7220 - Flat-rolled products of stainless steel, of a width than 600mm 7221 - Bars and rods, hot-rolled, in irregularly wound of stainless steel 7222 - Other bars and rods of stainless steel; angles, and sections of stainless steel 7223 - Wire of stainless steel 7225 - Flat-rolled products of other alloy steel, of 600 mmor more 7226 - Flat-rolled products of other alloy steel, of less than 600mm 7227 - Bars and rods, hot-rolled, in irregularly wound of other alloy steel 7228 - Other bars and rods of other alloy steel; angles, and sections, of other alloy steel; hollow drill bars alloy or non-alloy steel 7229 - Wire of other alloy steel 7301 - Sheet piling of iron or steel, whether or punched or made from assembled elements; welded shapes and sections, of iron or steel 7302 - Railway or tramway track construction iron or steel, the following: rails, check-rails and switch blades, crossing frogs, point rods and other pieces, sleepers (cross-ties), fish- plates, chairs, chair sole plates (base plates), rail clips, bedplates, ties material specialised for jointing or fixing rails 7303 - Tubes, pipes and hollow profiles, of cast 7304 - Tubes, pipes and hollow profiles, seamless, (other than cast iron) or steel 7305 - Other tubes and pipes (for example, welded, similarly closed), having circular cross-sections, diameter of which exceeds 406,4 mm, of iron or 7306 - Other tubes, pipes and hollow profiles (for | open seam |
+|---|-|
 
-| sleeves), of iron or steel 7308 - Structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge-sections, lock- gates, towers, lattice masts, roofs, roofing frameworks, doorsandwindowsand their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel 7309 - Reservoirs, tanks, vats and similar containers for any material (other than compressed or liquefied gas), of iron or steel, of a capacity exceeding 300 l, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment 7310 - Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 l, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment 7311 - Containers for compressed or liquefied gas, of iron or steel 7318 - Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter pins, washers (including spring washers) and similar articles, of iron or steel 7326 - Other articles of iron or steel   |                     |                                     |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|-------------------------------------|
-| Aluminium                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                     |                                     |
-| 7601 - Unwrought aluminium                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Unwrought aluminium | Carbon dioxide and perfluorocarbons |
-| 7603 - Aluminium powders and flakes 7604 - Aluminium bars, rods and profiles 7605 - Aluminium wire 7606 - Aluminium plates, sheets and strip, of a thickness exceeding 0,2mm 7607 - Aluminium foil (whether or not printed or backed with paper, paper-board, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0,2mm 7608 - Aluminium tubes and pipes 7609 00 00 - Aluminium tube or pipe fittings (for example, couplings, elbows, sleeves) 7610 - Aluminium structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge-sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminium plates, rods, profiles, tubes and the like, prepared for use in structures 7611 00 00 - Aluminium reservoirs, tanks, vats and similar containers, for any material (other than compressed or liquefied gas), of a capacity exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment                                                                                                                                            | Aluminium products  | Carbon dioxide and perfluorocarbons |
+| sleeves), of iron or steel 7308 - Structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge-sections, lock- gates, towers, lattice masts, roofs, roofing frameworks, doorsandwindowsand their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel 7309 - Reservoirs, tanks, vats and similar containers for any material (other than compressed or liquefied gas), of iron or steel, of a capacity exceeding 300 l, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment 7310 - Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 l, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment 7311 - Containers for compressed or liquefied gas, of iron or steel 7318 - Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter pins, washers (including spring washers) and similar articles, of iron or steel 7326 - Other articles of iron or steel | | |
+||---|-|
+| Aluminium | | |
+| 7601 - Unwrought aluminium| Unwrought aluminium | Carbon dioxide and perfluorocarbons |
+| 7603 - Aluminium powders and flakes 7604 - Aluminium bars, rods and profiles 7605 - Aluminium wire 7606 - Aluminium plates, sheets and strip, of a thickness exceeding 0,2mm 7607 - Aluminium foil (whether or not printed or backed with paper, paper-board, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0,2mm 7608 - Aluminium tubes and pipes 7609 00 00 - Aluminium tube or pipe fittings (for example, couplings, elbows, sleeves) 7610 - Aluminium structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge-sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminium plates, rods, profiles, tubes and the like, prepared for use in structures 7611 00 00 - Aluminium reservoirs, tanks, vats and similar containers, for any material (other than compressed or liquefied gas), of a capacity exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment | Aluminium products  | Carbon dioxide and perfluorocarbons |
 
-| 7612 - Aluminium casks, drums, cans, boxes and similar containers (including rigid or collapsible tubular containers), for any material (other than compressed or liquefied gas), of a capacity not exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment 7613 00 00 - Aluminium containers for compressed or liquefied gas 7614 - Stranded wire, cables, plaited bands and the like, of aluminium, not electrically insulated 7616 - Other articles of aluminium   |          |                |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------------|
-| Chemicals                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |          |                |
-| 2804 10 000 - Hydrogen                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Hydrogen | Carbon dioxide |
+| 7612 - Aluminium casks, drums, cans, boxes and similar containers (including rigid or collapsible tubular containers), for any material (other than compressed or liquefied gas), of a capacity not exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment 7613 00 00 - Aluminium containers for compressed or liquefied gas 7614 - Stranded wire, cables, plaited bands and the like, of aluminium, not electrically insulated 7616 - Other articles of aluminium | | |
+|---|||
+| Chemicals  | | |
+| 2804 10 000 - Hydrogen| Hydrogen | Carbon dioxide |
 
 ## 3. PRODUCTION ROUTES, SYSTEM BOUNDARIES AND RELEVANT PRECURSORS
 
@@ -1120,7 +1120,7 @@ Relevant precursors: none.
 
 Attribution  of  emissions  to  products:  Where  the  co-produced  oxygen  is  vented,  all  emissions  of  the  production  process shall be attributed to hydrogen. Where by-product oxygen is used in other production processes at the installation or sold, and where direct or indirect emissions are not equal to zero, the emissions of the production process shall be attributed to hydrogen based on molar proportions using the following equation:
 
-<!-- formula-not-decoded -->
+$$Em_{H_2} = Em_{total} \left( 1 - \frac{\frac{m_{O_2, sold}}{M_{O_2}}}{\frac{m_{H_2, prod}}{M_{H_2}} + \frac{m_{O_2, prod}}{M_{O_2}}} \right)$$
 
 Where:
 
@@ -1150,9 +1150,12 @@ Relevant precursors: none.
 
 Attribution  of  emissions  to  products:  As  hydrogen  is  considered  a  by-product  in  this  production  process,  only  a  molar proportion  of  the  overall  process  shall  be  attributed  to  the  fraction  of  hydrogen  sold  or  used  as  a  precursor  within  the installation. Provided that direct or indirect emissions are not equal to zero, the emissions of the production process shall be attributed to hydrogen used or sold using the following equations:
 
-( 1 ) Commission Delegated Regulation (EU) 2023/1184 of 10 February 2023 supplementing Directive (EU) 2018/2001 of the European Parliament and of the Council by establishing a Union methodology setting out detailed rules for the production of renewable liquid and gaseous transport fuels of non-biological origin (OJ L 157, 20.6.2023, p. 11).
-
 Chlor-Alkali electrolysis:
+
+$$Em_{H_2, sold} = Em_{total} \left( \frac{\frac{m_{H_2, sold}}{M_{H_2}}}{\frac{m_{H_2, prod}}{M_{H_2}} + \frac{m_{Cl_2, prod}}{M_{Cl_2}} + \frac{m_{NaOH, prod}}{M_{NaOH}}} \right)$$
+
+Production of Sodium Chlorate:
+$$Em_{H_2, sold} = Em_{total} \left( \frac{\frac{m_{H_2, sold}}{M_{H_2}}}{\frac{m_{H_2, prod}}{M_{H_2}} + \frac{m_{NaClO_3, prod}}{M_{NaClO_3}}} \right)$$
 
 Where:
 
@@ -1207,11 +1210,6 @@ For that production route, direct emissions monitoring shall encompass:
 
 Relevant precursors: separately produced hydrogen, if used in the process.
 
-<!-- formula-not-decoded -->
-
-Production of Sodium Chlorate:
-
-<!-- formula-not-decoded -->
 
 ## 3.7.2.2. Haber-Bosch process with gasification of coal or other fuels
 
@@ -1535,7 +1533,7 @@ For electricity, direct emissions monitoring shall encompass: -  Any combustion 
 
 Relevant precursors: none.
 
-## ANNEX III
+# ANNEX III
 
 ## Rules for determining data including on emissions at installation level, attributed emissions of production processes, and embedded emissions of goods
 
@@ -1680,7 +1678,7 @@ The monitoring methodology documentation shall clearly identify:
 
 The installation's emissions shall be determined by
 
-<!-- formula-not-decoded -->
+$$Em_{inst} = \sum_{i=1}^{n} Em_{calc,i} + \sum_{j=1}^{m} Em_{meas,j} + \sum_{k=1}^{l} Em_{other,k}$$
 
 are the (direct) emissions of the installation expressed in tonnes CO 2 e;
 
@@ -1704,7 +1702,7 @@ Emissions shall be calculated separately for each source stream as follows:
 
 Combustion emissions shall be calculated using the standard method as follows:
 
-<!-- formula-not-decoded -->
+$$Em_i = AD_i \cdot EF_i \cdot OF_i$$
 
 Where:
 
@@ -1714,7 +1712,7 @@ EFi is the emission factor [t CO 2 /TJ] of fuel i;
 
 ADi is the activity data [TJ] of fuel i , calculated as:
 
-<!-- formula-not-decoded -->
+$$AD_i = FQ_i \cdot NCV_i$$
 
 FQi is the fuel quantity consumed [t or m 3 ] of fuel i;
 
@@ -1722,7 +1720,7 @@ NCVi is the net calorific value (lower heating value) [TJ/t or TJ/m 3 ] of fuel 
 
 OFi is the oxidation factor (dimensionless) of fuel i , calculated as:
 
-<!-- formula-not-decoded -->
+$$OF = 1 - C_{ash}/C_{total}$$
 
 Cash is the carbon contained in ash and flue gas cleaning dust; and
 
@@ -1738,11 +1736,11 @@ Provided that this leads to a higher accuracy, the standard method for combustio
 
 If  the  emission factor of a fuel i is  to  be  calculated from the analyses of carbon content and NCV, the following equation shall be used:
 
-<!-- formula-not-decoded -->
+$$EF_i = CC_i \cdot f / NCV_i$$
 
 If  the  emission  factor  of  a  material  or  fuel  expressed  in  t  CO 2 /t  is  to  be  calculated  from  an  analysed  carbon  content,  the following equation is used:
 
-<!-- formula-not-decoded -->
+$$EF_i = CC_i \cdot f$$
 
 is the ratio of the molar masses of CO and C: f = 3,664 t CO2/t C.
 
@@ -1752,7 +1750,8 @@ f 2
 
 As the emission factor of biomass shall be zero provided that the criteria given in Section B.3.3 are met, this fact may be taken into account for mixed fuels (i.e. fuels which contain both fossil and biomass components) as follows:
 
-<!-- formula-not-decoded -->
+$$EF_i = EF_{pre,i} \cdot (1 - BF_i)$$
+
 
 is the preliminary emission factor of fuel i (i.e. emission factor assuming the total fuel is fossil); and is the biomass fraction (dimensionless) of fuel i .
 
@@ -1964,18 +1963,18 @@ Table 1
 
 ## Minimum analyses frequencies
 
-| Fuel/material                                                                                                                                                       | Minimum frequency of analyses                                                                                                                               |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Natural gas                                                                                                                                                         | At least weekly                                                                                                                                             |
-| Other gases, in particular synthesis gas and process gases such as refinery mixed gas, coke oven gas, blast-furnace gas, converter gas, oilfield, and gas field gas | At least daily - using appropriate procedures at different parts of the day                                                                                 |
-| Fuel oils (for example light, medium, heavy fuel oil, bitumen)                                                                                                      | Every 20 000 tonnes of fuel and at least six times a year                                                                                                   |
-| Coal, coking coal, coke, petroleum coke, peat                                                                                                                       | Every 20 000 tonnes of fuel/material and at least six times a year                                                                                          |
-| Other fuels                                                                                                                                                         | Every 10 000 tonnes of fuel and at least four times a year                                                                                                  |
-| Untreated solid waste (pure fossil or mixed biomass/fossil)                                                                                                         | Every 5 000 tonnes of waste and at least four times a year                                                                                                  |
-| Liquid waste, pre-treated solid waste                                                                                                                               | Every 10 000 tonnes of waste and at least four times a year                                                                                                 |
-| Carbonate minerals (including limestone and dolomite)                                                                                                               | Every 50 000 tonnes of material and at least four times a year                                                                                              |
-| Clays and shales                                                                                                                                                    | Amounts of material corresponding to emissions of 50 000 tonnes of CO 2 and at least four times a year                                                      |
-| Other materials (primary, intermediate, and final product)                                                                                                          | Depending on the type of material and the variation, amounts of material corresponding to emissions of 50 000 tonnes of CO 2 and at least four times a year |
+| Fuel/material | Minimum frequency of analyses |
+|---|-|
+| Natural gas| At least weekly|
+| Other gases, in particular synthesis gas and process gases such as refinery mixed gas, coke oven gas, blast-furnace gas, converter gas, oilfield, and gas field gas | At least daily - using appropriate procedures at different parts of the day|
+| Fuel oils (for example light, medium, heavy fuel oil, bitumen) | Every 20 000 tonnes of fuel and at least six times a year|
+| Coal, coking coal, coke, petroleum coke, peat  | Every 20 000 tonnes of fuel/material and at least six times a year|
+| Other fuels| Every 10 000 tonnes of fuel and at least four times a year  |
+| Untreated solid waste (pure fossil or mixed biomass/fossil)| Every 5 000 tonnes of waste and at least four times a year  |
+| Liquid waste, pre-treated solid waste | Every 10 000 tonnes of waste and at least four times a year |
+| Carbonate minerals (including limestone and dolomite) | Every 50 000 tonnes of material and at least four times a year|
+| Clays and shales| Amounts of material corresponding to emissions of 50 000 tonnes of CO 2 and at least four times a year|
+| Other materials (primary, intermediate, and final product) | Depending on the type of material and the variation, amounts of material corresponding to emissions of 50 000 tonnes of CO 2 and at least four times a year |
 
 Samples shall be representative for the total batch or time period of deliveries for which they are taken. In order to ensure representativeness, the heterogenety of the material has to be taken into account, as well as all other relevant aspects such as  the  avilable  sampling  equipment,  possible  segregation  of  phases  or  local  distribution  of  particle  sizes,  stability  of samples, etc. The sampling method shall be laid down in the monitoring methodology documentation.
 
@@ -2178,15 +2177,15 @@ Recommended improvement: Installation-specific emission factors for CF 4 and C2F
 
 Table 2 Technology-specific emission factors related to activity data for the slope method
 
-| Technology                                                                                                        | Emission factor for CF 4 (SEF CF4 ) [(kg CF 4 /t Al)/(AE-Mins/ cell-day)]   | Emission factor for C 2 F 6 (F C2F6 ) [t C 2 F 6 / t CF 4 ]   |
-|-------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------|
-| Legacy Point Feed Pre Bake (PFPB L)                                                                               | 0,122                                                                       | 0,097                                                         |
-| Modern Point Feed Pre Bake (PFPB M)                                                                               | 0,104                                                                       | 0,057                                                         |
-| Modern Point-Fed Prebake without fully automated anode effect intervention strategies for PFC emissions (PFPB MW) | - (*)                                                                       | - (*)                                                         |
-| Centre Worked Prebake (CWPB)                                                                                      | 0,143                                                                       | 0,121                                                         |
-| Side Worked Prebake (SWPB)                                                                                        | 0,233                                                                       | 0,280                                                         |
-| Vertical Stud Søderberg (VSS)                                                                                     | 0,058                                                                       | 0,086                                                         |
-| Horizontal Stud Søderberg (HSS)                                                                                   | 0,165                                                                       | 0,077                                                         |
+| Technology | Emission factor for CF 4 (SEF CF4 ) [(kg CF 4 /t Al)/(AE-Mins/ cell-day)] | Emission factor for C 2 F 6 (F C2F6 ) [t C 2 F 6 / t CF 4 ] |
+|-|-|---|
+| Legacy Point Feed Pre Bake (PFPB L) | 0,122  | 0,097 |
+| Modern Point Feed Pre Bake (PFPB M) | 0,104  | 0,057 |
+| Modern Point-Fed Prebake without fully automated anode effect intervention strategies for PFC emissions (PFPB MW) | - (*)  | - (*) |
+| Centre Worked Prebake (CWPB) | 0,143  | 0,121 |
+| Side Worked Prebake (SWPB) | 0,233  | 0,280 |
+| Vertical Stud Søderberg (VSS)| 0,058  | 0,086 |
+| Horizontal Stud Søderberg (HSS)  | 0,165  | 0,077 |
 
 ## B.7.2. Calculation Method B - Overvoltage Method
 
@@ -2218,10 +2217,10 @@ Recommended improvement: Installation-specific emission factors are used for CF 
 
 Table 3 Technology-specific emission factors related to overvoltage activity data
 
-| Technology                   | Emission factor for CF 4 [(kg CF 4 /t Al)/mV]   |   Emission factor for C 2 F 6 [t C 2 F 6 /t CF 4 ] |
-|------------------------------|-------------------------------------------------|----------------------------------------------------|
-| Centre Worked Prebake (CWPB) | 1,16                                            |                                              0,121 |
-| Side Worked Prebake (SWPB)   | 3,65                                            |                                              0,252 |
+| Technology | Emission factor for CF 4 [(kg CF 4 /t Al)/mV] |   Emission factor for C 2 F 6 [t C 2 F 6 /t CF 4 ] |
+||-||
+| Centre Worked Prebake (CWPB) | 1,16  | 0,121 |
+| Side Worked Prebake (SWPB) | 3,65  | 0,252 |
 
 ## B.7.3. Determination of CO 2 e emissions
 
@@ -2377,11 +2376,11 @@ The flue gas flow shall be calculated in accordance with the following formula:
 
 Where:
 
-| V air        | is the total input air flow inNm 3 /h at standard conditions;                                                                                                                  |
-|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| O 2,air      | is the volume fraction ofO 2 in dry air (= 0,2095); and                                                                                                                        |
-| O 2,flue gas | is the volume fraction ofO 2 in the flue gas.                                                                                                                                  |
-| V air        | shall be calculated as the sum of all air flows entering the nitric acid production unit, in particular primary and secondary input air, and seal input air, where applicable. |
+| V air  | is the total input air flow inNm 3 /h at standard conditions;|
+|--|--|
+| O 2,air| is the volume fraction ofO 2 in dry air (= 0,2095); and |
+| O 2,flue gas | is the volume fraction ofO 2 in the flue gas.|
+| V air  | shall be calculated as the sum of all air flows entering the nitric acid production unit, in particular primary and secondary input air, and seal input air, where applicable. |
 
 All measurements shall be adjusted to a dry gas basis and reported consistently.
 
@@ -3113,7 +3112,7 @@ When the control system is found ineffective or not commensurate with the risks 
 
 9. Recommended  improvement:  the  operator  may  voluntarily  have  the  installation's  emissions  data  and  specific embedded emissions data of goods as compiled in accordance with Annex IV verified by an independent verifier accredited to ISO 14065, or according to the rules of the eligible monitoring, reporting and verification system relevant to the installation.
 
-## ANNEX IV
+# ANNEX IV
 
 ## Content of the recommended communication from operators of installations to reporting declarants
 
@@ -3157,31 +3156,31 @@ When the control system is found ineffective or not commensurate with the risks 
 9. Information on the electricity emissions factor in the power purchase agreement, where appropriate.
 2. SECTOR-SPECIFIC PARAMETERS TO BE INCLUDED IN THE COMMUNICATION
 
-| Aggregated goods category   | Reporting requirement in the CBAM report                                                                                                                                                                   |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Calcined clay               | - Whether or not the clay is calcined.                                                                                                                                                                     |
-| Cement clinker              | - N.a.                                                                                                                                                                                                     |
-| Cement                      | - Mass ratio of tonnes cement clinker consumed per produced tonne of cement (clinker to cement ratio expressed in per cent).                                                                               |
-| Aluminous cement            | - N.a.                                                                                                                                                                                                     |
-| Hydrogen                    | - N.a.                                                                                                                                                                                                     |
-| Urea                        | - Purity (mass % urea contained, % N contained).                                                                                                                                                           |
-| Nitric acid                 | - Concentration (mass %).                                                                                                                                                                                  |
-| Ammonia                     | - Concentration, if hydrous solution.                                                                                                                                                                      |
-| Mixed fertilisers           | - Information required anyway under Regulation (EU) 2019/1009: - content of N as ammonium (NH 4 + ); - content of N as nitrate (NO 3 - ); - content of N as urea; - content of N in other (organic) forms. |
-| Sintered Ore                | - N.a.                                                                                                                                                                                                     |
-| Pig Iron                    | - The main reducing agent used. - Mass % of Mn, Cr, Ni, total of other alloy elements.                                                                                                                     |
-| FeMn Ferro-Manganese        | - Mass % of Mn and carbon.                                                                                                                                                                                 |
-| FeCr - Ferro-Chromium       | - Mass % of Cr and carbon.                                                                                                                                                                                 |
-| FeNi - Ferro-Nickel         | - Mass % of Ni and carbon.                                                                                                                                                                                 |
+| Aggregated goods category | Reporting requirement in the CBAM report |
+|-||
+| Calcined clay| - Whether or not the clay is calcined. |
+| Cement clinker | - N.a.  |
+| Cement| - Mass ratio of tonnes cement clinker consumed per produced tonne of cement (clinker to cement ratio expressed in per cent). |
+| Aluminous cement | - N.a.  |
+| Hydrogen  | - N.a.  |
+| Urea| - Purity (mass % urea contained, % N contained).  |
+| Nitric acid  | - Concentration (mass %). |
+| Ammonia | - Concentration, if hydrous solution.|
+| Mixed fertilisers  | - Information required anyway under Regulation (EU) 2019/1009: - content of N as ammonium (NH 4 + ); - content of N as nitrate (NO 3 - ); - content of N as urea; - content of N in other (organic) forms. |
+| Sintered Ore | - N.a.  |
+| Pig Iron  | - The main reducing agent used. - Mass % of Mn, Cr, Ni, total of other alloy elements.|
+| FeMn Ferro-Manganese  | - Mass % of Mn and carbon.|
+| FeCr - Ferro-Chromium | - Mass % of Cr and carbon.|
+| FeNi - Ferro-Nickel| - Mass % of Ni and carbon.|
 
-| DRI (Direct Reduced Iron)   | - The main reducing agent used. - Mass % of Mn, Cr, Ni, total of other alloy elements.                                                                                                                                                                                                                                                              |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Crude steel                 | - The main reducing agent of the precursor, if known. - Mass % of Mn, Cr, Ni, total of other alloy elements. - Tonnes scrap used for producing 1 t crude steel. - % of scrap that is pre-consumer scrap.                                                                                                                                            |
-| Iron or steel products      | - The main reducing agent used in precursor production, if known. - Mass % of Mn, Cr, Ni, total of other alloy elements. - Mass % of materials contained which are not iron or steel if their mass is more than 1 % to 5 % of the total goods' mass. - Tonnes scrap used for producing 1 t of the product. - % of scrap that is pre-consumer scrap. |
-| Unwrought aluminium         | - Tonnes scrap used for producing 1 t of the product. - % of scrap that is pre-consumer scrap. - If the total content of elements other than aluminium exceeds 1 %, the total percentage of such elements.                                                                                                                                          |
-| Aluminium products          | - Tonnes scrap used for producing 1 t of the product. - % of scrap that is pre-consumer scrap. - If the total content of elements other than aluminium exceeds 1 %, the total percentage of such elements.                                                                                                                                          |
+| DRI (Direct Reduced Iron) | - The main reducing agent used. - Mass % of Mn, Cr, Ni, total of other alloy elements.  |
+|-|-|
+| Crude steel  | - The main reducing agent of the precursor, if known. - Mass % of Mn, Cr, Ni, total of other alloy elements. - Tonnes scrap used for producing 1 t crude steel. - % of scrap that is pre-consumer scrap. |
+| Iron or steel products| - The main reducing agent used in precursor production, if known. - Mass % of Mn, Cr, Ni, total of other alloy elements. - Mass % of materials contained which are not iron or steel if their mass is more than 1 % to 5 % of the total goods' mass. - Tonnes scrap used for producing 1 t of the product. - % of scrap that is pre-consumer scrap. |
+| Unwrought aluminium| - Tonnes scrap used for producing 1 t of the product. - % of scrap that is pre-consumer scrap. - If the total content of elements other than aluminium exceeds 1 %, the total percentage of such elements. |
+| Aluminium products | - Tonnes scrap used for producing 1 t of the product. - % of scrap that is pre-consumer scrap. - If the total content of elements other than aluminium exceeds 1 %, the total percentage of such elements. |
 
-## ANNEX V
+# ANNEX V
 
 ## EORI data
 
@@ -3191,52 +3190,52 @@ Table 1
 
 ## EORI data
 
-| Economic Operator System (EOS) EORI                                                 |
-|-------------------------------------------------------------------------------------|
-| Customer Identification                                                             |
-| EORI country + EORI national Number                                                 |
-| EORI country                                                                        |
-| EORI start date                                                                     |
-| EORI expiry date                                                                    |
-| Customs Customer Information                                                        |
-| EORI short name                                                                     |
-| EORI full name                                                                      |
-| EORI language                                                                       |
-| EORI establishment date                                                             |
-| EORI person type                                                                    |
-| EORI economic activity                                                              |
-| List of EORI establishment addresses                                                |
-| Establishment addresses                                                             |
-| EORI Address                                                                        |
-| EORI language                                                                       |
-| EORI name                                                                           |
-| Establishment in union                                                              |
-| EORI address start date                                                             |
-| EORI address end date                                                               |
-| VATor TIN numbers                                                                   |
-| 'VAT' or 'TIN'                                                                      |
+| Economic Operator System (EOS) EORI|
+|-|
+| Customer Identification |
+| EORI country + EORI national Number|
+| EORI country|
+| EORI start date|
+| EORI expiry date |
+| Customs Customer Information  |
+| EORI short name|
+| EORI full name |
+| EORI language  |
+| EORI establishment date |
+| EORI person type |
+| EORI economic activity  |
+| List of EORI establishment addresses |
+| Establishment addresses |
+| EORI Address|
+| EORI language  |
+| EORI name |
+| Establishment in union  |
+| EORI address start date |
+| EORI address end date|
+| VATor TIN numbers|
+| 'VAT' or 'TIN' |
 | National identifier + VATor TIN number Concatenate country with national identifier |
-| EORI legal status language                                                          |
-| EORI legal status                                                                   |
-| EORI legal status begin date & end date                                             |
-| Contact list                                                                        |
-| Contact                                                                             |
-| EORI contact language                                                               |
-| EORI contact address                                                                |
+| EORI legal status language|
+| EORI legal status|
+| EORI legal status begin date & end date|
+| Contact list|
+| Contact |
+| EORI contact language|
+| EORI contact address |
 
-| EORI contact full name        |
-|-------------------------------|
-| EORI contact name             |
-| Publication agreement flag    |
-| Address fields description    |
-| Street and Number             |
-| Postcode                      |
-| City                          |
-| Country code                  |
+| EORI contact full name  |
+|-|
+| EORI contact name|
+| Publication agreement flag|
+| Address fields description|
+| Street and Number|
+| Postcode|
+| City  |
+| Country code|
 | List of communication details |
-| Communication type            |
+| Communication type |
 
-## ANNEX VI
+# ANNEX VI
 
 ## Data Requirements complement for Inward Processing
 
@@ -3246,37 +3245,37 @@ Table 1
 
 ## Additional information for inward processing
 
-| Data requirement from customs authorities after inward processing bill of discharge, when no waiver is granted to the reporting declarant   |
-|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Issuing country                                                                                                                             |
-| Data record reference                                                                                                                       |
-| Data record version number                                                                                                                  |
-| Data record version status                                                                                                                  |
-| Reporting Period Start Date                                                                                                                 |
-| Reporting Period End Date                                                                                                                   |
-| Supervising Custom Office (SCO for inward processing)                                                                                       |
-| Authorization for inward processing reference number                                                                                        |
-| Importer identification number/Authorization Holder for inward processing                                                                   |
-| Importer country                                                                                                                            |
-| Goods item identifier (seq. no)                                                                                                             |
-| Harmonised system sub-heading code                                                                                                          |
-| Combined nomenclature code                                                                                                                  |
-| Description of goods                                                                                                                        |
-| Requested procedure code                                                                                                                    |
-| Previous procedure code                                                                                                                     |
-| Country of origin code                                                                                                                      |
-| Country of destination code                                                                                                                 |
-| Country of dispatch                                                                                                                         |
-| Net mass                                                                                                                                    |
-| Type of measurement units                                                                                                                   |
-| Supplementary units                                                                                                                         |
-| Statistical value                                                                                                                           |
-| Net mass of the actual product used in processed products released for free circulation                                                     |
-| Net mass as actual products released on the same commodity code for free circulation                                                        |
-| Representative identification number and status                                                                                             |
-| Mode of transport at the border                                                                                                             |
+| Data requirement from customs authorities after inward processing bill of discharge, when no waiver is granted to the reporting declarant |
+|---|
+| Issuing country  |
+| Data record reference  |
+| Data record version number|
+| Data record version status|
+| Reporting Period Start Date |
+| Reporting Period End Date |
+| Supervising Custom Office (SCO for inward processing)|
+| Authorization for inward processing reference number |
+| Importer identification number/Authorization Holder for inward processing|
+| Importer country |
+| Goods item identifier (seq. no) |
+| Harmonised system sub-heading code |
+| Combined nomenclature code|
+| Description of goods |
+| Requested procedure code  |
+| Previous procedure code|
+| Country of origin code |
+| Country of destination code |
+| Country of dispatch|
+| Net mass|
+| Type of measurement units |
+| Supplementary units|
+| Statistical value|
+| Net mass of the actual product used in processed products released for free circulation  |
+| Net mass as actual products released on the same commodity code for free circulation  |
+| Representative identification number and status |
+| Mode of transport at the border |
 
-## ANNEX VII
+# ANNEX VII
 
 ## National system data
 
@@ -3284,44 +3283,44 @@ Table 1 contains the information from the decentralised systems, which shall be 
 
 ## Table 1
 
-| National system data                          | National system data                          |
-|-----------------------------------------------|-----------------------------------------------|
-| Issuer                                        | Issuer                                        |
-| Data record reference                         | Data record reference                         |
-| Data record version number                    | Data record version number                    |
-| Data record version status                    | Data record version status                    |
-| Import declaration number                     | Import declaration number                     |
-| Declaration goods item number                 | Declaration goods item number                 |
-| Declaration acceptance date                   | Declaration acceptance date                   |
-| Requested procedure code                      | Requested procedure code                      |
-| Previous procedure code                       | Previous procedure code                       |
-| Country of origin code                        | Country of origin code                        |
-| Country of preferential origin code           | Country of preferential origin code           |
-| Country of destination code                   | Country of destination code                   |
-| Country of dispatch                           | Country of dispatch                           |
-| Quota order number                            | Quota order number                            |
-| Description of goods                          | Description of goods                          |
-| Harmonised system sub-heading code            | Harmonised system sub-heading code            |
-| Combined nomenclature code                    | Combined nomenclature code                    |
-| TARIC code                                    | TARIC code                                    |
-| Net mass                                      | Net mass                                      |
-| Statistical value                             | Statistical value                             |
-| Supplementary units                           | Supplementary units                           |
-| Declaration type                              | Declaration type                              |
-| Additional declaration type                   | Additional declaration type                   |
-| Format                                        | Format                                        |
-| Importer identification number                | Importer identification number                |
-| Importer country                              | Importer country                              |
-| Consignee identification number               | Consignee identification number               |
-| Declarant identification number               | Declarant identification number               |
+| National system data  | National system data  |
+|-|-|
+| Issuer| Issuer|
+| Data record reference | Data record reference |
+| Data record version number  | Data record version number  |
+| Data record version status  | Data record version status  |
+| Import declaration number | Import declaration number |
+| Declaration goods item number  | Declaration goods item number  |
+| Declaration acceptance date | Declaration acceptance date |
+| Requested procedure code| Requested procedure code|
+| Previous procedure code | Previous procedure code |
+| Country of origin code| Country of origin code|
+| Country of preferential origin code  | Country of preferential origin code  |
+| Country of destination code | Country of destination code |
+| Country of dispatch| Country of dispatch|
+| Quota order number | Quota order number |
+| Description of goods  | Description of goods  |
+| Harmonised system sub-heading code | Harmonised system sub-heading code |
+| Combined nomenclature code  | Combined nomenclature code  |
+| TARIC code| TARIC code|
+| Net mass  | Net mass  |
+| Statistical value  | Statistical value  |
+| Supplementary units| Supplementary units|
+| Declaration type | Declaration type |
+| Additional declaration type | Additional declaration type |
+| Format| Format|
+| Importer identification number | Importer identification number |
+| Importer country | Importer country |
+| Consignee identification number| Consignee identification number|
+| Declarant identification number| Declarant identification number|
 | Holder of authorization identification number | Holder of authorization identification number |
-| Holder authorization type                     | Holder authorization type                     |
-| Authorization reference number                | Authorization reference number                |
-| Representative identification number          | Representative identification number          |
-| Mode of transport at the border               | Mode of transport at the border               |
-| Inland mode of transport                      | Inland mode of transport                      |
+| Holder authorization type | Holder authorization type |
+| Authorization reference number | Authorization reference number |
+| Representative identification number | Representative identification number |
+| Mode of transport at the border| Mode of transport at the border|
+| Inland mode of transport| Inland mode of transport|
 
-## ANNEX VIII
+# ANNEX VIII
 
 ## Standard factors used in the monitoring of direct emissions at installation level
 
@@ -3331,50 +3330,50 @@ Table 1
 
 ## Fuel emission factors related to net calorific value (NCV) and net calorific values per mass of fuel
 
-| Fuel type description              | Emission factor (t CO 2 /TJ)   | Net calorific value (TJ/Gg)   | Source       |
-|------------------------------------|--------------------------------|-------------------------------|--------------|
-| Crude oil                          | 73,3                           | 42,3                          | IPCC 2006 GL |
-| Orimulsion                         | 77,0                           | 27,5                          | IPCC 2006 GL |
-| Natural gas liquids                | 64,2                           | 44,2                          | IPCC 2006 GL |
-| Motor gasoline                     | 69,3                           | 44,3                          | IPCC 2006 GL |
-| Kerosene (other than jet kerosene) | 71,9                           | 43,8                          | IPCC 2006 GL |
-| Shale oil                          | 73,3                           | 38,1                          | IPCC 2006 GL |
-| Gas/Diesel oil                     | 74,1                           | 43,0                          | IPCC 2006 GL |
-| Residual fuel oil                  | 77,4                           | 40,4                          | IPCC 2006 GL |
-| Liquefied petroleum gases          | 63,1                           | 47,3                          | IPCC 2006 GL |
-| Ethane                             | 61,6                           | 46,4                          | IPCC 2006 GL |
-| Naphtha                            | 73,3                           | 44,5                          | IPCC 2006 GL |
-| Bitumen                            | 80,7                           | 40,2                          | IPCC 2006 GL |
-| Lubricants                         | 73,3                           | 40,2                          | IPCC 2006 GL |
-| Petroleum coke                     | 97,5                           | 32,5                          | IPCC 2006 GL |
-| Refinery feedstocks                | 73,3                           | 43,0                          | IPCC 2006 GL |
-| Refinery gas                       | 57,6                           | 49,5                          | IPCC 2006 GL |
-| Paraffin waxes                     | 73,3                           | 40,2                          | IPCC 2006 GL |
-| White spirit and SBP               | 73,3                           | 40,2                          | IPCC 2006 GL |
-| Other petroleum products           | 73,3                           | 40,2                          | IPCC 2006 GL |
-| Anthracite                         | 98,3                           | 26,7                          | IPCC 2006 GL |
-| Coking coal                        | 94,6                           | 28,2                          | IPCC 2006 GL |
-| Other bituminous coal              | 94,6                           | 25,8                          | IPCC 2006 GL |
-| Sub-bituminous coal                | 96,1                           | 18,9                          | IPCC 2006 GL |
-| Lignite                            | 101,0                          | 11,9                          | IPCC 2006 GL |
-| Oil shale and tar sands            | 107,0                          | 8,9                           | IPCC 2006 GL |
-| Patent fuel                        | 97,5                           | 20,7                          | IPCC 2006 GL |
-| Coke oven coke and lignite coke    | 107,0                          | 28,2                          | IPCC 2006 GL |
-| Gas coke                           | 107,0                          | 28,2                          | IPCC 2006 GL |
-| Coal tar                           | 80,7                           | 28,0                          | IPCC 2006 GL |
+| Fuel type description | Emission factor (t CO 2 /TJ) | Net calorific value (TJ/Gg) | Source |
+||--|-|--|
+| Crude oil  | 73,3| 42,3  | IPCC 2006 GL |
+| Orimulsion | 77,0| 27,5  | IPCC 2006 GL |
+| Natural gas liquids | 64,2| 44,2  | IPCC 2006 GL |
+| Motor gasoline | 69,3| 44,3  | IPCC 2006 GL |
+| Kerosene (other than jet kerosene) | 71,9| 43,8  | IPCC 2006 GL |
+| Shale oil  | 73,3| 38,1  | IPCC 2006 GL |
+| Gas/Diesel oil | 74,1| 43,0  | IPCC 2006 GL |
+| Residual fuel oil| 77,4| 40,4  | IPCC 2006 GL |
+| Liquefied petroleum gases | 63,1| 47,3  | IPCC 2006 GL |
+| Ethane  | 61,6| 46,4  | IPCC 2006 GL |
+| Naphtha | 73,3| 44,5  | IPCC 2006 GL |
+| Bitumen | 80,7| 40,2  | IPCC 2006 GL |
+| Lubricants | 73,3| 40,2  | IPCC 2006 GL |
+| Petroleum coke | 97,5| 32,5  | IPCC 2006 GL |
+| Refinery feedstocks | 73,3| 43,0  | IPCC 2006 GL |
+| Refinery gas | 57,6| 49,5  | IPCC 2006 GL |
+| Paraffin waxes | 73,3| 40,2  | IPCC 2006 GL |
+| White spirit and SBP| 73,3| 40,2  | IPCC 2006 GL |
+| Other petroleum products  | 73,3| 40,2  | IPCC 2006 GL |
+| Anthracite | 98,3| 26,7  | IPCC 2006 GL |
+| Coking coal| 94,6| 28,2  | IPCC 2006 GL |
+| Other bituminous coal | 94,6| 25,8  | IPCC 2006 GL |
+| Sub-bituminous coal | 96,1| 18,9  | IPCC 2006 GL |
+| Lignite | 101,0  | 11,9  | IPCC 2006 GL |
+| Oil shale and tar sands | 107,0  | 8,9| IPCC 2006 GL |
+| Patent fuel| 97,5| 20,7  | IPCC 2006 GL |
+| Coke oven coke and lignite coke| 107,0  | 28,2  | IPCC 2006 GL |
+| Gas coke| 107,0  | 28,2  | IPCC 2006 GL |
+| Coal tar| 80,7| 28,0  | IPCC 2006 GL |
 
-| Gas works gas            | 44,4        | 38,7   | IPCC 2006 GL                                                                                      |
-|--------------------------|-------------|--------|---------------------------------------------------------------------------------------------------|
-| Coke oven gas            | 44,4        | 38,7   | IPCC 2006 GL                                                                                      |
-| Blast furnace gas        | 260         | 2,47   | IPCC 2006 GL                                                                                      |
-| Oxygen steel furnace gas | 182         | 7,06   | IPCC 2006 GL                                                                                      |
-| Natural gas              | 56,1        | 48,0   | IPCC 2006 GL                                                                                      |
-| Industrial wastes        | 143         | n.a.   | IPCC 2006 GL                                                                                      |
-| Waste oils               | 73,3        | 40,2   | IPCC 2006 GL                                                                                      |
-| Peat                     | 106,0       | 9,76   | IPCC 2006 GL                                                                                      |
-| Waste tyres              | 85,0 ( 1 )  | n.a.   | World Business Council for Sustainable Development - Cement Sustainability Initiative (WBCSD CSI) |
-| Carbon monoxide          | 155,2 ( 2 ) | 10,1   | J. Falbe and M. Regitz, Römpp Chemie Lexikon, Stuttgart, 1995                                     |
-| Methane                  | 54,9 ( 3 )  | 50,0   | J. Falbe and M. Regitz, Römpp Chemie Lexikon, Stuttgart, 1995                                     |
+| Gas works gas | 44,4  | 38,7 | IPCC 2006 GL |
+|--|-|--|---|
+| Coke oven gas | 44,4  | 38,7 | IPCC 2006 GL |
+| Blast furnace gas  | 260| 2,47 | IPCC 2006 GL |
+| Oxygen steel furnace gas | 182| 7,06 | IPCC 2006 GL |
+| Natural gas | 56,1  | 48,0 | IPCC 2006 GL |
+| Industrial wastes  | 143| n.a. | IPCC 2006 GL |
+| Waste oils| 73,3  | 40,2 | IPCC 2006 GL |
+| Peat | 106,0 | 9,76 | IPCC 2006 GL |
+| Waste tyres | 85,0 ( 1 )  | n.a. | World Business Council for Sustainable Development - Cement Sustainability Initiative (WBCSD CSI) |
+| Carbon monoxide | 155,2 ( 2 ) | 10,1 | J. Falbe and M. Regitz, Römpp Chemie Lexikon, Stuttgart, 1995 |
+| Methane| 54,9 ( 3 )  | 50,0 | J. Falbe and M. Regitz, Römpp Chemie Lexikon, Stuttgart, 1995 |
 
 ( 1 ) This value is the preliminary emission factor, i.e. before application of a biomass fraction, if applicable.
 
@@ -3386,21 +3385,21 @@ Table 2
 
 ## Fuel emission factors related to net calorific value (NCV) and net calorific values per mass of biomass material
 
-| Biomass material                  | Preliminary EF [t CO 2 /TJ]   | NCV [GJ/t]   | Source             |
-|-----------------------------------|-------------------------------|--------------|--------------------|
-| Wood / Wood waste (air dry ( 1 )) | 112                           | 15,6         | IPCC 2006 GL       |
-| Sulphite lyes (black liquor)      | 95,3                          | 11,8         | IPCC 2006 GL       |
-| Other primary solid biomass       | 100                           | 11,6         | IPCC 2006 GL       |
-| Charcoal                          | 112                           | 29,5         | IPCC 2006 GL       |
-| Biogasoline                       | 70,8                          | 27,0         | IPCC 2006 GL       |
-| Biodiesels                        | 70,8                          | 37,0         | IPCC 2006 GL ( 2 ) |
-| Other liquid biofuels             | 79,6                          | 27,4         | IPCC 2006 GL       |
-| Landfill gas ( 3 )                | 54,6                          | 50,4         | IPCC 2006 GL       |
+| Biomass material| Preliminary EF [t CO 2 /TJ] | NCV [GJ/t] | Source|
+|-|-|--|--|
+| Wood / Wood waste (air dry ( 1 )) | 112| 15,6| IPCC 2006 GL |
+| Sulphite lyes (black liquor)| 95,3  | 11,8| IPCC 2006 GL |
+| Other primary solid biomass | 100| 11,6| IPCC 2006 GL |
+| Charcoal  | 112| 29,5| IPCC 2006 GL |
+| Biogasoline | 70,8  | 27,0| IPCC 2006 GL |
+| Biodiesels| 70,8  | 37,0| IPCC 2006 GL ( 2 ) |
+| Other liquid biofuels| 79,6  | 27,4| IPCC 2006 GL |
+| Landfill gas ( 3 ) | 54,6  | 50,4| IPCC 2006 GL |
 
-| Sludge gas ( 1 )                         | 54,6   | 50,4   | IPCC 2006 GL   |
-|------------------------------------------|--------|--------|----------------|
-| Other biogas ( 1 )                       | 54,6   | 50,4   | IPCC 2006 GL   |
-| Municipal waste (biomass fraction) ( 1 ) | 100    | 11,6   | IPCC 2006 GL   |
+| Sludge gas ( 1 ) | 54,6 | 50,4 | IPCC 2006 GL |
+||--|--||
+| Other biogas ( 1 ) | 54,6 | 50,4 | IPCC 2006 GL |
+| Municipal waste (biomass fraction) ( 1 ) | 100| 11,6 | IPCC 2006 GL |
 
 <!-- formula-not-decoded -->
 
@@ -3416,18 +3415,18 @@ Table 3
 
 ## Stoichiometric emission factor for process emissions from carbonate decomposition (Method A)
 
-| Carbonate   | Emission factor [t CO 2 /t Carbonate]                                                                                                                                                                                                                                                   |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CaCO 3      | 0,440                                                                                                                                                                                                                                                                                   |
-| MgCO 3      | 0,522                                                                                                                                                                                                                                                                                   |
-| Na 2 CO 3   | 0,415                                                                                                                                                                                                                                                                                   |
-| BaCO 3      | 0,223                                                                                                                                                                                                                                                                                   |
-| Li 2 CO 3   | 0,596                                                                                                                                                                                                                                                                                   |
-| K 2 CO 3    | 0,318                                                                                                                                                                                                                                                                                   |
-| SrCO 3      | 0,298                                                                                                                                                                                                                                                                                   |
-| NaHCO 3     | 0,524                                                                                                                                                                                                                                                                                   |
-| FeCO 3      | 0,380                                                                                                                                                                                                                                                                                   |
-| General     | Emission factor = [M(CO 2 )]/{Y * [M(x)] + Z * [M(CO 3 2- )]} X = metal M(x) = molecular weight of X in [g/mol] M(CO 2 ) = molecular weight of CO 2 in [g/mol] M(CO 3 2- ) = molecular weight of CO 3 2- in [g/mol] Y = stoichiometric number of X Z = stoichiometric number of CO 3 2- |
+| Carbonate | Emission factor [t CO 2 /t Carbonate]|
+|-|-|
+| CaCO 3| 0,440 |
+| MgCO 3| 0,522 |
+| Na 2 CO 3 | 0,415 |
+| BaCO 3| 0,223 |
+| Li 2 CO 3 | 0,596 |
+| K 2 CO 3| 0,318 |
+| SrCO 3| 0,298 |
+| NaHCO 3 | 0,524 |
+| FeCO 3| 0,380 |
+| General | Emission factor = [M(CO 2 )]/{Y * [M(x)] + Z * [M(CO 3 2- )]} X = metal M(x) = molecular weight of X in [g/mol] M(CO 2 ) = molecular weight of CO 2 in [g/mol] M(CO 3 2- ) = molecular weight of CO 3 2- in [g/mol] Y = stoichiometric number of X Z = stoichiometric number of CO 3 2- |
 
 is  the
 
@@ -3437,34 +3436,34 @@ Table 4
 
 Table 5
 
-| Oxide            | Emission factor [t CO 2 /t Oxide]                      |
-|------------------|--------------------------------------------------------|
-| CaO              | 0,785                                                  |
-| MgO              | 1,092                                                  |
-| BaO              | 0,287                                                  |
+| Oxide | Emission factor [t CO 2 /t Oxide]|
+||--|
+| CaO | 0,785 |
+| MgO | 1,092 |
+| BaO | 0,287 |
 | general: X Y O Z | Emission factor = [M(CO 2 )]/{Y * [M(x)] + Z * [M(O)]} |
-|                  | X = alkali earth or alkali metal                       |
-|                  | M(x) = molecular weight of X in [g/mol]                |
-|                  | M(CO 2 ) = molecular weight of CO 2 [g/mol]            |
-|                  | M(O) = molecular weight of O[g/mol]                    |
-|                  | Y = stoichiometric number of X                         |
-|                  | = 1 (for alkali earth metals)                          |
-|                  | = 2 (for alkali metals)                                |
-|                  | Z = stoichiometric number ofO = 1                      |
+|| X = alkali earth or alkali metal |
+|| M(x) = molecular weight of X in [g/mol] |
+|| M(CO 2 ) = molecular weight of CO 2 [g/mol] |
+|| M(O) = molecular weight of O[g/mol]  |
+|| Y = stoichiometric number of X |
+|| = 1 (for alkali earth metals)  |
+|| = 2 (for alkali metals) |
+|| Z = stoichiometric number ofO = 1|
 
 ## Emission factors for process emissions from other process materials (production of iron or steel, and processing of ferrous metals) ( 1 )
 
-| Input or output material   | Carbon content (t C/t)   | Emission factor (t CO 2 /t)   |
-|----------------------------|--------------------------|-------------------------------|
-| Direct reduced iron (DRI)  | 0,0191                   | 0,07                          |
-| EAF carbon electrodes      | 0,8188                   | 3,00                          |
-| EAF charge carbon          | 0,8297                   | 3,04                          |
-| Hot briquetted iron        | 0,0191                   | 0,07                          |
-| Oxygen steel furnace gas   | 0,3493                   | 1,28                          |
-| Petroleum coke             | 0,8706                   | 3,19                          |
-| Pig iron                   | 0,0409                   | 0,15                          |
-| Iron/iron scrap            | 0,0409                   | 0,15                          |
-| Steel/steel scrap          | 0,0109                   | 0,04                          |
+| Input or output material | Carbon content (t C/t) | Emission factor (t CO 2 /t) |
+||--|-|
+| Direct reduced iron (DRI)  | 0,0191 | 0,07  |
+| EAF carbon electrodes| 0,8188 | 3,00  |
+| EAF charge carbon | 0,8297 | 3,04  |
+| Hot briquetted iron  | 0,0191 | 0,07  |
+| Oxygen steel furnace gas | 0,3493 | 1,28  |
+| Petroleum coke| 0,8706 | 3,19  |
+| Pig iron | 0,0409 | 0,15  |
+| Iron/iron scrap | 0,0409 | 0,15  |
+| Steel/steel scrap | 0,0109 | 0,04  |
 
 3. GLOBAL WARMING POTENTIALS FOR NON-CO2 GREENHOUSE GASES
 
@@ -3472,13 +3471,13 @@ Table 6
 
 ## Global warming potentials
 
-| Gas     | Global warming potential   |
-|---------|----------------------------|
-| N 2 O   | 265 t CO 2 e/t N 2 O       |
-| CF 4    | 6 630 t CO 2 e/t CF 4      |
+| Gas | Global warming potential |
+|---||
+| N 2 O | 265 t CO 2 e/t N 2 O |
+| CF 4| 6 630 t CO 2 e/t CF 4|
 | C 2 F 6 | 11 100 t CO 2 e/t C 2 F 6  |
 
-## ANNEX IX
+# ANNEX IX
 
 ## Harmonised efficiency reference values for separate production of electricity and heat
 
@@ -3486,48 +3485,48 @@ In the tables below the harmonised efficiency reference values for separate prod
 
 Table 1 Reference efficiency factors for electricity production
 
-|          |          |                                                                                                                                                                            | Year of construction   | Year of construction   | Year of construction   |
-|----------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|------------------------|------------------------|
-| Category | Category | Type of fuel                                                                                                                                                               | Before 2012            | 2012-2- 015            | From 2016              |
-| Solids   | S1       | Hard coal including anthracite, bituminous coal, sub- bituminous coal, coke, semi-coke, pet coke                                                                           | 44,2                   | 44,2                   | 44,2                   |
-|          | S2       | Lignite, lignite briquettes, shale oil                                                                                                                                     | 41,8                   | 41,8                   | 41,8                   |
-|          | S3       | Peat, peat briquettes                                                                                                                                                      | 39,0                   | 39,0                   | 39,0                   |
-|          | S4       | Dry biomass including wood and other solid biomass including wood pellets and briquettes, dried woodchips, clean and dry waste wood, nut shells and olive and other stones | 33,0                   | 33,0                   | 37,0                   |
-|          | S5       | Other solid biomass including all wood not included under S4 and black and brown liquor                                                                                    | 25,0                   | 25,0                   | 30,0                   |
-|          | S6       | Municipal and industrial waste (non-renewable) and renewable/bio-degradable waste                                                                                          | 25,0                   | 25,0                   | 25,0                   |
-| Liquids  | L7       | Heavy fuel oil, gas/diesel oil, other oil products                                                                                                                         | 44,2                   | 44,2                   | 44,2                   |
-|          | L8       | Bio-liquids including bio-methanol, bioethanol, bio-butanol, biodiesel, and other bio-liquids                                                                              | 44,2                   | 44,2                   | 44,2                   |
-|          | L9       | Waste liquids including biodegradable and non-renewable waste (including tallow, fat and spent grain)                                                                      | 25,0                   | 25,0                   | 29,0                   |
-| Gaseous  | G10      | Natural gas, LPG, LNG and biomethane                                                                                                                                       | 52,5                   | 52,5                   | 53,0                   |
-|          | G11      | Refinery gases hydrogen and synthesis gas                                                                                                                                  | 44,2                   | 44,2                   | 44,2                   |
-|          | G12      | Biogas produced from anaerobic digestion, landfill, and sewage treatment                                                                                                   | 42,0                   | 42,0                   | 42,0                   |
-|          | G13      | Coke oven gas, blast furnace gas, mining gas, and other recovered gases (excluding refinery gas)                                                                           | 35,0                   | 35,0                   | 35,0                   |
-| Other    | O14      | Waste heat (including high temperature process exhaust gases, product from exothermic chemical reactions)                                                                  |                        |                        | 30,0                   |
+| | | | Year of construction | Year of construction | Year of construction |
+|||||||
+| Category | Category | Type of fuel| Before 2012 | 2012-2- 015 | From 2016 |
+| Solids | S1 | Hard coal including anthracite, bituminous coal, sub- bituminous coal, coke, semi-coke, pet coke | 44,2 | 44,2 | 44,2 |
+| | S2 | Lignite, lignite briquettes, shale oil | 41,8 | 41,8 | 41,8 |
+| | S3 | Peat, peat briquettes| 39,0 | 39,0 | 39,0 |
+| | S4 | Dry biomass including wood and other solid biomass including wood pellets and briquettes, dried woodchips, clean and dry waste wood, nut shells and olive and other stones | 33,0 | 33,0 | 37,0 |
+| | S5 | Other solid biomass including all wood not included under S4 and black and brown liquor | 25,0 | 25,0 | 30,0 |
+| | S6 | Municipal and industrial waste (non-renewable) and renewable/bio-degradable waste| 25,0 | 25,0 | 25,0 |
+| Liquids  | L7 | Heavy fuel oil, gas/diesel oil, other oil products| 44,2 | 44,2 | 44,2 |
+| | L8 | Bio-liquids including bio-methanol, bioethanol, bio-butanol, biodiesel, and other bio-liquids| 44,2 | 44,2 | 44,2 |
+| | L9 | Waste liquids including biodegradable and non-renewable waste (including tallow, fat and spent grain) | 25,0 | 25,0 | 29,0 |
+| Gaseous  | G10| Natural gas, LPG, LNG and biomethane| 52,5 | 52,5 | 53,0 |
+| | G11| Refinery gases hydrogen and synthesis gas| 44,2 | 44,2 | 44,2 |
+| | G12| Biogas produced from anaerobic digestion, landfill, and sewage treatment| 42,0 | 42,0 | 42,0 |
+| | G13| Coke oven gas, blast furnace gas, mining gas, and other recovered gases (excluding refinery gas) | 35,0 | 35,0 | 35,0 |
+| Other| O14| Waste heat (including high temperature process exhaust gases, product from exothermic chemical reactions) ||| 30,0 |
 
 Table 2
 
 ## Reference efficiency factors for heat production
 
-|         |     |                                                                                                                                                                            | Year of construction   | Year of construction   | Year of construction              | Year of construction   | Year of construction   | Year of construction              |
-|---------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|------------------------|-----------------------------------|------------------------|------------------------|-----------------------------------|
-|         |     |                                                                                                                                                                            | Before 2016            | Before 2016            | Before 2016                       | From 2016              | From 2016              | From 2016                         |
-|         |     | Type                                                                                                                                                                       | Hot water              | Steam ( 1 )            | Direct use of exhaust gases ( 2 ) | Hot water              | Steam ( 1 )            | Direct use of exhaust gases ( 2 ) |
-| Solids  | S1  | Hard coal including anthracite, bituminous coal, sub- bituminous coal, coke, semi- coke, pet coke                                                                          | 88                     | 83                     | 80                                | 88                     | 83                     | 80                                |
-| Solids  | S2  | Lignite, lignite briquettes, shale oil                                                                                                                                     | 86                     | 81                     | 78                                | 86                     | 81                     | 78                                |
-| Solids  | S3  | Peat, peat briquettes                                                                                                                                                      | 86                     | 81                     | 78                                | 86                     | 81                     | 78                                |
-| Solids  | S4  | Dry biomass including wood and other solid biomass including wood pellets and briquettes, dried woodchips, clean and dry waste wood, nut shells and olive and other stones | 86                     | 81                     | 78                                | 86                     | 81                     | 78                                |
-| Solids  | S5  | Other solid biomass including allwoodnotincludedunderS4 and black and brown liquor                                                                                         | 80                     | 75                     | 72                                | 80                     | 75                     | 72                                |
-| Solids  | S6  | Municipal and industrial waste (non-renewable) and renewable/bio-degradable waste                                                                                          | 80                     | 75                     | 72                                | 80                     | 75                     | 72                                |
-| Liquids | L7  | Heavy fuel oil, gas/diesel oil, other oil products                                                                                                                         | 89                     | 84                     | 81                                | 85                     | 80                     | 77                                |
-| Liquids | L8  | Bio-liquids including bio- methanol, bioethanol, bio- butanol, biodiesel, and other bio-liquids                                                                            | 89                     | 84                     | 81                                | 85                     | 80                     | 77                                |
-| Liquids | L9  | Waste liquids including biodegradable and non- renewable waste (including tallow, fat and spent grain)                                                                     | 80                     | 75                     | 72                                | 75                     | 70                     | 67                                |
-| Gaseous | G10 | Natural gas, LPG, LNG and biomethane                                                                                                                                       | 90                     | 85                     | 82                                | 92                     | 87                     | 84                                |
-| Gaseous | G11 | Refinery gases hydrogen and synthesis gas                                                                                                                                  | 89                     | 84                     | 81                                | 90                     | 85                     | 82                                |
+|| | | Year of construction | Year of construction | Year of construction | Year of construction | Year of construction | Year of construction |
+|---|-||||-|||-|
+|| | | Before 2016 | Before 2016 | Before 2016 | From 2016 | From 2016 | From 2016 |
+|| | Type | Hot water | Steam ( 1 ) | Direct use of exhaust gases ( 2 ) | Hot water | Steam ( 1 ) | Direct use of exhaust gases ( 2 ) |
+| Solids  | S1  | Hard coal including anthracite, bituminous coal, sub- bituminous coal, coke, semi- coke, pet coke  | 88 | 83 | 80 | 88 | 83 | 80 |
+| Solids  | S2  | Lignite, lignite briquettes, shale oil | 86 | 81 | 78 | 86 | 81 | 78 |
+| Solids  | S3  | Peat, peat briquettes| 86 | 81 | 78 | 86 | 81 | 78 |
+| Solids  | S4  | Dry biomass including wood and other solid biomass including wood pellets and briquettes, dried woodchips, clean and dry waste wood, nut shells and olive and other stones | 86 | 81 | 78 | 86 | 81 | 78 |
+| Solids  | S5  | Other solid biomass including allwoodnotincludedunderS4 and black and brown liquor  | 80 | 75 | 72 | 80 | 75 | 72 |
+| Solids  | S6  | Municipal and industrial waste (non-renewable) and renewable/bio-degradable waste| 80 | 75 | 72 | 80 | 75 | 72 |
+| Liquids | L7  | Heavy fuel oil, gas/diesel oil, other oil products| 89 | 84 | 81 | 85 | 80 | 77 |
+| Liquids | L8  | Bio-liquids including bio- methanol, bioethanol, bio- butanol, biodiesel, and other bio-liquids| 89 | 84 | 81 | 85 | 80 | 77 |
+| Liquids | L9  | Waste liquids including biodegradable and non- renewable waste (including tallow, fat and spent grain)| 80 | 75 | 72 | 75 | 70 | 67 |
+| Gaseous | G10 | Natural gas, LPG, LNG and biomethane| 90 | 85 | 82 | 92 | 87 | 84 |
+| Gaseous | G11 | Refinery gases hydrogen and synthesis gas| 89 | 84 | 81 | 90 | 85 | 82 |
 
-|       | G12   | Biogas produced from anaerobic digestion, landfill, and sewage treatment                                  | 70   | 65   | 62   |   80 |   75 | 72   |
-|-------|-------|-----------------------------------------------------------------------------------------------------------|------|------|------|------|------|------|
-|       | G13   | Coke oven gas, blast furnace gas, mining gas, and other recovered gases (excluding refinery gas)          | 80   | 75   | 72   |   80 |   75 | 72   |
-| Other | O14   | Waste heat (including high temperature process exhaust gases, product from exothermic chemical reactions) | -    | -    | -    |   92 |   87 | -    |
+| | G12 | Biogas produced from anaerobic digestion, landfill, and sewage treatment | 70 | 65 | 62 |   80 |   75 | 72 |
+|-|-|-|||||||
+| | G13 | Coke oven gas, blast furnace gas, mining gas, and other recovered gases (excluding refinery gas) | 80 | 75 | 72 |   80 |   75 | 72 |
+| Other | O14 | Waste heat (including high temperature process exhaust gases, product from exothermic chemical reactions) | -| -| -|   92 |   87 | -|
 
 ( 1 ) If  steam plants do not account for the condensate return in their calculation of CHP (combined heat and power) heat efficiencies, the steam efficiencies shown in the table above shall be increased by 5 percentage points.
 
