@@ -46,7 +46,7 @@ public class ActualEmissionsResponse {
     private BigDecimal specificEmissionsTco2ePerTon;
     /** Export-only share of embedded emissions, in tCO2e. */
     private BigDecimal exportedEmbeddedEmissionsTco2e;
-    /** Indicates whether indirect emissions were included in the total. */
+    /** Always true in the current CBAM-aligned calculation because embedded emissions include indirect emissions. */
     private Boolean includeIndirectEmissions;
     /** Indicates that actual activity data was used. */
     private String calculationMode;

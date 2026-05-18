@@ -83,6 +83,39 @@ class CbamCalculatorServiceTests {
     }
 
     @Test
+    void shouldStillIncludeIndirectEmissionsWhenCompatibilityFlagIsFalse() {
+        ActualEmissionsRequest request = new ActualEmissionsRequest();
+        request.setProduct("steel");
+        request.setProductionVolumeTons(new BigDecimal("100"));
+        request.setExportVolumeTons(new BigDecimal("40"));
+        request.setIncludeIndirectEmissions(false);
+
+        ActivityInput naturalGas = new ActivityInput();
+        naturalGas.setActivityType("NATURAL_GAS");
+        naturalGas.setAmount(new BigDecimal("5000"));
+        naturalGas.setUnit("m3");
+
+        ActivityInput diesel = new ActivityInput();
+        diesel.setActivityType("DIESEL");
+        diesel.setAmount(new BigDecimal("1200"));
+        diesel.setUnit("liter");
+
+        ActivityInput electricity = new ActivityInput();
+        electricity.setActivityType("ELECTRICITY");
+        electricity.setAmount(new BigDecimal("25000"));
+        electricity.setUnit("kWh");
+
+        request.setActivities(List.of(naturalGas, diesel, electricity));
+
+        var response = actualEmissionCalculationService.calculateActualEmissions(request);
+
+        assertThat(response.getIncludeIndirectEmissions()).isTrue();
+        assertThat(response.getTotalFacilityEmissionsTco2e()).isEqualByComparingTo("23.7160");
+        assertThat(response.getWarnings())
+                .anyMatch(warning -> warning.contains("includeIndirectEmissions=false is ignored"));
+    }
+
+    @Test
     void shouldCalculateSimpleCost() {
         SimpleCostRequest request = new SimpleCostRequest();
         request.setEmbeddedEmissionsTco2e(new BigDecimal("214.5"));

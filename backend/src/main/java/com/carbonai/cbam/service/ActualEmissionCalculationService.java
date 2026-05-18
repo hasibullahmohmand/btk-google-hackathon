@@ -46,7 +46,7 @@ public class ActualEmissionCalculationService {
      * request.product = product label, example "steel"
      * request.productionVolumeTons = total production, example 100
      * request.exportVolumeTons = exported quantity, example 40
-     * request.includeIndirectEmissions = true to include electricity
+     * request.includeIndirectEmissions = compatibility flag retained by the API
      * request.activities = activity rows such as natural gas, diesel, electricity
      *
      * Example input values:
@@ -103,6 +103,9 @@ public class ActualEmissionCalculationService {
         if (request.getExportVolumeTons().compareTo(request.getProductionVolumeTons()) > 0) {
             warnings.add("exportVolumeTons is greater than productionVolumeTons. Calculation is allowed, but the inputs should be reviewed.");
         }
+        if (Boolean.FALSE.equals(request.getIncludeIndirectEmissions())) {
+            warnings.add("includeIndirectEmissions=false is ignored. CBAM embedded emissions include both direct and indirect emissions based on the project source markdown.");
+        }
 
         for (ActivityInput activity : request.getActivities()) {
             EmissionFactor factor = demoDataStore.findEmissionFactor(activity.getActivityType(), activity.getUnit())
@@ -136,11 +139,8 @@ public class ActualEmissionCalculationService {
             breakdownList.add(breakdown);
         }
 
-        // If the user excludes indirect emissions, electricity is still shown in
-        // the breakdown, but it is not added into the total used for specific emissions.
-        BigDecimal totalFacilityEmissions = Boolean.TRUE.equals(request.getIncludeIndirectEmissions())
-                ? directEmissions.add(indirectEmissions)
-                : directEmissions;
+        // CBAM embedded emissions include both direct and indirect emissions.
+        BigDecimal totalFacilityEmissions = directEmissions.add(indirectEmissions);
 
         // Specific emissions tell us how many tonnes of CO2e were emitted per
         // one ton of product produced at the facility.
@@ -158,7 +158,7 @@ public class ActualEmissionCalculationService {
         response.setTotalFacilityEmissionsTco2e(CalculationSupport.roundEmissions(totalFacilityEmissions));
         response.setSpecificEmissionsTco2ePerTon(CalculationSupport.roundEmissions(specificEmissions));
         response.setExportedEmbeddedEmissionsTco2e(CalculationSupport.roundEmissions(exportedEmbeddedEmissions));
-        response.setIncludeIndirectEmissions(request.getIncludeIndirectEmissions());
+        response.setIncludeIndirectEmissions(Boolean.TRUE);
         response.setCalculationMode("ACTUAL_DATA");
         response.setActivityBreakdown(breakdownList);
         response.setWarnings(warnings);

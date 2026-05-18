@@ -81,7 +81,7 @@ public class DefaultValueService {
         response.setSelectedDefaultValueTco2ePerTon(CalculationSupport.roundEmissions(selectedDefaultValue));
         response.setEmbeddedEmissionsTco2e(CalculationSupport.roundEmissions(embeddedEmissions));
         response.setCalculationMode("DEFAULT_VALUE");
-        response.setFormula("embeddedEmissions = exportVolumeTons × defaultValueTco2ePerTon");
+        response.setFormula("embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon");
         return response;
     }
 

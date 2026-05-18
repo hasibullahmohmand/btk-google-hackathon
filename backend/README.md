@@ -63,11 +63,13 @@ The backend:
 
 Formula:
 
-`embeddedEmissions = exportVolumeTons × defaultValueTco2ePerTon`
+`embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon`
 
 ### Actual data mode
 
 Use this when the exporter has actual factory activity data.
+
+The source markdown used by this project treats embedded emissions as direct plus indirect emissions. The request field `includeIndirectEmissions` is kept only for backward compatibility and does not change the calculation.
 
 The backend:
 
@@ -80,10 +82,10 @@ The backend:
 
 Main formulas:
 
-- `activityEmissionsKg = amount × factorKgCo2ePerUnit`
+- `activityEmissionsKg = amount x factorKgCo2ePerUnit`
 - `activityEmissionsTco2e = activityEmissionsKg / 1000`
 - `specificEmissions = totalFacilityEmissions / productionVolumeTons`
-- `exportedEmbeddedEmissions = specificEmissions × exportVolumeTons`
+- `exportedEmbeddedEmissions = specificEmissions x exportVolumeTons`
 
 ### Simple cost mode
 
@@ -91,7 +93,7 @@ Use this when embedded emissions are already known and only a quick EUR estimate
 
 Formula:
 
-`estimatedCostEur = embeddedEmissionsTco2e × certificatePriceEurPerTco2e`
+`estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e`
 
 ### Advanced certificate formula
 
@@ -100,17 +102,17 @@ Use this when more detailed inputs are available.
 Definitions:
 
 - `A = actual specific emissions`
-- `B = free allowance deduction = cbamBenchmark × cbamFactor`
+- `B = free allowance deduction = cbamBenchmark x cbamFactor`
 - `C = third-country carbon price deduction`
 - `D = imported quantity`
 
 Formula:
 
-`certificates = max(0, (A - B - C) × D)`
+`certificates = max(0, (A - B - C) x D)`
 
 Then:
 
-`estimatedCostEur = certificates × cbamCertificatePriceEurPerTco2e`
+`estimatedCostEur = certificates x cbamCertificatePriceEurPerTco2e`
 
 ## Seeded demo data
 
@@ -149,11 +151,11 @@ The backend:
 2. Chooses the `2026` default value with markup: `2.145 tCO2e/t`.
 3. Calculates embedded emissions:
 
-`100 × 2.145 = 214.5 tCO2e`
+`100 x 2.145 = 214.5 tCO2e`
 
 4. If the price is `76 EUR/tCO2e`, it estimates financial exposure:
 
-`214.5 × 76 = 16,302 EUR`
+`214.5 x 76 = 16,302 EUR`
 
 This is why the system treats CBAM as a financial exposure tool as well as an emissions calculator.
 
@@ -203,7 +205,7 @@ Response:
   "selectedDefaultValueTco2ePerTon": 2.1450,
   "embeddedEmissionsTco2e": 214.5000,
   "calculationMode": "DEFAULT_VALUE",
-  "formula": "embeddedEmissions = exportVolumeTons × defaultValueTco2ePerTon"
+  "formula": "embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon"
 }
 ```
 
@@ -272,7 +274,7 @@ Response:
   "embeddedEmissionsTco2e": 214.5000,
   "certificatePriceEurPerTco2e": 76,
   "estimatedCostEur": 16302.00,
-  "formula": "estimatedCostEur = embeddedEmissionsTco2e × certificatePriceEurPerTco2e"
+  "formula": "estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e"
 }
 ```
 
@@ -302,7 +304,7 @@ Response:
   "certificatesToSurrender": 68.2500,
   "cbamCertificatePriceEurPerTco2e": 76,
   "estimatedCostEur": 5187.00,
-  "formula": "certificates = max(0, (A - B - C) × D)"
+  "formula": "certificates = max(0, (A - B - C) x D)"
 }
 ```
 

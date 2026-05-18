@@ -87,7 +87,7 @@ public class AdvancedCertificateService {
         response.setCertificatesToSurrender(CalculationSupport.roundEmissions(certificates));
         response.setCbamCertificatePriceEurPerTco2e(request.getCbamCertificatePriceEurPerTco2e());
         response.setEstimatedCostEur(CalculationSupport.roundMoney(cost));
-        response.setFormula("certificates = max(0, (A - B - C) × D)");
+        response.setFormula("certificates = max(0, (A - B - C) x D)");
         return response;
     }
 }

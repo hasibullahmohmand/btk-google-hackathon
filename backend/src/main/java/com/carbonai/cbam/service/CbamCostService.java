@@ -60,7 +60,7 @@ public class CbamCostService {
         response.setEmbeddedEmissionsTco2e(CalculationSupport.roundEmissions(request.getEmbeddedEmissionsTco2e()));
         response.setCertificatePriceEurPerTco2e(request.getCertificatePriceEurPerTco2e());
         response.setEstimatedCostEur(CalculationSupport.roundMoney(estimatedCost));
-        response.setFormula("estimatedCostEur = embeddedEmissionsTco2e × certificatePriceEurPerTco2e");
+        response.setFormula("estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e");
         return response;
     }
 

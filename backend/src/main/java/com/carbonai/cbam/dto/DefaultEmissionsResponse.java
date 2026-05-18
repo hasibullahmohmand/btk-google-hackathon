@@ -19,7 +19,7 @@ import java.math.BigDecimal;
  *   "selectedDefaultValueTco2ePerTon": 2.145,
  *   "embeddedEmissionsTco2e": 214.5,
  *   "calculationMode": "DEFAULT_VALUE",
- *   "formula": "embeddedEmissions = exportVolumeTons × defaultValueTco2ePerTon"
+ *   "formula": "embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon"
  * }
  */
 public class DefaultEmissionsResponse {

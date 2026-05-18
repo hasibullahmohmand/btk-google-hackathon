@@ -18,7 +18,7 @@ import java.math.BigDecimal;
  *   "certificatesToSurrender": 68.2500,
  *   "cbamCertificatePriceEurPerTco2e": 76,
  *   "estimatedCostEur": 5187.00,
- *   "formula": "certificates = max(0, (A - B - C) × D)"
+ *   "formula": "certificates = max(0, (A - B - C) x D)"
  * }
  */
 public class AdvancedCertificatesResponse {

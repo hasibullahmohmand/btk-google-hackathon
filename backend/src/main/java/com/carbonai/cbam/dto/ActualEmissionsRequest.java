@@ -61,7 +61,10 @@ public class ActualEmissionsRequest {
     @DecimalMin(value = "0.0001", message = "exportVolumeTons must be greater than 0")
     private BigDecimal exportVolumeTons;
 
-    /** If true, electricity emissions are included in the total used for specific emissions. */
+    /**
+     * Backward-compatible request flag.
+     * The current CBAM-aligned calculation always includes indirect emissions in embedded emissions totals.
+     */
     @NotNull(message = "includeIndirectEmissions is required")
     private Boolean includeIndirectEmissions;
 

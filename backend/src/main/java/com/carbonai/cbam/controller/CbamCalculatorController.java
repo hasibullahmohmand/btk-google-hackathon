@@ -111,12 +111,13 @@ public class CbamCalculatorController {
      * Business meaning:
      * Converts fuel and electricity activity records into total emissions, then
      * derives specific emissions per ton and exported embedded emissions.
+     * Embedded emissions are calculated with both direct and indirect emissions.
      *
      * Parameters:
      * request.product = product label, example "steel"
      * request.productionVolumeTons = total produced quantity, example 100
      * request.exportVolumeTons = exported quantity, example 40
-     * request.includeIndirectEmissions = whether electricity emissions should be included
+     * request.includeIndirectEmissions = backward-compatible request flag retained by the API
      * request.activities = list of factory activities, example natural gas, diesel, electricity
      *
      * Formula:
