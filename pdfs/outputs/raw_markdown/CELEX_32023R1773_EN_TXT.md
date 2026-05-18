@@ -1767,7 +1767,7 @@ For fossil fuels and where the biomass fraction is not known, BFi shall be set t
 
 Process emissions shall be calculated using the standard method as follows:
 
-<!-- formula-not-decoded -->
+`Emj = ADj * EFj * CFj (Equation 11)`
 
 Where:
 
@@ -1797,7 +1797,7 @@ The  CO2 quantities  relevant  for  each  source  stream  shall  be  calculated 
 
 The emissions corresponding to each source stream shall be calculated as follows:
 
-<!-- formula-not-decoded -->
+`Emk = f * ADk * CCk (Equation 12)`
 
 Where:
 
@@ -1809,15 +1809,15 @@ CCk is the carbon content of material k (dimensionless and positive).
 
 If the carbon content of a fuel k is calculated from an emission factor expressed in t CO 2 /TJ, the following equation shall be used:
 
-<!-- formula-not-decoded -->
+`CCk = EFk * NCVk / f (Equation 13)`
 
 If  the  carbon  content  of  a  material  or  fuel k is  calculated  from  an  emission  factor  expressed  in  t  CO 2 /t,  the  following equation shall be used:
 
-<!-- formula-not-decoded -->
+`CCk = EFk / f (Equation 14)`
 
 For mixed fuels, meaning fuels which contain both fossil and biomass components or mixed materials, the biomass fraction may be taken into account, provided that the criteria provided in Section B.3.3 are met as follows:
 
-<!-- formula-not-decoded -->
+`CCk = CCpre,k * (1 - BFk) (Equation 15)`
 
 Where:
 
@@ -2021,7 +2021,7 @@ Where several emission sources exist in one installation and cannot be measured 
 
 The  total  emissions  from  an  emission  source  over  the  reporting  period  shall  be  determined  by  summing  up  over  the reporting  period  all  hourly  values  of  the  measured  greenhouse  gas  concentration  multiplied  by the  hourly  values  of  the flue gas flow, where the hourly values shall be averages over all individual measurement results of the respective operating hour, applying the formula:
 
-<!-- formula-not-decoded -->
+`GHG EMtotal[t] = sum(i=1..HoursOp) (GHG conchourly,i * Vhourly,i) * 10^-6 [t/g] (Equation 16)`
 
 Where:
 
@@ -2052,7 +2052,7 @@ The concentration of  the GHG under consideration in the flue gas shall be deter
 -  direct measurement of the concentration of the GHG;
 -  indirect measurement: in the case of high concentration in the flue gas, the concentration of the GHG may be calculated using  an  indirect  concentration  measurement  taking  into  account  the  measured  concentration  values  of  all  other components i of the gas stream, using the following formula:
 
-<!-- formula-not-decoded -->
+`GHG conc [%] = 100% - sum_i(conc_i [%]) (Equation 17)`
 
 is the concentration of gas component i .
 
@@ -2072,7 +2072,7 @@ Where relevant, any CO2 amount stemming from biomass which complies with the cri
 
 In the case of N 2 O measurements, the total annual N2O emissions from all emissions sources, measured in tonnes to three decimal places,  shall  be  converted  to  annual  CO 2 e  in  rounded  tonnes,  using  the  following  formula  and  the  GWP  values given in Annex VIII:
 
-<!-- formula-not-decoded -->
+`CO2e [t] = N2Oannual[t] * GWPN2O (Equation 18)`
 
 Where:
 
@@ -2093,7 +2093,7 @@ Where fewer than 80 % of the maximum number of data points for a parameter are a
 
 -  In  the  case  of  a  parameter  directly  measured  as  concentration,  a  substitution  value  as  the  sum  of  an  average concentration and twice the standard deviation associated with that average is used, applying the following equation:
 
-<!-- formula-not-decoded -->
+`Csubst = C + 2 * sigma_c (Equation 19)`
 
 Where:
 
@@ -2165,7 +2165,7 @@ FC2F6 is the weight fraction of C 2 F6 [t C 2 F6 /t CF 4 ].
 
 The anode effect minutes per cell-day expresses the frequency of anode effects (number anode effects/cell-day) multiplied by the average duration of anode effects (anode effect minutes/occurrence):
 
-<!-- formula-not-decoded -->
+`AEM = frequency * average duration (Equation 23)`
 
 (Equation 23)
 
@@ -2191,7 +2191,8 @@ Table 2 Technology-specific emission factors related to activity data for the sl
 
 For the overvoltage method, the following equations shall be used:
 
-<!-- formula-not-decoded -->
+`CF4 emissions [t] = OVC * (AEO/CE) * PrAl * 0.001 (Equation 24)`
+`C2F6 emissions [t] = CF4 emissions * FC2F6 (Equation 25)`
 
 Where:
 
@@ -2302,7 +2303,7 @@ Activity data shall be determined as the clinker production [t] over the reporti
 -  by direct weighing of clinker;
 -  based  on  cement  deliveries,  by  material  balance  taking  into  account  dispatch  of  clinker,  clinker  supplies  as  well  as clinker stock variation, using the following formula:
 
-<!-- formula-not-decoded -->
+`Cliprod = (Cemdeliv - CemSV) * CCR - Clis + Clid - CliSV (Equation 27)`
 
 Where:
 
@@ -2344,7 +2345,7 @@ Minimum requirement: An emission factor of 0,525 t CO2/t dust shall be applied.
 
 Recommended improvement: The emission factor (EF) is determined at least once annually in line with the provisions of Section B.5.4 of this Annex and using the following formula:
 
-<!-- formula-not-decoded -->
+`EFCKD = (EFCli * d) / (1 + EFCli * d) = 1 - 1 / (1 + EFCli * d) (Equation 28)`
 
 Where:
 
@@ -2372,7 +2373,7 @@ For monitoring flue gas flow, the mass balance method set out in Section B.6.2.5
 
 The flue gas flow shall be calculated in accordance with the following formula:
 
-<!-- formula-not-decoded -->
+`Vflue gas flow [Nm3/h] = Vair * (1 - O2,air) / (1 - O2,flue gas) (Equation 29)`
 
 Where:
 
@@ -2426,7 +2427,7 @@ v is the specific volume in m 3 /kg.
 
 As the mass flow rate is considered the same for transmitted and returned medium, the heat flow rate shall be calculated using the difference in enthalpy between the transmitted flow and the return, as follows:
 
-<!-- formula-not-decoded -->
+`Qdot = (hflow - hreturn) * mdot (Equation 31)`
 
 Where:
 
@@ -2462,9 +2463,9 @@ For determining the annual net heat flow from the above data, one of the followi
 
 The amounts of net measurable heat shall be determined based on the fuel input and the measured efficiency related to the heat production:
 
-<!-- formula-not-decoded -->
+`Q = eta_H * EIn (Equation 32)`
 
-<!-- formula-not-decoded -->
+`EIn = sum_i (ADi * NCVi) (Equation 33)`
 
 Where:
 
@@ -2484,7 +2485,7 @@ NCVi are the net calorific values of the fuels i .
 
 The value of ηH is either measured over a reasonably long period, which sufficiently takes into account different load states of the installation or taken from the manufacturer's documentation. In that regard the specific part load curve shall be taken into account by using an annual load factor, as follows:
 
-<!-- formula-not-decoded -->
+`LF = EIn / EMax (Equation 34)`
 
 Where:
 
@@ -2520,7 +2521,7 @@ Where a production process consumes measurable heat produced within the installa
 
 For measurable heat produced from the combustion of fuels within the installation except heat produced by cogeneration, the emission factor of the relevant fuel mix shall be determined and the emissions attributable to the production process shall be calculated as:
 
-<!-- formula-not-decoded -->
+`EmHeat = EFmix * Qconsumed / eta (Equation 35)`
 
 Where:
 
@@ -2548,7 +2549,7 @@ EmCHP
 
 ADi
 
-<!-- formula-not-decoded -->
+`EFmix = (sum_i (ADi * NCVi * EFi) + EmFGC) / sum_i (ADi * NCVi) (Equation 36)`
 
 Where:
 
@@ -2576,7 +2577,7 @@ Where measurable heat and electricity are produced by cogeneration (i.e. by comb
 
 The emissions of a cogeneration unit shall be determined as follows:
 
-<!-- formula-not-decoded -->
+`EmCHP = sum_i (ADi * NCVi * EFi) + EmFGC (Equation 37)`
 
 are the emissions of the cogeneration unit during the reporting period expressed in t CO 2 ;
 
@@ -2596,9 +2597,9 @@ are the process emissions from flue gas cleaning expressed in t CO 2 .
 
 The energy input to the CHP unit shall be calculated in accordance with Equation 33. The respective average efficiencies over  the  reporting  period  of  heat  production  and  electricity  (or  mechanical  energy,  if  applicable)  production  shall  be calculated as follows:
 
-<!-- formula-not-decoded -->
+`eta_heat = Qnet / EIn (Equation 38)`
 
-<!-- formula-not-decoded -->
+`eta_el = EEl / EIn (Equation 39)`
 
 Where:
 
@@ -2622,9 +2623,9 @@ Where the determination of the efficiencies ηheat and ηel is technically not f
 
 The attribution factors for heat and electricity from CHP shall be calculated as follows:
 
-<!-- formula-not-decoded -->
+`FCHP,heat = (eta_heat / eta_ref,heat) / ((eta_heat / eta_ref,heat) + (eta_el / eta_ref,el)) (Equation 40)`
 
-<!-- formula-not-decoded -->
+`FCHP,el = (eta_el / eta_ref,el) / ((eta_heat / eta_ref,heat) + (eta_el / eta_ref,el)) (Equation 41)`
 
 Where:
 
@@ -2648,7 +2649,7 @@ The appropriate fuel-specific reference efficiencies are given in Annex IX.
 
 The specific emission factor of the CHP-related measurable heat to be used for the attribution of heat-related emissions to production processes shall be calculated as
 
-<!-- formula-not-decoded -->
+`EFCHP,Heat = EmCHP * FCHP,Heat / Qnet (Equation 42)`
 
 Where:
 
@@ -2662,7 +2663,7 @@ is the net heat produced by the cogeneration unit expressed in TJ.
 
 The specific emission factor of the CHP-related electricity to be used for the attribution of indirect emissions to production processes shall be calculated as:
 
-<!-- formula-not-decoded -->
+`EFCHP,El = EmCHP * FCHP,El / EEl,prod (Equation 43)`
 
 is the electricity produced by the CHP unit.
 
@@ -2685,7 +2686,7 @@ Where a production process consumes measurable heat produced outside the install
 
 The  emissions  relating  to  electricity  production  or  consumption  for  the  purpose  of  calculating  embedded  emissions  in accordance with section F.1 shall be calculated using the following equation:
 
-<!-- formula-not-decoded -->
+`Emel = Eel * EFel (Equation 44)`
 
 Where:
 
@@ -2728,7 +2729,7 @@ In order  to reflect the impact of decarbonisation policies, such as the increas
 
 For  this purpose, the reporting declarant shall calculate the yearly CO 2 emission factors per fossil fuel technology and its respective  gross  electricity  generation  in  the  third  country  capable  of  exporting  electricity  to  the  EU,  based  on  the following equation:
 
-<!-- formula-not-decoded -->
+`Emel,y = (sum_i (EFi * Eel,i,y)) / Eel,y (Equation 45)`
 
 Where:
 
@@ -2748,7 +2749,7 @@ is the yearly gross electricity generation for each fossil fuel technology 'i'.
 
 The reporting declarant shall calculate the CO 2 emission factor as a moving average of those years starting with the current year minus two, based on the following equation:
 
-<!-- formula-not-decoded -->
+`Emel = (sum_(i=y-6..y-2) Emel,i) / 5 (Equation 46)`
 
 Where:
 
@@ -2782,7 +2783,7 @@ By  derogation  from  the  points  (a)  and  (b),  acctual  emission  factors  f
 
 For electricity produced from the combustion of fuels within the installation except electricity produced by cogeneration, the emission factor of electricity EFEl shall be determined based on the relevant fuel mix and the emissions attributable to the electricity production shall be calculated as:
 
-<!-- formula-not-decoded -->
+`EFEl = (sum_i (ADi * NCVi * EFi) + EmFGC) / Elprod (Equation 47)`
 
 Where:
 
@@ -2843,7 +2844,10 @@ The installation producing the precursor shall provide the relevant information,
 
 For the purpose of assigning the installation's emissions to goods, the emissions, inputs, and outputs shall be attributed to production processes  defined  in  accordance  with  Section  A.4  of  this  Annex  using  Equation  48  for  direct  emissions  and Equation  49  for  indirect  emissions,  using  total  figures  over  the  whole  reporting  period  for  the  parameters  given  in  the equation. The attributed direct and indirect emissions shall then be converted into specific embedded direct and indirect emissions of the goods resulting from the production process using Equations 50 and 51.
 
-<!-- formula-not-decoded -->
+`AttrEmDir = DirEm* + EmH,imp - EmH,exp + WGcorr,imp - WGcorr,exp - Emel,prod (Equation 48)`
+`AttrEmindir = Emel,cons (Equation 49)`
+`SEEg,Dir = AttrEmg,Dir / ALg (Equation 50)`
+`SEEg,Indir = AttrEmg,Indir / ALg (Equation 51)`
 
 Where AttrEmDir is calculated to have a negative value, it shall be set to zero.
 
@@ -2877,7 +2881,7 @@ Emissions  related  to  measurable  heat  imported  to  the  production  process
 
 Emissions from measurable heat shall be calculated using the following formula:
 
-<!-- formula-not-decoded -->
+`EmH,imp = Qimp * EFheat (Equation 52)`
 
 is  the  emission factor for  the production of measurable heat determined in accordance with Section C.2 of this Annex, expressed in t CO 2 /TJ; and
 
@@ -2893,15 +2897,15 @@ EmH , imp
 
 EmH , exp
 
-<!-- formula-not-decoded -->
+`EmH,imp`
 
-<!-- formula-not-decoded -->
+`EmH,exp`
 
 Heat recovered from electricity-driven processes and from nitric acid production shall not be accounted;
 
 WGcorr , imp are  the  attributed  direct  emissions  of  a  production  process  consuming  waste  gases  imported  from  other production processes, corrected for the reporting period using the following formula:
 
-<!-- formula-not-decoded -->
+`WGcorr,imp = VWG * NCVWG * EFNG (Equation 53)`
 
 Where:
 
@@ -2919,7 +2923,7 @@ is the standard emission factor of natural gas as given in Annex VIII;
 
 WGcorr , exp are the emissions equivalent to the quantity of waste gases exported from the production process, determined for the reporting period using the rules provided in Section B of this Annex, and the following formula:
 
-<!-- formula-not-decoded -->
+`WGcorr,exp = VWG,exp * NCVWG * EFNG * Corr_eta (Equation 54)`
 
 is the volume of waste gas exported from the production process;
 
@@ -2965,7 +2969,7 @@ For determining activity levels, the metering requirements laid down in Section 
 3. Where several measuring instruments of different quality are contributing to measurement results, either of the following  methods may be used for splitting installation-level  data  on  quantities  of  materials,  fuels,  measurable heat, or electricity to production processes:
 - (a) Determination of the split based on a determination method, such as sub-metering, estimate, correlation, used equally for each production process. Where the sum of the production process data is different from the data determined separately for the installation, a uniform 'reconciliation factor' is applied for uniform correction to meet the total figure of the installation as follows:
 
-<!-- formula-not-decoded -->
+`RecF = DInst / sum(DPP) (Equation 55)`
 
 Where:
 
@@ -2983,7 +2987,7 @@ are the data values for the different production processes.
 
 The data for each production process are then corrected as follows, with DPP,corr being the corrected value of DPP :
 
-<!-- formula-not-decoded -->
+`DPP,corr = DPP * RecF (Equation 56)`
 
 - (b) If  only  one  production  process's  data  are  unknown  or  of  lower  quality  than  the  data  of  other  production processes, known production process data may be subtracted from the total installation data. This method is preferred only for production processes which contribute smaller quantities to the installation's allocation.
 
@@ -3015,9 +3019,9 @@ Where  losses  of  measurable  heat  are  determined  separately  from  the  amo
 
 In accordance with Annex IV to Regulation (EU) 2023/956, the specific embedded emissions SEE g of complex goods g shall be calculated as follows:
 
-<!-- formula-not-decoded -->
+`SEEg = (AttrEmg + EEInpMat) / ALg (Equation 57)`
 
-<!-- formula-not-decoded -->
+`EEInpMat = sum_(i=1..n) (Mi * SEEi) (Equation 58)`
 
 Where:
 
@@ -3053,17 +3057,17 @@ The parameter Mi refers to the total mass of precursor required to produce the a
 
 In  order  to  provide  data  which  can  be  used  independently  of  activity  levels,  the  specific  mass  consumption mi for  each precursor i shall be determined and included in the communication pursuant to Annex IV:
 
-<!-- formula-not-decoded -->
+`mi = Mi / ALg (Equation 59)`
 
 Thereby the specific embedded emissions of complex goods g may be expressed as:
 
-<!-- formula-not-decoded -->
+`SEEg = aeg + sum_(i=1..n) (mi * SEEi) (Equation 60)`
 
 Where:
 
 ae g are the specific attributed direct or indirect emissions of the production process yielding goods g , expressed in  t  CO 2 e  per  tonne  of g ,  being  equivalent  to specific  embedded  emissions without precursors'  embedded emissions:
 
-<!-- formula-not-decoded -->
+`aeg = AttrEmg / ALg (Equation 61)`
 
 mi is the specific mass consumption of precursor i used in the production process yielding one tonne of goods g , expressed in tonnes of precursor i per tonne of goods g (i.e. dimensionless); and
 
@@ -3401,7 +3405,7 @@ Table 2
 | Other biogas ( 1 ) | 54,6 | 50,4 | IPCC 2006 GL |
 | Municipal waste (biomass fraction) ( 1 ) | 100| 11,6 | IPCC 2006 GL |
 
-<!-- formula-not-decoded -->
+`NCV = NCVdry * (1 - w) - DeltaHv * w`
 
 Where NCVdry is  the  NCV  of  the  absolute  dry  material, w is  the  water  content  (mass  fraction)  and Δ Hv ¼ 2 ; 4 GJ = t H 2 O evaporation enthalpy of water. Using the same equation, the NCV for a given water content can be back-calculated from the dry NCV.
 
