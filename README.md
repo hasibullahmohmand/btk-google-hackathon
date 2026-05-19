@@ -529,6 +529,48 @@ Note:
 
 ## Build and run
 
+### Agent service Python environment
+
+Create a local Python virtual environment named `.venv` from the repository root:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate it:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the agent service dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a local `.env` file from the example and fill in the API keys you need:
+
+```bash
+cp .env.example .env
+```
+
+The `.venv/` folder is only for your machine and should not be committed. It is ignored by Git, along with `.env`.
+
+Run the FastAPI agent service from the repository root:
+
+```bash
+uvicorn agent_service.app:app --reload --host 0.0.0.0 --port 8000
+```
+
+The chat endpoint is available at:
+
+- `POST http://localhost:8000/api/chat`
+- `GET http://localhost:8000/health`
+- `GET http://localhost:8000/gradio`
+
+### Backend
+
 From the `backend/` folder:
 
 ```bash
