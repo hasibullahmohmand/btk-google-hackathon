@@ -1,0 +1,127 @@
+cn_code,description,product_group,default_direct_tco2e_per_ton,default_indirect_tco2e_per_ton,default_total_tco2e_per_ton
+26011200,"Agglomerated iron ores and concentrates, other than roasted iron pyrites",Sintered Ore,0.31,0.05,0.36
+7201,"Pig iron and spiegeleisen in pigs, blocks or other primary forms",Pig iron,1.90,0.17,2.07
+7202,Ferro-manganese,FeMn,1.44,2.08,3.51
+7202,Ferro-chromium,FeCr,,3.38,5.45
+7202,Ferro-nickel,FeNi,,2.81,6.26
+7203,Ferrous products obtained by direct reduction of iron ore and other spongy ferrous products,DRI,4.81,0.00,4.81
+72061000,Ingots,Iron and steel,2.52,0.23,2.75
+72069000,Other,Iron and steel,1.97,0.23,2.20
+72071980,Other,Iron and steel,1.89,0.32,2.21
+72071919,Forged,Iron and steel,2.65,0.62,3.27
+72072019,Forged,Iron and steel,2.65,0.62,3.27
+7205,"Granules and powders, of pig iron, spiegeleisen, iron or steel (if not covered under category pig iron)",Iron or steel products,1.90,0.17,2.07
+7209,"Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated",Iron and steel,2.03,0.36,2.39
+7210,"Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated",Iron and steel,1.97,0.39,2.35
+72111300,"Rolled on four faces or in a closed box pass, of a width exceeding 150 mmand a thickness of not less than 4 mm, not in coils and without patterns",Iron and steel,2.01,0.27,2.28
+72112372,"0,25 %of carbon Other",Iron and steel,2.03,0.36,2.39
+7212,"Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated",Iron and steel,1.97,0.39,2.35
+7213,"Bars and rods, hot-rolled, in irregularly wound coils of iron or non-alloy steel",Iron and steel,1.89,0.32,2.21
+72141000,Forged,Iron and steel,2.65,0.62,3.27
+72143000,"Other, of free-cutting steel Of rectangular (other than square) cross-section",Iron and steel,1.89,0.32,2.21
+721491,"Other, of free-cutting steel Of rectangular (other than square) cross-section",Iron and steel,1.89,0.32,2.21
+7215,Other bars and rods of iron or non-alloy steel,Iron and steel,1.89,0.32,2.21
+7216,"Angles, shapes and sections of iron or non-alloy steel",Iron and steel,1.89,0.32,2.21
+721710,"Not plated or coated, whether or not polished",Iron and steel,1.88,0.49,2.37
+721730,Plated or coated with other base metals,Iron and steel,1.95,0.51,2.46
+721921,Of a thickness exceeding 10mm,Iron and steel,2.18,1.90,4.08
+721933,Of a thickness exceeding 1 mm but less than 3mm,Iron and steel,2.21,1.99,4.19
+722020,Not further worked than cold- rolled (cold-reduced),Iron and steel,2.21,1.99,4.19
+7221,"Bars and rods, hot-rolled, in irregularly wound coils, of stainless steel",Iron and steel,2.14,2.17,4.30
+722220,"Bars and rods, not further worked than cold-formed or",Iron and steel,2.14,2.17,4.30
+722230,Other bars and rods,Iron and steel,2.51,2.10,4.61
+722300,Wire of stainless steel,Iron and steel,2.13,2.36,4.49
+722530,"Other, not further worked than hot-rolled, in coils",Iron and steel,1.95,0.40,2.35
+722550,"Other, not further worked than cold-rolled (cold-reduced)",Iron and steel,1.98,0.49,2.46
+72259200,Otherwise plated or coated with zinc,Iron and steel,1.92,0.51,2.43
+72262000,Of high-speed steel,Iron and steel,1.95,0.40,2.35
+72269200,Not further worked than cold- rolled (cold-reduced),Iron and steel,1.98,0.49,2.46
+722699,Other,Iron and steel,1.92,0.51,2.43
+7227,"Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel",Iron and steel,1.86,0.57,2.43
+722840,"Other bars and rods, not further worked than forged",Iron and steel,2.41,0.79,3.20
+7229,Wire of other alloy steel,Iron and steel,1.84,0.75,2.59
+7301,"Sheet piling of iron or steel, whether or not drilled, punched or made from assembled elements; welded angles, shapes and sections, of iron or steel",Iron and steel,2.03,0.36,2.39
+7302,"Railway or tramway track construction material of iron or steel, the following: rails, check- rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialised for jointing or fixing",Iron and steel,1.93,0.29,2.21
+730300,"Tubes, pipes and hollow profiles, of cast iron",Iron and steel,2.21,0.35,2.56
+73044100,reduced),Iron and steel,1.86,0.35,2.20
+730431,(cold- reduced),Iron and steel,1.93,0.29,2.21
+7305,"Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406,4 mm, of iron or steel",Iron and steel,2.03,0.36,2.39
+73064020,Cold-drawn or cold-rolled (cold- reduced),Iron and steel,1.98,0.46,2.44
+73062900,Other,Iron and steel,2.03,0.36,2.39
+73063018,Other,Iron and steel,2.01,0.27,2.28
+73063080,not,Iron and steel,1.97,0.39,2.35
+73065021,Cold-drawn or cold-rolled (cold- reduced),Iron and steel,1.97,0.41,2.38
+73071173,Of non-malleable cast iron Of cast iron,Iron and steel,2.54,0.57,3.11
+73071990,Other,Iron and steel,0.61,1.05,1.66
+730722,"Threaded elbows, bends and sleeves",Iron and steel,1.87,0.43,2.30
+730792,"Threaded elbows, bends and sleeves",Iron and steel,1.93,0.29,2.21
+7308,"Structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges",Iron and steel,2.46,2.55,5.01
+7309,"Reservoirs, tanks, vats and similar containers for any material (other than compressed or liquefied gas), of iron or steel, of a capacity exceeding 300 l, whether or not lined or heat- insulated, but not fitted with mechanical or thermal equipment",Iron and steel,1.97,0.39,2.35
+7310,"Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 l, whether or not lined or heat- insulated, but not fitted with",Iron and steel,1.97,0.39,2.35
+731100,"Containers for compressed or liquefied gas, of iron or steel",Iron and steel,1.89,0.32,2.21
+73181100,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock,Iron and steel,1.89,0.32,2.21
+73181290,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock,Iron and steel,1.89,0.32,2.21
+73181300,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock,Iron and steel,1.89,0.32,2.21
+73181491,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock,Iron and steel,1.89,0.32,2.21
+73181499,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock,Iron and steel,1.89,0.32,2.21
+73181900,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock,Iron and steel,1.89,0.32,2.21
+73181210,Of stainless steel,Iron and steel,2.10,1.99,4.10
+73181410,Of stainless steel,Iron and steel,2.10,1.99,4.10
+731815,"Other screws and bolts, whether or not with their nuts or washers",Iron and steel,1.89,0.32,2.21
+731816,Nuts,Iron and steel,1.89,0.32,2.21
+73182200,Other washers,Iron and steel,1.89,0.32,2.21
+73182300,Rivets Other articles of iron or steel,Iron and steel,1.89,,2.21
+7326,Rivets Other articles of iron or steel,Iron and steel,1.89,,2.21
+73261100,Grinding balls and similar articles for mills Other Open-die forged,Iron and steel,2.65,0.62,3.27
+73261973,Grinding balls and similar articles for mills Other Open-die forged,Iron and steel,2.65,0.62,3.27
+73269094,Closed-die forged Sintered Articles of iron or steel wire,Iron and steel,1.95,0.51,2.46
+73269096,Closed-die forged Sintered Articles of iron or steel wire,Iron and steel,1.95,0.51,2.46
+73262000,Closed-die forged Sintered Articles of iron or steel wire,Iron and steel,1.95,0.51,2.46
+73269030,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like",Iron and steel,1.89,0.32,2.21
+73269040,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like",Iron and steel,1.89,0.32,2.21
+73269050,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like",Iron and steel,1.89,0.32,2.21
+73269060,"Non-mechanical ventilators, guttering, hooks and like articles used in the building industry Other articles of iron or steel",Iron and steel,1.97,0.39,2.35
+73269098,"Non-mechanical ventilators, guttering, hooks and like articles used in the building industry Other articles of iron or steel",Iron and steel,1.97,0.39,2.35
+25070080,Other kaolinic clays 7,Calcined clay,0.23,0.08,0.32
+25231000,Cement clinkers 8,Cement clinker,0.83,0.04,0.87
+25232100,"White Portland cement, whether or not artificially coloured",Cement,1.16,0.10,1.26
+25232900,Other Portland cement 9,Cement,0.81,0.06,0.87
+25239000,Other hydraulic cements 10,Cement,0.59,0.04,0.63
+25233000,Aluminous cement 11,Aluminous cement,1.75,0.15,1.90
+28080000,Nitric acid; sulphonitric acids,Nitric acid,2.56,0.05,2.60
+2814,"Ammonia, anhydrous or in aqueous solution",Ammonia,2.68,0.14,2.82
+28342100,Nitrates of potassium,Mixed fertilisers,1.82,0.06,1.88
+310210,"Urea, whether or not in aqueous solution",Fertilisers,1.78,0.12,1.9
+31022100,Ammonium sulphate,Fertilisers,0.86,0.09,0.94
+31022900,Double salts and mixtures of ammonium sulphate and ammonium nitrate,Fertilisers,1.54,0.10,1.63
+310230,"Ammonium nitrate, whether or not in aqueous solution",Fertilisers,2.32,0.07,2.39
+310240,Mixtures of ammonium nitrate with calcium carbonate or other inorganic non-fertilising substances,Fertilisers,1.77,0.06,1.84
+31025000,Sodium nitrate,Fertilisers,3.99,0.07,4.06
+31026000,Double salts and mixtures of calcium nitrate and ammonium nitrate,Fertilisers,1.87,0.08,1.95
+31028000,Mixtures of urea and ammonium nitrate in aqueous or ammoniacal solution,Fertilisers,1.28,0.06,1.34
+31029000,Other including mixtures not specified in the foregoing subheadings 12,Fertilisers,1.65,0.10,1.74
+31051000,Goods of this chapter in tablets or similar forms or in packages of a gross weight not exceeding 10 kg 13,Fertilisers,0.94,0.08,1.02
+310520,"Mineral or chemical fertilisers containing the three fertilising elements nitrogen, phosphorus and potassium",Fertilisers,1.23,0.11,1.35
+31053000,Diammonium hydrogenorthophosphate (diammonium phosphate),Fertilisers,0.69,0.06,0.75
+31054000,Ammonium dihydrogenorthophosphate (monoammonium phosphate) and mixtures thereof with diammonium hydrogenorthophosphate (diammonium phosphate),Fertilisers,0.44,0.05,0.49
+31055100,Other mineral or chemical fertilisers containing the two fertilising elements nitrogen and phosphorus (nitrates and phosphates),Fertilisers,1.29,0.11,1.4
+31055900,Other mineral or chemical fertilisers containing the two fertilising elements nitrogen and phosphorus (other),Fertilisers,1.29,0.11,1.4
+310590,Other 13,Fertilisers,0.94,0.08,1.02
+7601,Unwrought aluminium,Unwrought aluminium,2.36,8.14,10.49
+7603,Aluminium powders and flakes,Aluminium products,2.48,8.4,10.88
+76041010,"Bars and rods of aluminium, not alloyed",Aluminium products,2.31,7.49,9.80
+76041090,"Profiles of aluminium, not alloyed",Aluminium products,2.73,9.30,12.04
+76042100,Hollow profiles of aluminium alloys,Aluminium products,2.73,9.30,12.04
+76042910,Bars and rods of aluminium alloys,Aluminium products,2.31,7.49,9.80
+76042990,Profiles of aluminium alloys,Aluminium products,2.73,9.30,12.04
+7605,Aluminium wire,Aluminium products,2.31,7.49,9.80
+7606,"Aluminium plates, sheets and strip, of a thickness exceeding 0,2mm",Aluminium products,2.86,9.25,12.11
+7607,"Aluminium foil (whether or not printed or backed with paper, paperboard, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0,2mm",Aluminium products,2.86,9.25,12.11
+7608,Aluminium tubes and pipes,Aluminium products,2.73,9.30,12.04
+76090000,"Aluminium tube or pipe fittings (for example, couplings, elbows, sleeves)",Aluminium products,2.73,9.30,12.04
+7610,"Aluminium structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge- sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminium plates, rods, profiles, tubes and the like, prepared for use in structures",Aluminium products,2.73,9.30,12.04
+76110000,"Aluminium reservoirs, tanks, vats and similar containers, for any material (other than compressed or liquefied gas), of a capacity exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment",Aluminium products,2.86,9.25,12.11
+7612,"Aluminium casks, drums, cans, boxes and similar containers (including rigid or collapsible tubular containers), for any material (other than compressed or liquefied",Aluminium products,2.86,9.25,12.11
+76130000,Aluminium containers for compressed or liquefied gas,Aluminium,2.86,9.25,12.11
+7614,"Stranded wire, cables, plaited bands and the like, of aluminium, not electrically insulated",Aluminium,2.31,7.49,9.80
+28041000,Hydrogen,Hydrogen,10.4,0.0,10.4
