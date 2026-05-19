@@ -6,6 +6,54 @@ The backend does not use AI for any calculation.
 
 This repository no longer ships a Spring-served frontend placeholder. The intended UI is a separate React application that calls this backend over HTTP.
 
+## System overview
+
+The project has three runtime parts:
+
+- `backend/`: Spring Boot calculation engine. It performs deterministic CBAM calculations, validation, scenario analysis, and demo-data lookup.
+- `frontend/`: React/Vite user interface. It calls backend endpoints over HTTP and can also call the agent service for conversational CBAM guidance.
+- `agent_service/`: FastAPI + LangGraph agent service. It explains CBAM concepts, routes normal versus technical questions, retrieves RAG context, looks up CN codes/default values from CSV files, and explains backend formulas without executing calculations itself.
+
+The image below shows the intended frontend format: calculator tools on the left, the selected calculation form and latest backend response in the center, and the CBAM assistant or generated explanation report on the right.
+
+![CarbonAI frontend with CBAM assistant and report panel](images/img2.png)
+
+## Frontend integration
+
+The React frontend is a separate app under `frontend/`. It is responsible for user interaction, forms, result display, CSV aggregation utilities, and calling HTTP APIs.
+
+Typical frontend calls:
+
+- Calls the Spring backend directly for deterministic calculator actions such as `/api/cbam/default-emissions`, `/api/cbam/actual-emissions`, `/api/cbam/scenarios`, and `/api/cbam/validate-report`.
+- Calls the FastAPI agent service at `/api/chat` for natural-language CBAM support.
+- Stores and resends the returned `thread_id` for follow-up chat messages.
+
+The frontend should treat Spring calculation responses as the source of numerical truth. The agent response is explanatory: it can show formulas, describe the backend method, retrieve RAG snippets, and surface CN/default-value lookup results, but it should not be treated as a calculation executor.
+
+## Agent service logic
+
+Every `/api/chat` call in `agent_service/` follows this flow:
+
+1. FastAPI receives `{ "message": "...", "thread_id": "..." }`.
+2. If `thread_id` is missing, the service creates one and returns it with the answer.
+3. `CBAMOrchestrator` routes the message:
+   - normal chat goes to `NormalAgent`;
+   - CBAM, CN-code, default-value, formula, reporting, or methodology questions go to the technical workflow.
+4. `CBAMTaskGenerationAgent` extracts product name, CN code, year, country, export volume if present, and English RAG queries.
+5. The workflow runs tool steps:
+   - `product_cn_lookup` for product-description to CN-code matching;
+   - `default_value_lookup` for CN-code/default-value details;
+   - `rag_retrieval` for CBAM legal/guidance context;
+   - `backend_calculation_explanation` for deterministic backend formulas and endpoint payload shapes.
+6. `CBAMWriterAgent` writes the final answer using only task results and RAG excerpts.
+
+Important agent boundaries:
+
+- The agent does not perform arithmetic or submit official CBAM reports.
+- The agent does not call backend calculation endpoints while answering chat.
+- The agent can explain how the backend would calculate and which endpoint/payload would be used.
+- The agent can return CN-code and default-value candidates from the CSV-backed lookup tool.
+
 ## What CBAM certificates are
 
 CBAM certificates are units that EU importers or authorized CBAM declarants may need to buy and surrender to cover the embedded emissions of imported goods.
