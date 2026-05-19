@@ -22,8 +22,6 @@ from Tools.rag_tool import CBAMRAGTool
 class CBAMWorkflowState(TypedDict):
     messages: Annotated[list[AnyMessage], add_messages]
     user_query: str
-    csv_uploaded: bool
-    csv_file_path: str | None
     route: dict[str, Any] | None
     normal_answer: str | None
     task_generation: dict[str, Any] | None
@@ -35,7 +33,7 @@ class CBAMWorkflow:
     def __init__(
         self,
         model_name: str = "llama3.2",
-        cbam_model_name: str = "gemini:gemini-1.5-flash",
+        cbam_model_name: str = "gemini:gemini-2.5-flash",
         temperature: float = 0.0,
     ):
         self.router = CBAMOrchestrator(model_name=model_name, temperature=temperature)
@@ -46,7 +44,7 @@ class CBAMWorkflow:
         )
 
         self.rag_tool = CBAMRAGTool()
-        self.default_values_tool = CBAMDefaultValuesTool()
+        self.default_values_tool = self._build_default_values_tool()
 
         self.memory = InMemorySaver()
         self.graph = self._build_graph()
@@ -122,14 +120,20 @@ class CBAMWorkflow:
         task_generation = self.task_agent.generate(
             user_query=state["user_query"],
             chat_history=chat_history,
-            csv_uploaded=state.get("csv_uploaded", False),
-            csv_file_path=state.get("csv_file_path"),
         )
 
         task_generation = self._patch_task_generation_from_text(
             task_generation=task_generation,
             messages=all_messages,
         )
+
+        if not task_generation.product_name and self.default_values_tool is not None:
+            inferred_product_name = self._infer_product_name_from_lookup(
+                state["user_query"]
+            )
+
+            if inferred_product_name:
+                task_generation.product_name = inferred_product_name
 
         return {
             "task_generation": self._model_to_dict(task_generation),
@@ -163,38 +167,97 @@ class CBAMWorkflow:
             }
 
         if not task_generation.calculation_input.cnCode and task_generation.product_name:
-            try:
-                lookup_result = self.default_values_tool.lookup_by_product_name(
-                    product_name=task_generation.product_name,
-                    year=task_generation.calculation_input.year,
-                    country=task_generation.calculation_input.country,
-                    limit=5,
-                )
-
-                task_results.append(
-                    TaskResult(
-                        name="product_cn_lookup",
-                        output=lookup_result,
-                        success=True,
-                    )
-                )
-
-                if lookup_result:
-                    first = lookup_result[0]
-                    cn_code = first.get("cn_code") or first.get("cnCode")
-
-                    if cn_code:
-                        task_generation.calculation_input.cnCode = str(cn_code)
-
-            except Exception as exc:
+            if self.default_values_tool is None:
                 task_results.append(
                     TaskResult(
                         name="product_cn_lookup",
                         output=None,
                         success=False,
-                        error=str(exc),
+                        error="CN lookup data is not available.",
                     )
                 )
+            else:
+                try:
+                    lookup_result = self.default_values_tool.lookup_by_product_name(
+                        product_name=task_generation.product_name,
+                        year=task_generation.calculation_input.year,
+                        country=task_generation.calculation_input.country,
+                        limit=5,
+                    )
+
+                    task_results.append(
+                        TaskResult(
+                            name="product_cn_lookup",
+                            output=self._compact_cn_lookup(lookup_result),
+                            success=True,
+                        )
+                    )
+
+                    if lookup_result:
+                        first = lookup_result[0]
+                        cn_code = first.get("cn_code") or first.get("cnCode")
+
+                        if cn_code:
+                            task_generation.calculation_input.cnCode = str(cn_code)
+
+                except Exception as exc:
+                    task_results.append(
+                        TaskResult(
+                            name="product_cn_lookup",
+                            output=None,
+                            success=False,
+                            error=str(exc),
+                        )
+                    )
+
+        if task_generation.calculation_input.cnCode:
+            if self.default_values_tool is None:
+                task_results.append(
+                    TaskResult(
+                        name="cn_code_lookup",
+                        output=None,
+                        success=False,
+                        error="CN lookup data is not available.",
+                    )
+                )
+            else:
+                try:
+                    lookup_result = self.default_values_tool.lookup_by_cn_code(
+                        cn_code=task_generation.calculation_input.cnCode,
+                        year=task_generation.calculation_input.year,
+                        country=task_generation.calculation_input.country,
+                    )
+
+                    task_results.append(
+                        TaskResult(
+                            name="default_value_lookup",
+                            output=self._compact_cn_lookup(lookup_result),
+                            success=True,
+                        )
+                    )
+
+                except Exception as exc:
+                    task_results.append(
+                        TaskResult(
+                            name="default_value_lookup",
+                            output=None,
+                            success=False,
+                            error=str(exc),
+                        )
+                    )
+
+        if not task_generation.calculation_input.cnCode and task_generation.product_name:
+            task_results.append(
+                TaskResult(
+                    name="cn_code_lookup_note",
+                    output={
+                        "product_name": task_generation.product_name,
+                        "message": "No CN code could be selected from the available lookup data.",
+                    },
+                    success=False,
+                    error="CN code not found.",
+                )
+            )
 
         rag_outputs = []
 
@@ -225,104 +288,90 @@ class CBAMWorkflow:
             )
         )
 
-        missing_after_lookup = []
-
-        if not task_generation.calculation_input.cnCode:
-            missing_after_lookup.append("cnCode")
-
-        if task_generation.calculation_input.exportVolumeTons is None:
-            missing_after_lookup.append("exportVolumeTons")
-
-        if task_generation.csv_uploaded and not task_generation.csv_file_path:
-            missing_after_lookup.append("csv_file_path")
-
-        if missing_after_lookup:
-            question = self._missing_question(
-                language=task_generation.language,
-                missing_fields=missing_after_lookup,
-            )
-
-            task_results.append(
-                TaskResult(
-                    name="missing_information_after_lookup",
-                    output={
-                        "missing_fields": missing_after_lookup,
-                        "question_to_user": question,
+        task_results.append(
+            TaskResult(
+                name="backend_calculation_explanation",
+                output={
+                    "executed": False,
+                    "reason": "This agent only explains CBAM calculations and never calls backend calculation endpoints.",
+                    "default_emissions_endpoint": "POST /api/cbam/default-emissions",
+                    "actual_emissions_endpoint": "POST /api/cbam/actual-emissions",
+                    "formulas": self._backend_calculation_formulas(),
+                    "payload_shape": {
+                        "country": task_generation.calculation_input.country,
+                        "cnCode": task_generation.calculation_input.cnCode,
+                        "year": task_generation.calculation_input.year,
+                        "exportVolumeTons": task_generation.calculation_input.exportVolumeTons,
                     },
-                    success=False,
-                    error="Missing required information after lookup.",
-                )
+                },
+                success=True,
             )
+        )
 
-            return {
-                "task_generation": self._model_to_dict(task_generation),
-                "task_results": [self._model_to_dict(item) for item in task_results],
-                "final_answer": question,
-                "messages": [AIMessage(content=question)],
-            }
-
-        try:
-            calc_input = task_generation.calculation_input
-
-            if task_generation.csv_uploaded:
-                calculation_result = self.default_values_tool.calculate_actual_emissions(
-                    cn_code=calc_input.cnCode,
-                    export_volume_tons=calc_input.exportVolumeTons,
-                    year=calc_input.year,
-                    country=calc_input.country,
-                    csv_file_path=task_generation.csv_file_path,
-                )
-
-                task_name = "actual_emissions_calculation"
-
-            else:
-                calculation_result = self.default_values_tool.calculate_default_emissions(
-                    cn_code=calc_input.cnCode,
-                    export_volume_tons=calc_input.exportVolumeTons,
-                    year=calc_input.year,
-                    country=calc_input.country,
-                )
-
-                task_name = "default_emissions_calculation"
-
-            task_results.append(
-                TaskResult(
-                    name=task_name,
-                    output=calculation_result,
-                    success=True,
-                )
-            )
-
-        except Exception as exc:
-            task_results.append(
-                TaskResult(
-                    name="emissions_calculation",
-                    output={
-                        "csv_uploaded": task_generation.csv_uploaded,
-                        "payload": {
-                            "country": task_generation.calculation_input.country,
-                            "cnCode": task_generation.calculation_input.cnCode,
-                            "year": task_generation.calculation_input.year,
-                            "exportVolumeTons": task_generation.calculation_input.exportVolumeTons,
-                            "csvFilePath": task_generation.csv_file_path,
-                        },
-                    },
-                    success=False,
-                    error=str(exc),
-                )
-            )
+        task_generation.can_calculate = False
+        task_generation.question_to_user = None
+        task_generation.missing_fields = []
 
         return {
             "task_generation": self._model_to_dict(task_generation),
             "task_results": [self._model_to_dict(item) for item in task_results],
         }
 
+    @staticmethod
+    def _backend_calculation_formulas() -> dict[str, Any]:
+        return {
+            "default_value_mode": {
+                "when_to_use": "Use when actual factory activity data is unavailable and a default value exists for the country, CN code, and year.",
+                "endpoint": "POST /api/cbam/default-emissions",
+                "steps": [
+                    "Look up the default emissions intensity by country, CN code, and year.",
+                    "Select the year-specific default value in tCO2e per tonne.",
+                    "Multiply exported tonnage by that selected default value.",
+                ],
+                "formulas": [
+                    "embeddedEmissionsTco2e = exportVolumeTons x selectedDefaultValueTco2ePerTon",
+                ],
+                "source_files": [
+                    "backend/src/main/java/com/carbonai/cbam/service/DefaultValueService.java",
+                    "backend/README.md",
+                ],
+            },
+            "actual_data_mode": {
+                "when_to_use": "Use when actual facility activity data and emission factors are available.",
+                "endpoint": "POST /api/cbam/actual-emissions",
+                "steps": [
+                    "For each activity, multiply activity amount by its emission factor to get kgCO2e.",
+                    "Convert kgCO2e to tCO2e by dividing by 1000.",
+                    "Classify electricity as indirect emissions and other activities as direct emissions.",
+                    "Add direct and indirect emissions to get total facility emissions.",
+                    "Divide total facility emissions by production volume to get specific emissions per tonne.",
+                    "Multiply specific emissions by export volume to get exported embedded emissions.",
+                ],
+                "formulas": [
+                    "activityEmissionsKg = amount x factorKgCo2ePerUnit",
+                    "activityEmissionsTco2e = activityEmissionsKg / 1000",
+                    "totalFacilityEmissionsTco2e = directEmissionsTco2e + indirectEmissionsTco2e",
+                    "specificEmissionsTco2ePerTon = totalFacilityEmissionsTco2e / productionVolumeTons",
+                    "exportedEmbeddedEmissionsTco2e = specificEmissionsTco2ePerTon x exportVolumeTons",
+                ],
+                "source_files": [
+                    "backend/src/main/java/com/carbonai/cbam/service/ActualEmissionCalculationService.java",
+                    "backend/README.md",
+                ],
+            },
+            "report_validation": {
+                "formula": "totalEmissionsTco2e = directEmissionsTco2e + indirectEmissionsTco2e",
+                "source_files": [
+                    "backend/src/main/java/com/carbonai/cbam/service/ReportValidationService.java",
+                    "backend/README.md",
+                ],
+            },
+        }
+
     def invoke(
         self,
         user_query: str,
         thread_id: str = "default",
-        csv_uploaded: bool = False,
-        csv_file_path: str | None = None,
     ) -> WorkflowResult:
         config = {
             "configurable": {
@@ -334,8 +383,6 @@ class CBAMWorkflow:
             {
                 "messages": [HumanMessage(content=user_query)],
                 "user_query": user_query,
-                "csv_uploaded": csv_uploaded,
-                "csv_file_path": csv_file_path,
                 "route": None,
                 "normal_answer": None,
                 "task_generation": None,
@@ -366,6 +413,7 @@ class CBAMWorkflow:
         import re
 
         text = "\n".join(str(message.content) for message in messages)
+        latest_text = str(messages[-1].content) if messages else text
 
         if task_generation.calculation_input.exportVolumeTons is None:
             match = re.search(
@@ -383,6 +431,12 @@ class CBAMWorkflow:
             if match:
                 task_generation.calculation_input.cnCode = match.group(0)
 
+        if not task_generation.product_name:
+            task_generation.product_name = (
+                CBAMWorkflow._extract_product_name(latest_text)
+                or CBAMWorkflow._extract_product_name(text)
+            )
+
         if not task_generation.calculation_input.year:
             match = re.search(r"\b(2026|2027|2028)\b", text)
             if match:
@@ -391,43 +445,64 @@ class CBAMWorkflow:
         if not task_generation.calculation_input.country:
             task_generation.calculation_input.country = "Turkey"
 
-        missing = []
-
-        if not task_generation.calculation_input.cnCode and not task_generation.product_name:
-            missing.append("cnCode or product_name")
-
-        if task_generation.calculation_input.exportVolumeTons is None:
-            missing.append("exportVolumeTons")
-
-        if task_generation.csv_uploaded and not task_generation.csv_file_path:
-            missing.append("csv_file_path")
-
-        task_generation.missing_fields = missing
-
-        task_generation.can_calculate = (
-            not missing
-            and task_generation.calculation_input.exportVolumeTons is not None
-            and (
-                task_generation.calculation_input.cnCode is not None
-                or task_generation.product_name is not None
-            )
-        )
-
-        if missing:
-            if task_generation.language == "tr":
-                task_generation.question_to_user = (
-                    "Hesaplama için lütfen eksik bilgileri paylaşın: "
-                    + ", ".join(missing)
-                )
-            else:
-                task_generation.question_to_user = (
-                    "Please provide the missing information: "
-                    + ", ".join(missing)
-                )
-        else:
-            task_generation.question_to_user = None
+        task_generation.missing_fields = []
+        task_generation.can_calculate = False
+        task_generation.question_to_user = None
 
         return task_generation
+
+    @staticmethod
+    def _extract_product_name(text: str) -> str | None:
+        import re
+
+        patterns = [
+            r"(?:cn\s*code|cn_code|cncode|commodity\s+code)\s+(?:for|of)\s+(.+)",
+            r"(?:find|lookup|look\s+up|search)\s+(?:the\s+)?(?:cn\s*code|cn_code|cncode)\s+(?:for|of)\s+(.+)",
+            r"(?:default\s+value|default\s+values)\s+(?:for|of)\s+(.+)",
+            r"(?:how\s+about|what\s+about)\s+(?:the\s+)?(.+)",
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, text, flags=re.IGNORECASE)
+            if not match:
+                continue
+
+            product_name = re.split(
+                r"[?.!,;]|\b(?:in|from|for)\s+(?:turkey|türkiye|202[6-8])\b",
+                match.group(1),
+                maxsplit=1,
+                flags=re.IGNORECASE,
+            )[0]
+            product_name = product_name.strip(" .,:;!?")
+
+            if product_name:
+                return product_name
+
+        return None
+
+    def _infer_product_name_from_lookup(self, user_query: str) -> str | None:
+        if self.default_values_tool is None:
+            return None
+
+        try:
+            matches = self.default_values_tool.search_by_description(
+                query=user_query,
+                limit=1,
+            )
+        except Exception:
+            return None
+
+        if not matches:
+            return None
+
+        return user_query
+
+    @staticmethod
+    def _build_default_values_tool() -> CBAMDefaultValuesTool | None:
+        try:
+            return CBAMDefaultValuesTool()
+        except Exception:
+            return None
 
     @staticmethod
     def _compact_document(doc) -> dict[str, Any]:
@@ -443,6 +518,41 @@ class CBAMWorkflow:
             "document_type": metadata.get("document_type", ""),
             "excerpt": page_content[:900],
         }
+
+    @staticmethod
+    def _compact_cn_lookup(rows: list[dict]) -> list[dict]:
+        compact_rows = []
+
+        for row in rows:
+            compact_rows.append(
+                {
+                    "cn_code": row.get("cn_code") or row.get("cnCode"),
+                    "description": row.get("description", ""),
+                    "sector": row.get("sector", ""),
+                    "country": row.get("country", ""),
+                    "year": row.get("year"),
+                    "source": row.get("source", ""),
+                    "direct_default_tco2e_per_ton": row.get(
+                        "direct_default_tco2e_per_ton"
+                    ),
+                    "indirect_default_tco2e_per_ton": row.get(
+                        "indirect_default_tco2e_per_ton"
+                    ),
+                    "total_default_tco2e_per_ton": row.get(
+                        "total_default_tco2e_per_ton"
+                    ),
+                    "selected_default_value_tco2e_per_ton": row.get(
+                        "selected_default_value_tco2e_per_ton"
+                    ),
+                    "benchmark_column": row.get("benchmark_column"),
+                    "production_route": row.get("production_route"),
+                    "underlying_cbam_benchmark_route": row.get(
+                        "underlying_cbam_benchmark_route"
+                    ),
+                }
+            )
+
+        return compact_rows
 
     @staticmethod
     def _missing_question(language: str, missing_fields: list[str]) -> str:

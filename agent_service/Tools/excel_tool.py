@@ -1,4 +1,5 @@
 import csv
+from difflib import SequenceMatcher
 import json
 import mimetypes
 import re
@@ -50,38 +51,66 @@ class CBAMDefaultValuesTool:
         limit: int = 10,
     ) -> list[dict]:
         query = _clean_text(product_name)
-        matches: dict[tuple[str, str], dict] = {}
+        normalized_query = _normalize_query_text(product_name)
+        query_tokens = _tokens(normalized_query)
+        scored_matches: dict[tuple[str, str], tuple[int, dict]] = {}
 
         for row in [*self.country_defaults, *self.transitional_defaults]:
-            description = _clean_text(row.get("description", ""))
+            match = self._score_product_row(
+                row=row,
+                normalized_query=normalized_query,
+                query_tokens=query_tokens,
+            )
 
-            if query in description:
-                key = (_normalize_cn(row["cn_code"]), row.get("description", ""))
+            if match <= 0:
+                continue
 
-                matches[key] = {
-                    "cn_code": row["cn_code"],
-                    "description": row.get("description", ""),
-                    "sector": row.get("product_group", ""),
-                    "source": row.get("source_file", "default_values_csv"),
-                }
+            key = (_normalize_cn(row["cn_code"]), row.get("description", ""))
+            scored_matches[key] = max(
+                scored_matches.get(key, (0, {})),
+                (
+                    match,
+                    {
+                        "cn_code": row["cn_code"],
+                        "description": row.get("description", ""),
+                        "sector": row.get("product_group", ""),
+                        "source": row.get("source_file", "default_values_csv"),
+                    },
+                ),
+                key=lambda item: item[0],
+            )
 
         for row in self.benchmarks:
-            description = _clean_text(row.get("description", ""))
+            match = self._score_product_row(
+                row=row,
+                normalized_query=normalized_query,
+                query_tokens=query_tokens,
+            )
 
-            if query in description:
-                key = (_normalize_cn(row["cn_code"]), row.get("description", ""))
+            if match <= 0:
+                continue
 
-                matches.setdefault(
-                    key,
+            key = (_normalize_cn(row["cn_code"]), row.get("description", ""))
+            scored_matches.setdefault(
+                key,
+                (
+                    match,
                     {
                         "cn_code": row["cn_code"],
                         "description": row.get("description", ""),
                         "sector": row.get("product_group", ""),
                         "source": "cbam_benchmarks_2026_plus.csv",
                     },
-                )
+                ),
+            )
 
-        return list(matches.values())[:limit]
+        ranked_matches = sorted(
+            scored_matches.values(),
+            key=lambda item: item[0],
+            reverse=True,
+        )
+
+        return [item[1] for item in ranked_matches[:limit]]
 
     def lookup_by_product_name(
         self,
@@ -248,6 +277,58 @@ class CBAMDefaultValuesTool:
 
     def search_by_description(self, query: str, limit: int = 10) -> list[dict]:
         return self.find_cn_codes_by_description(query, limit=limit)
+
+    def _score_product_row(
+        self,
+        row: dict,
+        normalized_query: str,
+        query_tokens: set[str],
+    ) -> int:
+        cn_code = _normalize_cn(row.get("cn_code", ""))
+        description = _normalize_query_text(row.get("description", ""))
+        sector = _normalize_query_text(row.get("product_group", ""))
+        haystack = f"{description} {sector} {cn_code}".strip()
+        haystack_tokens = _tokens(haystack)
+
+        if not normalized_query:
+            return 0
+
+        if normalized_query == cn_code:
+            return 1000
+
+        score = 0
+
+        if normalized_query in description:
+            score += 500
+        elif normalized_query in haystack:
+            score += 350
+
+        if query_tokens:
+            overlap = query_tokens & haystack_tokens
+            if overlap == query_tokens:
+                score += 300 + (20 * len(overlap))
+            else:
+                score += 60 * len(overlap)
+
+        partial_matches = 0
+        for query_token in query_tokens:
+            if any(
+                query_token in token or token in query_token
+                for token in haystack_tokens
+                if len(query_token) >= 4 and len(token) >= 4
+            ):
+                partial_matches += 1
+
+        score += 35 * partial_matches
+
+        similarity = SequenceMatcher(None, normalized_query, description).ratio()
+        if similarity >= 0.72:
+            score += int(similarity * 180)
+
+        if sector and sector in normalized_query:
+            score += 80
+
+        return score
 
     def _read_csv(self, filename: str) -> list[dict]:
         path = self.csv_dir / filename
@@ -431,6 +512,41 @@ def _normalize_cn(value: str) -> str:
 
 def _clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", str(value or "")).casefold().strip()
+
+
+def _normalize_query_text(value: str) -> str:
+    text = _clean_text(value)
+    text = text.replace("aluminum", "aluminium")
+    text = text.replace("gray", "grey")
+    text = re.sub(r"[^a-z0-9ğüşöçıİ\s]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _tokens(value: str) -> set[str]:
+    stopwords = {
+        "a",
+        "an",
+        "and",
+        "are",
+        "can",
+        "code",
+        "cn",
+        "find",
+        "for",
+        "from",
+        "is",
+        "me",
+        "of",
+        "product",
+        "the",
+        "what",
+    }
+
+    return {
+        token
+        for token in _normalize_query_text(value).split()
+        if len(token) > 1 and token not in stopwords
+    }
 
 
 def _same_country(left: str, right: str) -> bool:
