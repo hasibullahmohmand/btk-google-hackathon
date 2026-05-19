@@ -5,7 +5,7 @@ if __name__ == "__main__":
     service = CBAMRAGService()
 
     docs = service.retrieve(
-        query="how to calculte cement emission",
+        query="emission factor table",
         sector="cement",
         k=5,
     )
