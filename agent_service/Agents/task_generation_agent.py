@@ -6,48 +6,24 @@ from Schemas.orchestration_schema import TaskGenerationOutput
 
 
 TASK_GENERATOR_SYSTEM_PROMPT = """
-You are a CBAM task generation agent.
+Extract structured context for a CBAM explanation-only agent.
 
-Your job:
-- Extract the fields needed for CBAM emissions calculation.
-- Create English RAG queries for document retrieval.
-- Ask the user for missing required information.
+Return:
+- language: en or tr.
+- product_name: product text for CN-code/default-value lookup, if present.
+- calculation_input.cnCode: only if user gives a CN code.
+- country: default Turkey.
+- year: default 2026.
+- exportVolumeTons: only if user gives a volume.
+- english_rag_queries: concise English queries for CBAM definitions, formulas,
+  default values, actual emissions, CN-code guidance, and reporting.
 
-Required Java API payload shape:
-{{
-  "country": "Turkey",
-  "cnCode": "25233000",
-  "year": 2026,
-  "exportVolumeTons": 100
-}}
-
-Field rules:
-- country default is Turkey if not specified.
-- year default is 2026 if not specified.
-- exportVolumeTons must come from the user or chat history.
-- cnCode must come from the user, product lookup, or previous chat history.
-- If cnCode is missing but product_name is available, set product_name and leave cnCode null.
-- If both cnCode and product_name are missing, ask the user for product name or CN code.
-- If exportVolumeTons is missing, ask the user for export volume in tons.
-- Do not invent cnCode.
-- Do not invent exportVolumeTons.
-
-CSV rules:
-- csv_uploaded may be true if the API says a CSV file was uploaded.
-- If csv_uploaded is true, the workflow will use actual emissions calculation.
-- If csv_uploaded is false, the workflow will use default emissions calculation.
-
-Retriever query rules:
-- english_rag_queries must always be in English.
-- Even if the user asks in Turkish, RAG queries must be English.
-- Create queries for formulas, reporting guidance, default values, actual emissions, and calculation explanation.
-- Do not create Turkish RAG queries.
-
-Language rules:
-- language is the final answer language.
-- If user writes Turkish, language should be tr.
-- If user writes English, language should be en.
-- question_to_user must be in the user's language.
+Rules:
+- Never invent CN codes, volumes, or emission values.
+- can_calculate must be false.
+- Ask for product name/CN code only when the user explicitly asks for CN lookup
+  but gives neither.
+- Include formula queries for calculation questions.
 
 Return only structured output.
 """
@@ -71,8 +47,6 @@ class CBAMTaskGenerationAgent:
         self,
         user_query: str,
         chat_history: list[BaseMessage] | None = None,
-        csv_uploaded: bool = False,
-        csv_file_path: str | None = None,
     ) -> TaskGenerationOutput:
         result = self.chain.invoke(
             {
@@ -80,9 +54,6 @@ class CBAMTaskGenerationAgent:
                 "chat_history": chat_history or [],
             }
         )
-
-        result.csv_uploaded = csv_uploaded
-        result.csv_file_path = csv_file_path
 
         return self._normalize_result(result)
 
@@ -110,39 +81,50 @@ class CBAMTaskGenerationAgent:
                 "CBAM default values reporting requirements and CN code guidance",
             ]
 
+        formula_queries = [
+            "CBAM embedded emissions formula direct indirect emissions specific emissions export volume",
+            "CBAM actual emissions activity data amount emission factor production volume formula",
+            "CBAM default values embedded emissions export volume default value formula",
+        ]
+
+        for query in formula_queries:
+            if query not in cleaned_queries:
+                cleaned_queries.append(query)
+
         result.english_rag_queries = cleaned_queries
 
         missing = []
 
-        if not result.calculation_input.cnCode and not result.product_name:
+        question_text = " ".join(
+            [
+                str(result.product_name or ""),
+                *result.english_rag_queries,
+            ]
+        ).casefold()
+        wants_cn_lookup = any(
+            term in question_text
+            for term in ["cn code", "cn_code", "cncode", "commodity code"]
+        )
+
+        if (
+            wants_cn_lookup
+            and not result.calculation_input.cnCode
+            and not result.product_name
+        ):
             missing.append("cnCode or product_name")
 
-        if result.calculation_input.exportVolumeTons is None:
-            missing.append("exportVolumeTons")
-
-        if result.csv_uploaded and not result.csv_file_path:
-            missing.append("csv_file_path")
-
         result.missing_fields = missing
-
-        result.can_calculate = (
-            not result.missing_fields
-            and result.calculation_input.exportVolumeTons is not None
-            and (
-                result.calculation_input.cnCode is not None
-                or result.product_name is not None
-            )
-        )
+        result.can_calculate = False
 
         if result.missing_fields and not result.question_to_user:
             if result.language == "tr":
                 result.question_to_user = (
-                    "Hesaplama için lütfen eksik bilgileri paylaşın: "
+                    "CN kodunu bulabilmem için lütfen şu bilgiyi paylaşın: "
                     + ", ".join(result.missing_fields)
                 )
             else:
                 result.question_to_user = (
-                    "Please provide the missing information: "
+                    "Please provide this information so I can look up the CN code: "
                     + ", ".join(result.missing_fields)
                 )
 

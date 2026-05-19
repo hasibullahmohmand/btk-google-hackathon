@@ -5,10 +5,7 @@ from pydantic import BaseModel, Field
 
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1)
-    thread_id: str = "default"
-
-    csv_uploaded: bool = False
-    csv_file_path: Optional[str] = None
+    thread_id: Optional[str] = None
 
 
 class ChatResponse(BaseModel):

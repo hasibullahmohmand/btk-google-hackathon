@@ -1,46 +1,45 @@
 from langchain_core.messages import BaseMessage
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_ollama import ChatOllama
 
 from Schemas.orchestration_schema import NormalAnswer
 
 
-NORMAL_AGENT_SYSTEM_PROMPT = """
-You are a friendly multilingual CBAM chatbot.
-
-You handle only normal casual chat.
-
-Rules:
-- Answer in the user's language.
-- Keep the answer short.
-- If the user greets you, greet them back.
-- Briefly explain that you can help with CBAM calculations, default values, CN codes, regulations, CSV-based actual emissions, and reporting.
-- Do not answer detailed CBAM questions here.
-"""
-
-
 class NormalAgent:
     def __init__(self, model_name: str = "llama3.2", temperature: float = 0.0):
-        self.llm = ChatOllama(model=model_name, temperature=temperature)
-
-        self.prompt = ChatPromptTemplate.from_messages(
-            [
-                ("system", NORMAL_AGENT_SYSTEM_PROMPT),
-                MessagesPlaceholder("chat_history"),
-                ("human", "{user_query}"),
-            ]
-        )
-
-        self.chain = self.prompt | self.llm.with_structured_output(NormalAnswer)
+        self.model_name = model_name
+        self.temperature = temperature
 
     def answer(
         self,
         user_query: str,
         chat_history: list[BaseMessage] | None = None,
     ) -> NormalAnswer:
-        return self.chain.invoke(
-            {
-                "user_query": user_query,
-                "chat_history": chat_history or [],
-            }
-        )
+        language = "tr" if _looks_turkish(user_query) else "en"
+
+        if language == "tr":
+            answer = (
+                "Merhaba, CBAM konusunda yardımcı olabilirim. "
+                "Şunları sorabilirsiniz: CBAM nedir? Bir ürünün CN kodu nedir? "
+                "Çimento veya alüminyum gibi ürün adından CN kodu bulabilir misin? "
+                "25233000 CN kodu hangi ürüne ait? "
+                "CBAM hesaplaması backend'de hangi adımlarla yapılır? "
+                "Varsayılan değerler ve raporlama kuralları nasıl kullanılır?"
+            )
+        else:
+            answer = (
+                "Hi, I can help with CBAM. You can ask things like: "
+                "What is CBAM? What is the CN code for this product? "
+                "Can you find the CN code for cement or aluminium? "
+                "What product does CN code 25233000 refer to? "
+                "How is a CBAM calculation done in the backend? "
+                "How do default values and reporting rules work?"
+            )
+
+        return NormalAnswer(language=language, answer=answer)
+
+
+def _looks_turkish(text: str) -> bool:
+    normalized = text.casefold()
+    return any(char in normalized for char in {"ı", "ğ", "ü", "ş", "ö", "ç"}) or any(
+        word in normalized.split()
+        for word in {"merhaba", "selam", "nedir", "nasıl", "hesap"}
+    )

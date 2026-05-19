@@ -36,9 +36,6 @@ class TaskGenerationOutput(BaseModel):
 
     english_rag_queries: list[str] = Field(default_factory=list)
 
-    csv_uploaded: bool = False
-    csv_file_path: Optional[str] = None
-
     missing_fields: list[str] = Field(default_factory=list)
     question_to_user: Optional[str] = None
     can_calculate: bool = False

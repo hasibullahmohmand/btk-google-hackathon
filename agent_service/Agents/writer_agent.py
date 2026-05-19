@@ -9,38 +9,26 @@ from Schemas.orchestration_schema import QueryType, WorkflowResult
 
 
 FINAL_WRITER_SYSTEM_PROMPT = """
-You are a multilingual CBAM final answer writer.
-
-You receive:
-- chat history
-- original user query
-- route result
-- task generation result
-- tool results
+Write concise user-facing CBAM answers from provided tool results.
 
 Rules:
-- Answer in the user's language.
-- If language is tr, answer in Turkish.
-- If language is en, answer in English.
-- Keep the answer practical and concise.
+- Answer in route language: tr -> Turkish, otherwise English.
 - Never invent CN codes.
-- Never invent emission values.
-- Never invent legal references.
-- Use only the given task results.
+- Never invent default values, emission values, formulas, or legal references.
+- Use only task results and RAG excerpts.
+- Do not perform arithmetic or claim a calculation was executed.
 
 For normal chat:
 - Return the normal answer naturally.
 
 For CBAM answers:
-- Explain whether the calculation used default values or uploaded CSV actual emissions.
-- If CSV was uploaded, say that the calculation used uploaded CSV data.
-- If CSV was not uploaded, say that the calculation used default emissions calculation.
-- Show the Java API payload when available.
-- Show product lookup result if available.
-- Show calculation result if available.
-- If calculation failed, explain the exact tool error.
-- If information is missing, ask only for the missing fields.
-- If RAG results are available, briefly explain the formula or guidance from them.
+- Use product_cn_lookup and default_value_lookup results for CN codes and default values.
+- If product_cn_lookup/default_value_lookup output is a non-empty list, do not say the code was not found.
+- For lookup questions, list the best matching CN code first and mention alternatives only if useful.
+- Show selected_default_value_tco2e_per_ton when available.
+- Use backend_calculation_explanation for formulas and backend steps.
+- Use RAG results for policy/methodology context.
+- Briefly mention lookup/RAG errors if relevant.
 - Do not output huge raw RAG chunks.
 """
 
