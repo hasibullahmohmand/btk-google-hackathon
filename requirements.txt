@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+gradio
+langchain-core
+langchain-community
+langchain-classic
+langchain-chroma
+langchain-ollama
+langchain-google-genai
+langgraph
+chromadb
+docling

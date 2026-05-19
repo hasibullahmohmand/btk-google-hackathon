@@ -1,241 +1,186 @@
-# CarbonAI TR - CBAM Calculator Engine
+# CarbonAI TR: AI-Powered CBAM Financial Risk Intelligence
 
-This module is a Spring Boot backend for deterministic CBAM calculations. It is designed for CarbonAI TR, where an AI or RAG layer may explain regulations and call backend tools, but the calculations themselves must stay deterministic, transparent, and auditable.
+CarbonAI TR helps exporters understand, predict, and reduce the financial risk created by the European Union Carbon Border Adjustment Mechanism (CBAM).
+
+CBAM is no longer only a reporting topic. The transitional period covered 2023 to 2025, but from 2026 onward it becomes a real financial compliance obligation. Companies exporting carbon-intensive goods such as steel, aluminium, cement, fertilisers, hydrogen, and electricity to the EU need to understand three things clearly:
+
+`How much embedded emissions does my product have?`
+`How much could CBAM cost my company?`
+`How can we reduce this financial risk?`
+
+This project answers those questions with a hybrid architecture that combines deterministic emissions and cost calculation with AI-powered regulatory intelligence.
+
+## Why This Matters
+
+CBAM turns carbon emissions into financial exposure.
+
+For exporters, this creates a new class of business risk:
+
+- higher embedded emissions can mean more CBAM certificates;
+- more certificates can mean higher euro-denominated cost exposure;
+- poor data quality can increase compliance uncertainty;
+- relying on default values instead of actual plant data can lead to worse financial outcomes;
+- finance, operations, sustainability, and trade compliance teams all need a shared view of the same risk.
+
+That is why CarbonAI TR is highly relevant for the finance sector. It is not just an emissions calculator. It is a financial risk intelligence platform for companies exposed to CBAM.
+
+## What The Product Does
+
+Our product is an AI-powered CBAM financial risk intelligence platform for companies exporting carbon-intensive goods to the European Union.
+
+It helps companies:
+
+- estimate embedded emissions for CBAM-covered goods;
+- convert those emissions into estimated CBAM financial exposure;
+- compare default-value-based exposure versus actual-data-based exposure;
+- understand which rules, product classifications, and reporting requirements apply;
+- reduce uncertainty by connecting numerical outputs to official EU source documents.
+
+In short, the platform helps exporters predict and reduce CBAM financial exposure using AI, while keeping all critical numerical calculations deterministic and auditable.
+
+## Core Product Idea
+
+The product is built around a simple principle:
+
+`AI explains the rules. The backend calculates the numbers.`
+
+This matters because CBAM is a high-trust use case. Companies need explainability, traceability, and confidence that the system is not inventing emissions values or financial numbers.
+
+In practice, this means the agent asks for explanation after a calculation-related function call is completed. The numerical result comes from the backend function first, and then the AI layer explains what that result means, which rule it relates to, and how the user should interpret it.
+
+Our approach separates responsibilities clearly:
+
+- the AI layer supports reasoning, document retrieval, rule explanation, product classification, and compliance guidance;
+- the Spring Boot backend remains the trusted source for formulas, emission factors, default values, and CBAM cost estimation.
+
+## Architecture
+
+The system uses a three-layer architecture.
+
+### 1. Frontend: React + Vite
+
+The frontend is developed with React and Vite and provides the main user interface.
+
+It allows users to:
+
+- upload production data through CSV files;
+- enter activity data manually;
+- run different CBAM calculation flows;
+- view the latest backend results;
+- ask follow-up compliance questions through the AI assistant.
+
+The uploaded or entered data can include:
+
+- fuel consumption;
+- electricity usage;
+- raw materials;
+- production quantities;
+- exported quantities.
+
+The frontend lives in `frontend/`.
+
+### 2. Deterministic Backend: Spring Boot
+
+The backend is developed with Spring Boot and acts as the deterministic CBAM calculation engine.
+
+It uses structured CSV reference data and fixed formulas to:
+
+- calculate embedded emissions with default values;
+- calculate embedded emissions from actual activity data;
+- estimate CBAM-related financial exposure;
+- compare default-value and actual-data scenarios;
+- validate report structure and consistency;
+- run carbon-price scenarios;
+- support advanced certificate estimation logic.
 
 The backend does not use AI for any calculation.
 
-This repository no longer ships a Spring-served frontend placeholder. The intended UI is a separate React application that calls this backend over HTTP.
+This is a critical product decision. AI does not invent emission numbers, cost values, or formula outputs. All numerical calculations are performed by verified backend tools.
 
-## System overview
+The backend lives in `backend/`.
 
-The project has three runtime parts:
+### 3. AI Agent Service: FastAPI + RAG
 
-- `backend/`: Spring Boot calculation engine. It performs deterministic CBAM calculations, validation, scenario analysis, and demo-data lookup.
-- `frontend/`: React/Vite user interface. It calls backend endpoints over HTTP and can also call the agent service for conversational CBAM guidance.
-- `agent_service/`: FastAPI + LangGraph agent service. It explains CBAM concepts, routes normal versus technical questions, retrieves RAG context, looks up CN codes/default values from CSV files, and explains backend formulas without executing calculations itself.
+The AI agent service is developed with FastAPI and uses retrieval-augmented generation over an official CBAM document knowledge base.
 
-The image below shows the intended frontend format: calculator tools on the left, the selected calculation form and latest backend response in the center, and the CBAM assistant or generated explanation report on the right.
+The agent can:
 
-![CarbonAI frontend with CBAM assistant and report panel](images/img2.png)
+- determine whether a product may fall under CBAM;
+- help identify the relevant CN code;
+- look up applicable default values;
+- identify which emission categories are relevant;
+- explain how a calculation is performed;
+- explain CBAM terminology, product rules, and compliance requirements;
+- retrieve relevant information from official CBAM documents in the RAG system.
 
-## Frontend integration
+The AI agent acts as a compliance assistant, not as a calculation engine.
 
-The React frontend is a separate app under `frontend/`. It is responsible for user interaction, forms, result display, CSV aggregation utilities, and calling HTTP APIs.
+The service lives in `agent_service/`.
 
-Typical frontend calls:
+## End-to-End Workflow
 
-- Calls the Spring backend directly for deterministic calculator actions such as `/api/cbam/default-emissions`, `/api/cbam/actual-emissions`, `/api/cbam/scenarios`, and `/api/cbam/validate-report`.
-- Calls the FastAPI agent service at `/api/chat` for natural-language CBAM support.
-- Stores and resends the returned `thread_id` for follow-up chat messages.
+The general workflow is:
 
-The frontend should treat Spring calculation responses as the source of numerical truth. The agent response is explanatory: it can show formulas, describe the backend method, retrieve RAG snippets, and surface CN/default-value lookup results, but it should not be treated as a calculation executor.
+`Company data -> React frontend -> Spring Boot calculation engine -> Embedded emissions -> CBAM cost estimation -> AI compliance explanation and recommendations`
 
-## Agent service logic
+This workflow is especially valuable for finance-oriented decision making because it connects operational data to regulatory cost exposure.
 
-Every `/api/chat` call in `agent_service/` follows this flow:
+After each relevant function call, the system can return not only the computed output but also an explanation layer generated by the agent. This helps users understand the result in business and compliance terms without replacing the deterministic calculation itself.
 
-1. FastAPI receives `{ "message": "...", "thread_id": "..." }`.
-2. If `thread_id` is missing, the service creates one and returns it with the answer.
-3. `CBAMOrchestrator` routes the message:
-   - normal chat goes to `NormalAgent`;
-   - CBAM, CN-code, default-value, formula, reporting, or methodology questions go to the technical workflow.
-4. `CBAMTaskGenerationAgent` extracts product name, CN code, year, country, export volume if present, and English RAG queries.
-5. The workflow runs tool steps:
-   - `product_cn_lookup` for product-description to CN-code matching;
-   - `default_value_lookup` for CN-code/default-value details;
-   - `rag_retrieval` for CBAM legal/guidance context;
-   - `backend_calculation_explanation` for deterministic backend formulas and endpoint payload shapes.
-6. `CBAMWriterAgent` writes the final answer using only task results and RAG excerpts.
+## Knowledge Base And Traceability
 
-Important agent boundaries:
+To support trustworthy AI outputs, we collected official CBAM documents from European Union sources, including:
 
-- The agent does not perform arithmetic or submit official CBAM reports.
-- The agent does not call backend calculation endpoints while answering chat.
-- The agent can explain how the backend would calculate and which endpoint/payload would be used.
-- The agent can return CN-code and default-value candidates from the CSV-backed lookup tool.
+- regulations;
+- guidance documents;
+- annexes;
+- product-specific rules;
+- default value tables;
+- implementation and reporting materials.
 
-## What CBAM certificates are
+All document sources and metadata are tracked in `pdfs-metadata.json`, making the knowledge base transparent and traceable.
 
-CBAM certificates are units that EU importers or authorized CBAM declarants may need to buy and surrender to cover the embedded emissions of imported goods.
+The repository also contains:
 
-In simple words:
+- original source PDFs in `pdfs/`;
+- extracted Markdown files in `pdfs/outputs/raw_markdown/`;
+- processed chunks in `data/processed/`;
+- the vector database in `data/vectorstore/`.
 
-- A product has emissions attached to it.
-- Those emissions can create a carbon-related obligation.
-- CBAM certificates are the mechanism used to reflect that obligation.
+This traceability is important because compliance users need to know where the explanation came from, not just what the answer is.
 
-This backend does not connect to the official EU registry and does not submit anything. It only performs calculations and validation checks.
+## What Makes This Useful For A Finance Jury
 
-## Why this is treated as financial exposure
+CarbonAI TR sits at the intersection of:
 
-Even though CBAM is not just a normal tax label, businesses often experience it as a cost exposure because:
+- climate regulation;
+- trade compliance;
+- financial exposure analysis;
+- AI-assisted decision support.
 
-- Higher embedded emissions can mean more certificates.
-- More certificates can mean more EUR cost.
-- Better actual emissions data can reduce estimated exposure compared with default values.
+CBAM changes carbon from a sustainability metric into a cost driver. That means exporters need tools for:
 
-That is why this backend includes both emissions calculators and cost estimators.
+- carbon cost forecasting;
+- regulatory exposure analysis;
+- trade compliance support;
+- what-if scenario analysis;
+- risk reduction planning.
 
-## What this backend does
+This product addresses exactly that need.
 
-It exposes REST APIs for:
+## Main Product Capabilities
 
-- Default-value emissions calculations
-- Actual factory activity emissions calculations
-- Simple carbon cost estimation
-- Advanced certificate estimation
-- Default-vs-actual cost comparison
-- Carbon price scenario analysis
-- CBAM-style report validation
-- Demo data discovery
+The backend currently supports APIs for:
 
-## Key CBAM concepts used in the code
+- default-value emissions calculations;
+- actual factory activity emissions calculations;
+- advanced certificate estimation;
+- default-vs-actual comparison;
+- carbon price scenario analysis;
+- CBAM-style report validation;
+- demo data discovery.
 
-- `tCO2e`: tonnes of CO2 equivalent
-- `kgCO2e`: kilograms of CO2 equivalent
-- `1 tCO2e = 1000 kgCO2e`
-- Specific emissions: emissions per ton of product
-- Embedded emissions: emissions associated with the traded goods
-- Certificate price: EUR per tCO2e
-- Export or import quantity: product amount in tons
-
-## Calculation modes
-
-### Default value mode
-
-Use this when the exporter does not have actual factory emissions data.
-
-The backend:
-
-1. Finds a seeded default value by country and CN code.
-2. Chooses the correct year-specific value.
-3. Multiplies export volume by that default value.
-
-Formula:
-
-`embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon`
-
-### Actual data mode
-
-Use this when the exporter has actual factory activity data.
-
-The source markdown used by this project treats embedded emissions as direct plus indirect emissions. The request field `includeIndirectEmissions` is kept only for backward compatibility and does not change the calculation.
-
-The backend:
-
-1. Looks up an emission factor for each activity.
-2. Converts activity amounts into kgCO2e.
-3. Converts kgCO2e into tCO2e.
-4. Sums direct and indirect emissions.
-5. Calculates specific emissions per ton.
-6. Applies that intensity to the exported quantity.
-
-Main formulas:
-
-- `activityEmissionsKg = amount x factorKgCo2ePerUnit`
-- `activityEmissionsTco2e = activityEmissionsKg / 1000`
-- `specificEmissions = totalFacilityEmissions / productionVolumeTons`
-- `exportedEmbeddedEmissions = specificEmissions x exportVolumeTons`
-
-### Advanced certificate formula
-
-Use this when more detailed inputs are available.
-
-Definitions:
-
-- `specificEmbeddedEmissions = actual specific embedded emissions`
-- `specificEmbeddedFreeAllocation = SEFA-aligned free allocation adjustment`
-- `importedQuantity = imported quantity`
-- `effectiveCarbonPricePaidInCountryOfOrigin = carbon price effectively paid abroad`
-- `euEtsWeeklyAveragePrice = ETS-linked CBAM certificate price`
-
-Core formulas:
-
-`certificatesBeforeCarbonPriceAdjustment = max(0, (specificEmbeddedEmissions - specificEmbeddedFreeAllocation) x importedQuantity)`
-
-`carbonPriceReductionInCertificates = certificatesBeforeCarbonPriceAdjustment x effectiveCarbonPricePaidInCountryOfOrigin / euEtsWeeklyAveragePrice`
-
-`certificatesToSurrender = max(0, certificatesBeforeCarbonPriceAdjustment - carbonPriceReductionInCertificates)`
-
-`estimatedCostEur = certificatesToSurrender x euEtsWeeklyAveragePrice`
-
-## Formula traceability
-
-The table below records the exact Markdown source file used for each backend formula or formula family.
-
-| Backend formula or situation | Exact source `.md` file(s) | Traceability note |
-|---|---|---|
-| `embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon` in default-value mode | `pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md` | Derived from the regulation definitions of `default value` and `embedded emissions`. The shipment multiplication is the backend's deterministic simplification for one exported batch. |
-| Actual-data mode must include both direct and indirect emissions in embedded emissions totals | `pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md`, `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Direct source for the definitions of `embedded emissions` and the guidance that both direct and indirect emissions are to be reported. |
-| Actual-data mode electricity emissions use quantity x electricity emission factor | `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | The importer guidance explicitly says to report electricity quantities and multiply them by the relevant electricity emission factor. |
-| Actual-data mode specific emissions = total emissions / production volume | `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | The guidance says attributed emissions are divided by the activity level to obtain specific embedded emissions. |
-| Actual-data mode exported embedded emissions = specific emissions x exported quantity | `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Derived from the guidance's specific-embedded-emissions-per-ton concept together with goods quantities used in reporting. |
-| Use of actual data versus default values | `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md` | Direct policy source explaining that actual embedded emissions are preferred and defaults are fallback or conditional. |
-| Advanced-certificate free-allocation adjustment concept | `pdfs/outputs/raw_markdown/OJ_L_202502620_EN_TXT.md` | Main source for the 2026+ free allocation adjustment framework and benchmark-based adjustment logic. |
-| Advanced-certificate carbon price deduction concept | `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md`, `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Source for the rule that the effective carbon price paid outside the EU reduces the CBAM obligation. |
-| `/advanced-certificates` formula sequence | `pdfs/outputs/raw_markdown/OJ_L_202502620_EN_TXT.md`, `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md`, `pdfs/outputs/raw_markdown/OJ_L_202502548_EN_TXT.md` | Project-level simplification derived from the free allocation adjustment framework, foreign-carbon-price deduction rule, and certificate pricing rules. It is not a verbatim legal equation. |
-| Default-vs-actual comparison formula family | `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md` | Project convenience calculation derived from the FAQ statement that actual values can lower the CBAM payment compared with default values. |
-| Scenario analysis formula family | `pdfs/outputs/raw_markdown/OJ_L_202502548_EN_TXT.md` | Project convenience calculation derived from the official certificate price mechanism and multiple possible ETS-linked price points. |
-| Report validation rule `total = direct + indirect` | `pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md`, `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Derived from the legal definitions and importer guidance that embedded emissions reporting accounts for both direct and indirect emissions. |
-
-## Seeded demo data
-
-### Default values
-
-- Country: `Turkey`
-- CN Code: `25233000`
-- Product: `Aluminous cement`
-- Sector: `Cement`
-- Direct default: `1.820 tCO2e/t`
-- Indirect default: `0.140 tCO2e/t`
-- Total default: `1.950 tCO2e/t`
-- 2026 default with markup: `2.145 tCO2e/t`
-- 2027 default with markup: `2.340 tCO2e/t`
-- 2028 onwards default with markup: `2.535 tCO2e/t`
-
-### Emission factors
-
-The actual-emissions endpoint does not accept a simplified fixed enum such as
-`NATURAL_GAS` or `ELECTRICITY`.
-
-It performs an exact lookup against the CSV-backed factor repository using:
-
-- `activityType`
-- `unit`
-- `year`
-
-The safest way to discover supported values is to inspect `GET /api/cbam/demo-data`.
-
-Examples that match the current repository data and tests:
-
-- `Natural gas`: unit `t`, factor `2692.8 kgCO2e/t`, derived from `emission_tables_csv/table_1_fuel_emission_factors.csv`
-- `Gas/Diesel oil`: unit `t`, factor `3186.3 kgCO2e/t`, derived from `emission_tables_csv/table_1_fuel_emission_factors.csv`
-
-### Demo carbon prices
-
-- `76`
-- `100`
-- `120`
-
-## Demo scenario
-
-A Turkish cement exporter ships `100` tons of aluminous cement to Germany in `2026` and does not have actual factory emissions data.
-
-The backend:
-
-1. Finds the seeded Turkey + `25233000` record.
-2. Chooses the `2026` default value with markup: `2.145 tCO2e/t`.
-3. Calculates embedded emissions:
-
-`100 x 2.145 = 214.5 tCO2e`
-
-4. If the price is `76 EUR/tCO2e`, it estimates financial exposure:
-
-`214.5 x 76 = 16,302 EUR`
-
-This is why the system treats CBAM as a financial exposure tool as well as an emissions calculator.
-
-## Endpoints
+Key endpoints:
 
 - `POST /api/cbam/default-emissions`
 - `POST /api/cbam/actual-emissions`
@@ -245,302 +190,226 @@ This is why the system treats CBAM as a financial exposure tool as well as an em
 - `POST /api/cbam/validate-report`
 - `GET /api/cbam/demo-data`
 
-Swagger UI:
+Swagger UI is available at:
 
 - `http://localhost:8080/swagger-ui.html`
 
-OpenAPI JSON:
+OpenAPI JSON is available at:
 
 - `http://localhost:8080/v3/api-docs`
 
-React integration contract:
+The frontend/backend API contract is documented in [FRONTEND_API_CONTRACT.md](backend/FRONTEND_API_CONTRACT.md).
 
-- See [FRONTEND_API_CONTRACT.md](C:/Users/anisa/btk-google-hackathon/backend/FRONTEND_API_CONTRACT.md)
+## How The Calculations Work
 
-## Endpoint examples
+### Default Value Mode
 
-### 1. Default emissions
+Use this mode when the exporter does not have actual factory emissions data.
 
-```bash
-curl -X POST http://localhost:8080/api/cbam/default-emissions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "country": "Turkey",
-    "cnCode": "25233000",
-    "year": 2026,
-    "exportVolumeTons": 100
-  }'
+The backend:
+
+1. finds a seeded default value by country and CN code;
+2. chooses the correct year-specific value;
+3. multiplies export volume by that default value.
+
+Formula:
+
+`embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon`
+
+### Actual Data Mode
+
+Use this mode when the exporter has real factory activity data.
+
+The backend:
+
+1. looks up an emission factor for each activity;
+2. converts activity amounts into `kgCO2e`;
+3. converts `kgCO2e` into `tCO2e`;
+4. sums direct and indirect emissions;
+5. calculates specific emissions per ton;
+6. applies that intensity to the exported quantity.
+
+Main formulas:
+
+- `activityEmissionsKg = amount x factorKgCo2ePerUnit`
+- `activityEmissionsTco2e = activityEmissionsKg / 1000`
+- `specificEmissions = totalFacilityEmissions / productionVolumeTons`
+- `exportedEmbeddedEmissions = specificEmissions x exportVolumeTons`
+
+### Advanced Certificate Logic
+
+For more detailed estimation, the backend also supports advanced certificate logic using parameters such as:
+
+- specific embedded emissions;
+- free allocation adjustment;
+- imported quantity;
+- effective carbon price paid in the country of origin;
+- EU ETS-linked certificate price.
+
+Core formulas used by the project:
+
+`certificatesBeforeCarbonPriceAdjustment = max(0, (specificEmbeddedEmissions - specificEmbeddedFreeAllocation) x importedQuantity)`
+
+`carbonPriceReductionInCertificates = certificatesBeforeCarbonPriceAdjustment x effectiveCarbonPricePaidInCountryOfOrigin / euEtsWeeklyAveragePrice`
+
+`certificatesToSurrender = max(0, certificatesBeforeCarbonPriceAdjustment - carbonPriceReductionInCertificates)`
+
+`estimatedCostEur = certificatesToSurrender x euEtsWeeklyAveragePrice`
+
+## Example Financial Exposure Scenario
+
+A Turkish cement exporter ships `100` tons of aluminous cement to Germany in `2026` and does not have actual factory emissions data.
+
+The backend:
+
+1. finds the seeded Turkey + `25233000` record;
+2. chooses the `2026` default value with markup: `2.145 tCO2e/t`;
+3. calculates embedded emissions: `100 x 2.145 = 214.5 tCO2e`;
+4. if the certificate-linked price is `76 EUR/tCO2e`, estimates exposure: `214.5 x 76 = 16,302 EUR`.
+
+This simple scenario shows why CBAM must be treated not only as a sustainability issue, but also as a financial planning and risk management issue.
+
+## Repository Structure
+
+```text
+.
+|-- agent_service/          FastAPI AI agent and RAG workflow
+|-- backend/                Spring Boot deterministic CBAM engine
+|-- frontend/               React + Vite user interface
+|-- csv/                    CBAM default value reference CSV files
+|-- emission_tables_csv/    Emission factor tables
+|-- data/                   Processed RAG data and vector store
+|-- pdfs/                   Official CBAM source documents
+|-- images/                 Project visuals
+|-- pdfs-metadata.json      Source tracking for knowledge base documents
+|-- requirements.txt        Python dependencies for the AI agent service
+`-- README.md
 ```
 
-Response:
+## Local Setup
 
-```json
-{
-  "country": "Turkey",
-  "cnCode": "25233000",
-  "productDescription": "Aluminous cement",
-  "year": 2026,
-  "exportVolumeTons": 100,
-  "selectedDefaultValueTco2ePerTon": 2.1450,
-  "embeddedEmissionsTco2e": 214.5000,
-  "calculationMode": "DEFAULT_VALUE",
-  "formula": "embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon"
-}
+### Requirements
+
+To run the full project locally, you need:
+
+- Java `17`
+- Maven
+- Node.js `18+`
+- Python `3.11+`
+- Ollama for local embedding and optional local chat models
+
+### 1. Create A Python Virtual Environment
+
+From the project root:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 ```
 
-### 2. Actual emissions
+This installs the Python dependencies used by the FastAPI agent service and the RAG pipeline.
 
-```bash
-curl -X POST http://localhost:8080/api/cbam/actual-emissions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "cnCode": "72142000",
-    "country": "Turkey",
-    "year": 2026,
-    "productionVolumeTons": 100,
-    "exportVolumeTons": 40,
-    "includeIndirectEmissions": true,
-    "activities": [
-      { "activityType": "Natural gas", "amount": 50, "unit": "t" },
-      { "activityType": "Gas/Diesel oil", "amount": 5, "unit": "t" }
-    ]
-  }'
-```
+### 2. Configure Environment Variables
 
-Response:
+Copy `.env.example` to `.env` and fill in the values you want to use.
 
-```json
-{
-  "cnCode": "72142000",
-  "country": "Turkey",
-  "year": 2026,
-  "productionVolumeTons": 100,
-  "exportVolumeTons": 40,
-  "directEmissionsTco2e": 150.5715,
-  "indirectEmissionsTco2e": 0.0000,
-  "totalFacilityEmissionsTco2e": 150.5715,
-  "specificEmissionsTco2ePerTon": 1.5057,
-  "exportedEmbeddedEmissionsTco2e": 60.2286,
-  "includeIndirectEmissions": true,
-  "calculationMode": "ACTUAL_DATA",
-  "activityBreakdown": [
-    {
-      "activityType": "Natural gas",
-      "amount": 50,
-      "unit": "t",
-      "factor": 2692.8,
-      "factorUnit": "kgCO2e/t",
-      "emissionsTco2e": 134.6400,
-      "emissionCategory": "DIRECT"
-    },
-    {
-      "activityType": "Gas/Diesel oil",
-      "amount": 5,
-      "unit": "t",
-      "factor": 3186.3,
-      "factorUnit": "kgCO2e/t",
-      "emissionsTco2e": 15.9315,
-      "emissionCategory": "DIRECT"
-    }
-  ],
-  "warnings": []
-}
-```
+Example variables:
 
-### 3. Advanced certificates
+- `GOOGLE_API_KEY`
+- `GEMINI_API_KEY`
+- `CBAM_AGENT_MODEL`
+- `CBAM_MODEL`
+- `CBAM_WRITER_MODEL`
+- `CORS_ALLOW_ORIGINS`
 
-```bash
-curl -X POST http://localhost:8080/api/cbam/advanced-certificates \
-  -H "Content-Type: application/json" \
-  -d '{
-    "actualSpecificEmbeddedEmissionsTco2ePerTon": 2.145,
-    "specificEmbeddedFreeAllocationTco2ePerTon": 1.4625,
-    "effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e": 0,
-    "euEtsWeeklyAveragePriceEurPerTco2e": 76,
-    "importedQuantityTons": 100
-  }'
-```
+If you use Gemini models, provide a valid Google or Gemini API key.
 
-Response:
+### 3. Start The Spring Boot Backend
 
-```json
-{
-  "actualSpecificEmbeddedEmissionsTco2ePerTon": 2.1450,
-  "specificEmbeddedFreeAllocationTco2ePerTon": 1.4625,
-  "importedQuantityTons": 100,
-  "totalEmbeddedEmissionsTco2e": 214.5000,
-  "certificateSurrenderObligationBeforeCarbonPriceAdjustment": 68.2500,
-  "carbonPriceReductionInCertificates": 0.0000,
-  "certificatesToSurrender": 68.2500,
-  "effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e": 0,
-  "euEtsWeeklyAveragePriceEurPerTco2e": 76,
-  "estimatedCostEur": 5187.00,
-  "formula": "certificatesBeforeCarbonPriceAdjustment = max(0, (specificEmbeddedEmissions - specificEmbeddedFreeAllocation) x importedQuantity); carbonPriceReductionInCertificates = certificatesBeforeCarbonPriceAdjustment x effectiveCarbonPricePaidInCountryOfOrigin / euEtsWeeklyAveragePrice; certificatesToSurrender = max(0, certificatesBeforeCarbonPriceAdjustment - carbonPriceReductionInCertificates)"
-}
-```
-
-### 4. Compare default vs actual
-
-```bash
-curl -X POST http://localhost:8080/api/cbam/compare-default-vs-actual \
-  -H "Content-Type: application/json" \
-  -d '{
-    "defaultSpecificEmbeddedEmissionsTco2ePerTon": 2.145,
-    "actualSpecificEmbeddedEmissionsTco2ePerTon": 1.6,
-    "exportVolumeTons": 100,
-    "euEtsWeeklyAveragePriceEurPerTco2e": 76
-  }'
-```
-
-Response:
-
-```json
-{
-  "defaultCostEur": 16302.00,
-  "actualCostEur": 12160.00,
-  "potentialSavingsEur": 4142.00,
-  "savingsPercent": 25.41,
-  "message": "Using actual embedded emissions instead of default values may reduce ETS-linked CBAM certificate cost exposure."
-}
-```
-
-### 5. Scenario analysis
-
-```bash
-curl -X POST http://localhost:8080/api/cbam/scenarios \
-  -H "Content-Type: application/json" \
-  -d '{
-    "embeddedEmissionsTco2e": 214.5,
-    "euEtsWeeklyAveragePricesEurPerTco2e": [76, 100, 120]
-  }'
-```
-
-Response:
-
-```json
-{
-  "embeddedEmissionsTco2e": 214.5000,
-  "scenarios": [
-    {
-      "euEtsWeeklyAveragePriceEurPerTco2e": 76,
-      "estimatedCostEur": 16302.00
-    },
-    {
-      "euEtsWeeklyAveragePriceEurPerTco2e": 100,
-      "estimatedCostEur": 21450.00
-    },
-    {
-      "euEtsWeeklyAveragePriceEurPerTco2e": 120,
-      "estimatedCostEur": 25740.00
-    }
-  ]
-}
-```
-
-### 6. Validate report
-
-```bash
-curl -X POST http://localhost:8080/api/cbam/validate-report \
-  -H "Content-Type: application/json" \
-  -d '{
-    "goodsItemNumber": "1",
-    "sequenceNumber": "1",
-    "cnCode": "25233000",
-    "country": "Turkey",
-    "period": "2026",
-    "directEmissionsTco2e": 1.82,
-    "indirectEmissionsTco2e": 0.14,
-    "totalEmissionsTco2e": 1.96,
-    "netMassTons": 100
-  }'
-```
-
-Valid response:
-
-```json
-{
-  "valid": true,
-  "errors": [],
-  "warnings": []
-}
-```
-
-Invalid response example:
-
-```json
-{
-  "valid": false,
-  "errors": [
-    {
-      "code": "R0010",
-      "message": "Total emissions must equal direct emissions plus indirect emissions.",
-      "expectedValue": 1.9600,
-      "actualValue": 1.9500
-    }
-  ],
-  "warnings": []
-}
-```
-
-### 7. Demo data
-
-```bash
-curl http://localhost:8080/api/cbam/demo-data
-```
-
-Response:
-
-```json
-{
-  "defaultValues": [
-    {
-      "country": "Turkey",
-      "cnCode": "25233000",
-      "productDescription": "Aluminous cement"
-    }
-  ],
-  "emissionFactors": [
-    {
-      "activityType": "Natural gas",
-      "unit": "t",
-      "factorKgCo2ePerUnit": 2692.8
-    }
-  ],
-  "demoCarbonPrices": [76, 100, 120],
-  "demoProducts": ["Aluminous cement", "Steel", "Aluminium", "Fertiliser", "Hydrogen"]
-}
-```
-
-Note:
-
-- `GET /api/cbam/demo-data` returns the loaded factor catalogue, not a small hand-curated enum list.
-- Some returned factor rows are reference values only and have `"calculable": false`; those rows are not valid direct inputs for `/actual-emissions`.
-
-## Example validation error shape
-
-```json
-{
-  "error": "DEFAULT_VALUE_NOT_FOUND",
-  "message": "No CBAM default value found for country=Turkey and cnCode=99999999",
-  "details": [],
-  "timestamp": "2026-05-17T04:00:00+03:00"
-}
-```
-
-## Build and run
-
-From the `backend/` folder:
-
-```bash
+```powershell
+cd backend
 mvn spring-boot:run
 ```
 
-Run tests:
+The backend starts on:
 
-```bash
-mvn test
+- `http://localhost:8080`
+
+### 4. Start The FastAPI Agent Service
+
+In a new terminal from the project root:
+
+```powershell
+.venv\Scripts\Activate.ps1
+uvicorn agent_service.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## Important implementation note
+The agent service starts on:
 
-The future AI or RAG layer may call these endpoints as tools, but this backend does not use AI to perform calculations. All formulas are deterministic, documented, and implemented with `BigDecimal`.
+- `http://localhost:8000`
+
+### 5. Start The Frontend
+
+In a new terminal:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend is typically available on:
+
+- `http://localhost:5173`
+
+## AI Agent Behavior
+
+Every `/api/chat` request in the agent service follows this logic:
+
+1. FastAPI receives the user message and optional `thread_id`.
+2. The orchestrator routes the message into either normal chat or CBAM-specific workflow.
+3. The task generation step extracts fields such as product name, CN code, year, country, and export volume.
+4. The workflow can run:
+   - product-to-CN lookup;
+   - CN-code default-value lookup;
+   - RAG retrieval over official CBAM documents;
+   - backend calculation explanation.
+5. The writer agent produces the final response from retrieved facts and tool outputs.
+
+Important boundaries:
+
+- the agent does not perform authoritative arithmetic;
+- the agent does not replace backend calculations;
+- the agent can request and produce explanation after a function call is completed, using the function output as the basis for the explanation;
+- the agent explains rules, logic, documents, and likely applicability;
+- the backend remains the source of numerical truth.
+
+## Why The Design Is Strong
+
+This design is strong for a regulated finance-related use case because it combines:
+
+- deterministic computation for trust;
+- AI assistance for usability;
+- RAG traceability for compliance;
+- modular architecture for maintainability;
+- financial framing for real business value.
+
+Instead of building a generic chatbot about carbon, the project focuses on a specific regulatory and financial pain point with a clear user workflow and a realistic enterprise architecture.
+
+## Final Summary
+
+CarbonAI TR helps exporters understand how CBAM affects them financially.
+
+It combines:
+
+- React for user interaction;
+- Spring Boot for deterministic CBAM calculations;
+- FastAPI and RAG for AI-powered compliance assistance;
+- official EU documents for traceable regulatory intelligence.
+
+The result is a practical AI system for answering the most important CBAM questions:
+
+`How much embedded emissions does my product have?`
+`How much could CBAM cost my company?`
+`How can we reduce this financial risk?`
