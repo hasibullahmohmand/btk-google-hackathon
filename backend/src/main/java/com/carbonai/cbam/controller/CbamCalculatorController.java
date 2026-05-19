@@ -11,8 +11,6 @@ import com.carbonai.cbam.dto.CompareDefaultVsActualResponse;
 import com.carbonai.cbam.dto.DefaultEmissionsRequest;
 import com.carbonai.cbam.dto.DefaultEmissionsResponse;
 import com.carbonai.cbam.dto.DemoDataResponse;
-import com.carbonai.cbam.dto.SimpleCostRequest;
-import com.carbonai.cbam.dto.SimpleCostResponse;
 import com.carbonai.cbam.dto.ValidateReportRequest;
 import com.carbonai.cbam.dto.ValidateReportResponse;
 import com.carbonai.cbam.service.ActualEmissionCalculationService;
@@ -143,60 +141,10 @@ public class CbamCalculatorController {
     }
 
     /**
-     * Calculates a simple financial exposure estimate.
-     *
-     * Business meaning:
-     * Multiplies embedded emissions by the certificate price to give a simple
-     * estimated EUR exposure.
-     *
-     * Parameters:
-     * request.embeddedEmissionsTco2e = emissions in tonnes CO2e, example 214.5
-     * request.certificatePriceEurPerTco2e = carbon price in EUR, example 76
-     *
-     * Formula:
-     * estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e
-     *
-     * Step-by-step example calculation:
-     * 214.5 x 76 = 16302 EUR
-     *
-     * Output example:
-     * {
-     *   "estimatedCostEur": 16302.00
-     * }
-     */
-    @Operation(summary = "Calculate simple estimated CBAM cost")
-    @PostMapping("/simple-cost")
-    public SimpleCostResponse calculateSimpleCost(@Valid @RequestBody SimpleCostRequest request) {
-        return cbamCostService.calculateSimpleCost(request);
-    }
-
-    /**
-     * Calculates advanced CBAM certificate requirements.
-     *
-     * Business meaning:
-     * Applies benchmark deductions, free allowance deduction factors, and third-country
-     * carbon price deductions before estimating certificates and cost.
-     *
-     * Parameters:
-     * request.actualSpecificEmissionsTco2ePerTon = A, example 2.145
-     * request.cbamBenchmarkTco2ePerTon = benchmark, example 1.5
-     * request.cbamFactor = free allowance factor, example 0.975
-     * request.thirdCountryCarbonPriceEurPerTco2e = non-EU price, example 0
-     * request.cbamCertificatePriceEurPerTco2e = EU certificate price, example 76
-     * request.importedQuantityTons = D, example 100
-     *
-     * Formula:
-     * certificates = max(0, (A - B - C) x D)
-     *
-     * Step-by-step example calculation:
-     * certificates = 68.25
-     * cost = 5187 EUR
-     *
-     * Output example:
-     * {
-     *   "certificatesToSurrender": 68.2500,
-     *   "estimatedCostEur": 5187.00
-     * }
+     * Calculates certificate surrender obligation in the order described by the
+     * raw markdown source of truth:
+     * embedded emissions -> free allocation adjustment -> third-country carbon
+     * price reduction -> ETS-linked monetary exposure.
      */
     @Operation(summary = "Calculate advanced CBAM certificates and cost")
     @PostMapping("/advanced-certificates")
@@ -212,14 +160,14 @@ public class CbamCalculatorController {
      * actual emissions instead of higher default values.
      *
      * Parameters:
-     * request.defaultSpecificEmissionsTco2ePerTon = default emission intensity, example 2.145
-     * request.actualSpecificEmissionsTco2ePerTon = actual emission intensity, example 1.6
+     * request.defaultSpecificEmbeddedEmissionsTco2ePerTon = default emission intensity, example 2.145
+     * request.actualSpecificEmbeddedEmissionsTco2ePerTon = actual emission intensity, example 1.6
      * request.exportVolumeTons = export quantity, example 100
-     * request.certificatePriceEurPerTco2e = carbon price, example 76
+     * request.euEtsWeeklyAveragePriceEurPerTco2e = ETS-linked carbon price, example 76
      *
      * Formula:
-     * defaultCost = defaultSpecificEmissions x exportVolume x certificatePrice
-     * actualCost = actualSpecificEmissions x exportVolume x certificatePrice
+     * defaultCost = defaultSpecificEmbeddedEmissions x exportVolume x euEtsWeeklyAveragePrice
+     * actualCost = actualSpecificEmbeddedEmissions x exportVolume x euEtsWeeklyAveragePrice
      * savings = defaultCost - actualCost
      *
      * Step-by-step example calculation:
@@ -241,10 +189,10 @@ public class CbamCalculatorController {
      *
      * Parameters:
      * request.embeddedEmissionsTco2e = emissions amount, example 214.5
-     * request.pricesEurPerTco2e = list of prices, example [76, 100, 120]
+     * request.euEtsWeeklyAveragePricesEurPerTco2e = list of prices, example [76, 100, 120]
      *
      * Formula:
-     * scenarioCost = embeddedEmissionsTco2e x price
+     * scenarioCost = embeddedEmissionsTco2e x euEtsWeeklyAveragePrice
      *
      * Step-by-step example calculation:
      * 214.5 x 100 = 21450 EUR

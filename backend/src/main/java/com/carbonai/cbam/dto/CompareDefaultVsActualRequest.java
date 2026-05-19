@@ -14,48 +14,48 @@ import java.math.BigDecimal;
  *
  * Example request:
  * {
- *   "defaultSpecificEmissionsTco2ePerTon": 2.145,
- *   "actualSpecificEmissionsTco2ePerTon": 1.6,
+ *   "defaultSpecificEmbeddedEmissionsTco2ePerTon": 2.145,
+ *   "actualSpecificEmbeddedEmissionsTco2ePerTon": 1.6,
  *   "exportVolumeTons": 100,
- *   "certificatePriceEurPerTco2e": 76
+ *   "euEtsWeeklyAveragePriceEurPerTco2e": 76
  * }
  */
 public class CompareDefaultVsActualRequest {
 
     /** Default emissions intensity in tCO2e per ton. Example: 2.145. */
-    @NotNull(message = "defaultSpecificEmissionsTco2ePerTon is required")
-    @DecimalMin(value = "0.0", inclusive = true, message = "defaultSpecificEmissionsTco2ePerTon must be >= 0")
-    private BigDecimal defaultSpecificEmissionsTco2ePerTon;
+    @NotNull(message = "defaultSpecificEmbeddedEmissionsTco2ePerTon is required")
+    @DecimalMin(value = "0.0", inclusive = true, message = "defaultSpecificEmbeddedEmissionsTco2ePerTon must be >= 0")
+    private BigDecimal defaultSpecificEmbeddedEmissionsTco2ePerTon;
 
     /** Actual emissions intensity in tCO2e per ton. Example: 1.6. */
-    @NotNull(message = "actualSpecificEmissionsTco2ePerTon is required")
-    @DecimalMin(value = "0.0", inclusive = true, message = "actualSpecificEmissionsTco2ePerTon must be >= 0")
-    private BigDecimal actualSpecificEmissionsTco2ePerTon;
+    @NotNull(message = "actualSpecificEmbeddedEmissionsTco2ePerTon is required")
+    @DecimalMin(value = "0.0", inclusive = true, message = "actualSpecificEmbeddedEmissionsTco2ePerTon must be >= 0")
+    private BigDecimal actualSpecificEmbeddedEmissionsTco2ePerTon;
 
     /** Export quantity in tons. Example: 100. */
     @NotNull(message = "exportVolumeTons is required")
     @DecimalMin(value = "0.0001", message = "exportVolumeTons must be > 0")
     private BigDecimal exportVolumeTons;
 
-    /** Carbon price in EUR per tCO2e. Example: 76. */
-    @NotNull(message = "certificatePriceEurPerTco2e is required")
-    @DecimalMin(value = "0.0001", message = "certificatePriceEurPerTco2e must be > 0")
-    private BigDecimal certificatePriceEurPerTco2e;
+    /** ETS-linked certificate price in EUR per tCO2e. Example: 76. */
+    @NotNull(message = "euEtsWeeklyAveragePriceEurPerTco2e is required")
+    @DecimalMin(value = "0.0001", message = "euEtsWeeklyAveragePriceEurPerTco2e must be > 0")
+    private BigDecimal euEtsWeeklyAveragePriceEurPerTco2e;
 
-    public BigDecimal getDefaultSpecificEmissionsTco2ePerTon() {
-        return defaultSpecificEmissionsTco2ePerTon;
+    public BigDecimal getDefaultSpecificEmbeddedEmissionsTco2ePerTon() {
+        return defaultSpecificEmbeddedEmissionsTco2ePerTon;
     }
 
-    public void setDefaultSpecificEmissionsTco2ePerTon(BigDecimal defaultSpecificEmissionsTco2ePerTon) {
-        this.defaultSpecificEmissionsTco2ePerTon = defaultSpecificEmissionsTco2ePerTon;
+    public void setDefaultSpecificEmbeddedEmissionsTco2ePerTon(BigDecimal defaultSpecificEmbeddedEmissionsTco2ePerTon) {
+        this.defaultSpecificEmbeddedEmissionsTco2ePerTon = defaultSpecificEmbeddedEmissionsTco2ePerTon;
     }
 
-    public BigDecimal getActualSpecificEmissionsTco2ePerTon() {
-        return actualSpecificEmissionsTco2ePerTon;
+    public BigDecimal getActualSpecificEmbeddedEmissionsTco2ePerTon() {
+        return actualSpecificEmbeddedEmissionsTco2ePerTon;
     }
 
-    public void setActualSpecificEmissionsTco2ePerTon(BigDecimal actualSpecificEmissionsTco2ePerTon) {
-        this.actualSpecificEmissionsTco2ePerTon = actualSpecificEmissionsTco2ePerTon;
+    public void setActualSpecificEmbeddedEmissionsTco2ePerTon(BigDecimal actualSpecificEmbeddedEmissionsTco2ePerTon) {
+        this.actualSpecificEmbeddedEmissionsTco2ePerTon = actualSpecificEmbeddedEmissionsTco2ePerTon;
     }
 
     public BigDecimal getExportVolumeTons() {
@@ -66,11 +66,11 @@ public class CompareDefaultVsActualRequest {
         this.exportVolumeTons = exportVolumeTons;
     }
 
-    public BigDecimal getCertificatePriceEurPerTco2e() {
-        return certificatePriceEurPerTco2e;
+    public BigDecimal getEuEtsWeeklyAveragePriceEurPerTco2e() {
+        return euEtsWeeklyAveragePriceEurPerTco2e;
     }
 
-    public void setCertificatePriceEurPerTco2e(BigDecimal certificatePriceEurPerTco2e) {
-        this.certificatePriceEurPerTco2e = certificatePriceEurPerTco2e;
+    public void setEuEtsWeeklyAveragePriceEurPerTco2e(BigDecimal euEtsWeeklyAveragePriceEurPerTco2e) {
+        this.euEtsWeeklyAveragePriceEurPerTco2e = euEtsWeeklyAveragePriceEurPerTco2e;
     }
 }

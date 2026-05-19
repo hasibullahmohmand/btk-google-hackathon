@@ -8,12 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Service for scenario calculations.
- *
- * Beginner-friendly explanation:
- * This service answers "what if the carbon price changes?" It does not change
- * the emissions amount. It only reruns the cost estimate against multiple
- * possible prices.
+ * Service for ETS-linked price scenario calculations.
  */
 @Service
 public class ScenarioService {
@@ -27,7 +22,7 @@ public class ScenarioService {
      *
      * Parameters:
      * request.embeddedEmissionsTco2e = emissions quantity, example 214.5
-     * request.pricesEurPerTco2e = price list, example [76, 100, 120]
+     * request.euEtsWeeklyAveragePricesEurPerTco2e = price list, example [76, 100, 120]
      *
      * Example output values:
      * 76 -> 16302.00
@@ -35,7 +30,7 @@ public class ScenarioService {
      * 120 -> 25740.00
      *
      * Formula used:
-     * scenarioCost = embeddedEmissionsTco2e x priceEurPerTco2e
+     * scenarioCost = embeddedEmissionsTco2e x euEtsWeeklyAveragePriceEurPerTco2e
      *
      * Step-by-step example calculation:
      * 1. Embedded emissions = 214.5 tCO2e
@@ -46,16 +41,20 @@ public class ScenarioService {
      * Output example:
      * {
      *   "scenarios": [
-     *     { "priceEurPerTco2e": 76, "estimatedCostEur": 16302.00 }
+     *     { "euEtsWeeklyAveragePriceEurPerTco2e": 76, "estimatedCostEur": 16302.00 }
      *   ]
      * }
      */
     public CarbonPriceScenariosResponse calculateScenarios(CarbonPriceScenariosRequest request) {
-        List<ScenarioResult> scenarioResults = request.getPricesEurPerTco2e()
+        // Source traceability:
+        // - pdfs/outputs/raw_markdown/OJ_L_202502548_EN_TXT.md governs the pricing of CBAM certificates.
+        // This endpoint is a project convenience wrapper that reruns one emissions quantity
+        // against multiple possible ETS-linked certificate prices.
+        List<ScenarioResult> scenarioResults = request.getEuEtsWeeklyAveragePricesEurPerTco2e()
                 .stream()
                 .map(price -> {
                     ScenarioResult result = new ScenarioResult();
-                    result.setPriceEurPerTco2e(price);
+                    result.setEuEtsWeeklyAveragePriceEurPerTco2e(price);
                     result.setEstimatedCostEur(CalculationSupport.roundMoney(request.getEmbeddedEmissionsTco2e().multiply(price)));
                     return result;
                 })

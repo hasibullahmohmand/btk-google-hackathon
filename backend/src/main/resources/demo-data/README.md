@@ -29,7 +29,6 @@ Use this file when the backend should calculate emissions from a seeded default 
 Main backend endpoints:
 
 - `POST /api/cbam/default-emissions`
-- `POST /api/cbam/simple-cost`
 
 ## CSV column meanings
 
@@ -138,8 +137,6 @@ Expected backend result:
 
 - `turkish_steel_exporter_activity_data.csv`
   Use with `POST /api/cbam/actual-emissions`
-  Optionally pass the resulting `exportedEmbeddedEmissionsTco2e` into `POST /api/cbam/simple-cost`
 
 - `turkish_cement_default_value_demo.csv`
   Use with `POST /api/cbam/default-emissions`
-  Optionally pass the resulting `embeddedEmissionsTco2e` into `POST /api/cbam/simple-cost`

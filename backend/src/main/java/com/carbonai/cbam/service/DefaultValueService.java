@@ -4,7 +4,7 @@ import com.carbonai.cbam.dto.DefaultEmissionsRequest;
 import com.carbonai.cbam.dto.DefaultEmissionsResponse;
 import com.carbonai.cbam.exception.BusinessException;
 import com.carbonai.cbam.model.CbamDefaultValue;
-import com.carbonai.cbam.store.DemoDataStore;
+import com.carbonai.cbam.store.CsvDefaultValueRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -20,10 +20,10 @@ import java.math.BigDecimal;
 @Service
 public class DefaultValueService {
 
-    private final DemoDataStore demoDataStore;
+    private final CsvDefaultValueRepository csvDefaultValueRepository;
 
-    public DefaultValueService(DemoDataStore demoDataStore) {
-        this.demoDataStore = demoDataStore;
+    public DefaultValueService(CsvDefaultValueRepository csvDefaultValueRepository) {
+        this.csvDefaultValueRepository = csvDefaultValueRepository;
     }
 
     /**
@@ -63,13 +63,23 @@ public class DefaultValueService {
      * }
      */
     public DefaultEmissionsResponse calculateDefaultEmissions(DefaultEmissionsRequest request) {
-        CbamDefaultValue defaultValue = demoDataStore.findDefaultValue(request.getCountry(), request.getCnCode())
+        CbamDefaultValue defaultValue = csvDefaultValueRepository.findDefaultValue(
+                        request.getCountry(),
+                        request.getCnCode(),
+                        request.getYear()
+                )
                 .orElseThrow(() -> new BusinessException(
                         "DEFAULT_VALUE_NOT_FOUND",
-                        "No CBAM default value found for country=" + request.getCountry() + " and cnCode=" + request.getCnCode()
+                        "No CBAM default value found for country=" + request.getCountry()
+                                + ", cnCode=" + request.getCnCode()
+                                + " and year=" + request.getYear()
                 ));
 
         BigDecimal selectedDefaultValue = selectDefaultValueByYear(defaultValue, request.getYear());
+        // Source traceability:
+        // - pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md
+        //   defines "default value" as a value representing embedded emissions in goods.
+        // This multiplication is the backend's shipment-level deterministic simplification.
         BigDecimal embeddedEmissions = request.getExportVolumeTons().multiply(selectedDefaultValue);
 
         DefaultEmissionsResponse response = new DefaultEmissionsResponse();
@@ -105,10 +115,13 @@ public class DefaultValueService {
      * returns the relevant tCO2e per ton default value
      */
     BigDecimal selectDefaultValueByYear(CbamDefaultValue defaultValue, Integer year) {
-        if (year == 2026) {
+        if (year != null && year >= 2023 && year <= 2025) {
+            return defaultValue.getTotalDefaultTco2ePerTon();
+        }
+        if (year != null && year <= 2026) {
             return defaultValue.getDefault2026WithMarkup();
         }
-        if (year == 2027) {
+        if (year != null && year == 2027) {
             return defaultValue.getDefault2027WithMarkup();
         }
         return defaultValue.getDefault2028OnwardsWithMarkup();

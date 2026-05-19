@@ -16,7 +16,7 @@ import java.util.List;
  *   "embeddedEmissionsTco2e": 214.5,
  *   "scenarios": [
  *     {
- *       "priceEurPerTco2e": 76,
+ *       "euEtsWeeklyAveragePriceEurPerTco2e": 76,
  *       "estimatedCostEur": 16302
  *     }
  *   ]

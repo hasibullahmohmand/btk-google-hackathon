@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonAI CBAM Test Console</title>
+    <style>
+        :root {
+            --bg: #f4efe7;
+            --panel: rgba(255, 252, 246, 0.92);
+            --panel-strong: #fffdf9;
+            --ink: #1f2a24;
+            --muted: #5d6b62;
+            --line: #d7c8b5;
+            --accent: #12664f;
+            --accent-soft: #d8efe6;
+            --danger: #a43820;
+            --danger-soft: #f9dfd8;
+            --shadow: 0 18px 50px rgba(63, 42, 19, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(18, 102, 79, 0.12), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(201, 132, 63, 0.16), transparent 25%),
+                linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
+        }
+
+        .shell {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 20px 56px;
+        }
+
+        .hero {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 760px;
+            line-height: 1.5;
+        }
+
+        .status-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            padding: 8px 12px;
+            font-size: 0.92rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.9fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid rgba(215, 200, 181, 0.95);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            padding: 18px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h2,
+        .card h3 {
+            margin: 0 0 8px;
+        }
+
+        .card p {
+            margin: 0 0 16px;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .forms {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        label {
+            display: grid;
+            gap: 6px;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            font: inherit;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 11px 12px;
+            background: var(--panel-strong);
+            color: var(--ink);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 999px;
+            padding: 11px 16px;
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .secondary {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .ghost {
+            background: #efe4d4;
+            color: #6b4c21;
+        }
+
+        .summary {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .summary-item {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.66);
+        }
+
+        .summary-item strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .summary-item span {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .callout {
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+        }
+
+        .callout.ok {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .callout.error {
+            background: var(--danger-soft);
+            color: var(--danger);
+        }
+
+        pre {
+            margin: 0;
+            overflow: auto;
+            background: #1d241f;
+            color: #eef8f1;
+            border-radius: 18px;
+            padding: 16px;
+            min-height: 280px;
+        }
+
+        .mini {
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        @media (max-width: 1040px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="shell">
+    <section class="hero">
+        <h1>CBAM Test Console</h1>
+        <p>Simple frontend for calling your Spring Boot backend in real time. Use the demo buttons, send requests, and compare the returned numbers with your expected calculations.</p>
+        <div class="status-bar">
+            <div class="badge">Frontend URL: <strong>/</strong></div>
+            <div class="badge">API base: <strong>/api/cbam</strong></div>
+            <div class="badge" id="serverStatus">Server status: checking...</div>
+        </div>
+    </section>
+
+    <div class="grid">
+        <main class="stack">
+            <section class="card">
+                <h2>Quick Test</h2>
+                <p>These are the most useful flows if you want to check whether the backend server is alive and whether the formulas return the right numbers.</p>
+                <div class="actions">
+                    <button class="secondary" id="loadDemoData">Load demo data</button>
+                    <button class="ghost" id="fillDefaultDemo">Fill default emissions demo</button>
+                    <button class="ghost" id="fillActualDemo">Fill actual emissions demo</button>
+                    <button class="ghost" id="fillValidationDemo">Fill validation demo</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Default Emissions</h2>
+                <p>Tests `/api/cbam/default-emissions` with real backend data.</p>
+                <form id="defaultForm" class="forms">
+                    <div class="form-grid">
+                        <label>Country
+                            <input name="country" value="Turkey" required>
+                        </label>
+                        <label>CN code
+                            <input name="cnCode" value="25233000" required>
+                        </label>
+                        <label>Year
+                            <input name="year" type="number" value="2026" required>
+                        </label>
+                        <label>Export volume tons
+                            <input name="exportVolumeTons" type="number" step="0.0001" value="100" required>
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="primary">Calculate default emissions</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Actual Emissions</h2>
+                <p>Tests `/api/cbam/actual-emissions`. Activities are entered as JSON so you can quickly change them.</p>
+                <form id="actualForm" class="forms">
+                    <div class="form-grid">
+                        <label>Product
+                            <input name="product" value="steel" required>
+                        </label>
+                        <label>Production tons
+                            <input name="productionVolumeTons" type="number" step="0.0001" value="100" required>
+                        </label>
+                        <label>Export tons
+                            <input name="exportVolumeTons" type="number" step="0.0001" value="40" required>
+                        </label>
+                        <label>Include indirect emissions
+                            <select name="includeIndirectEmissions">
+                                <option value="true" selected>true</option>
+                                <option value="false">false</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>Activities JSON
+                        <textarea name="activities">[
+  { "activityType": "NATURAL_GAS", "amount": 5000, "unit": "m3" },
+  { "activityType": "DIESEL", "amount": 1200, "unit": "liter" },
+  { "activityType": "ELECTRICITY", "amount": 25000, "unit": "kWh" }
+]</textarea>
+                    </label>
+                    <div class="actions">
+                        <button type="submit" class="primary">Calculate actual emissions</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Compare Default Vs Measured</h2>
+                <p>Use this when you already have both values: the default specific emissions and the measured actual specific emissions. The frontend can fill these automatically from the last default and actual calculations.</p>
+                <div id="compareHint" class="callout ok">Run both default emissions and actual emissions to auto-fill the comparison endpoint.</div>
+                <form id="compareForm" class="forms">
+                    <div class="form-grid">
+                        <label>Default specific emissions
+                            <input name="defaultSpecificEmbeddedEmissionsTco2ePerTon" type="number" step="0.0001" value="2.145" required>
+                        </label>
+                        <label>Actual specific emissions
+                            <input name="actualSpecificEmbeddedEmissionsTco2ePerTon" type="number" step="0.0001" value="1.6" required>
+                        </label>
+                        <label>Export volume tons
+                            <input name="exportVolumeTons" type="number" step="0.0001" value="100" required>
+                        </label>
+                        <label>EU ETS price
+                            <input name="euEtsWeeklyAveragePriceEurPerTco2e" type="number" step="0.0001" value="76" required>
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button type="button" class="ghost" id="useLatestComparison">Use latest calculated values</button>
+                        <button type="submit" class="primary">Call compare endpoint</button>
+                    </div>
+                </form>
+
+                <form id="scenarioForm" class="forms">
+                    <div class="form-grid">
+                        <label>Embedded emissions
+                            <input name="embeddedEmissionsTco2e" type="number" step="0.0001" value="214.5" required>
+                        </label>
+                        <label>Scenario prices CSV
+                            <input name="euEtsWeeklyAveragePricesEurPerTco2e" value="76,100,120" required>
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="secondary">Run scenarios</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Advanced Certificates</h2>
+                <p>Tests `/api/cbam/advanced-certificates` when you want the full surrender obligation logic.</p>
+                <form id="advancedForm" class="forms">
+                    <div class="form-grid">
+                        <label>Actual specific embedded emissions
+                            <input name="actualSpecificEmbeddedEmissionsTco2ePerTon" type="number" step="0.0001" value="2.145" required>
+                        </label>
+                        <label>Free allocation
+                            <input name="specificEmbeddedFreeAllocationTco2ePerTon" type="number" step="0.0001" value="1.4625" required>
+                        </label>
+                        <label>Carbon price paid abroad
+                            <input name="effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e" type="number" step="0.0001" value="0" required>
+                        </label>
+                        <label>EU ETS price
+                            <input name="euEtsWeeklyAveragePriceEurPerTco2e" type="number" step="0.0001" value="76" required>
+                        </label>
+                        <label>Imported quantity tons
+                            <input name="importedQuantityTons" type="number" step="0.0001" value="100" required>
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="primary">Calculate advanced certificates</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Validate Report</h2>
+                <p>Useful if you want to test report consistency rules and see validation errors immediately.</p>
+                <form id="validateForm" class="forms">
+                    <div class="form-grid">
+                        <label>Goods item number
+                            <input name="goodsItemNumber" value="1" required>
+                        </label>
+                        <label>Sequence number
+                            <input name="sequenceNumber" value="1" required>
+                        </label>
+                        <label>CN code
+                            <input name="cnCode" value="25233000" required>
+                        </label>
+                        <label>Country
+                            <input name="country" value="Turkey" required>
+                        </label>
+                        <label>Period
+                            <input name="period" value="2026" required>
+                        </label>
+                        <label>Direct emissions
+                            <input name="directEmissionsTco2e" type="number" step="0.0001" value="1.82" required>
+                        </label>
+                        <label>Indirect emissions
+                            <input name="indirectEmissionsTco2e" type="number" step="0.0001" value="0.14" required>
+                        </label>
+                        <label>Total emissions
+                            <input name="totalEmissionsTco2e" type="number" step="0.0001" value="1.96" required>
+                        </label>
+                        <label>Net mass tons
+                            <input name="netMassTons" type="number" step="0.0001" value="100" required>
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="secondary">Validate report</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <aside class="stack">
+            <section class="card">
+                <h3>Result Summary</h3>
+                <div id="messageBox" class="callout ok">Ready to call the backend.</div>
+                <div id="summaryBox" class="summary">
+                    <div class="summary-item">
+                        <strong>Endpoint</strong>
+                        <span>-</span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Status</strong>
+                        <span>-</span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Key result</strong>
+                        <span>-</span>
+                    </div>
+                </div>
+                <div class="mini">The panel below always shows the raw JSON from the server, so you can compare exact numbers.</div>
+            </section>
+
+            <section class="card">
+                <h3>Raw JSON Response</h3>
+                <pre id="responseBox">Waiting for request...</pre>
+            </section>
+
+            <section class="card">
+                <h3>Demo Data</h3>
+                <p>Fetched from `/api/cbam/demo-data` when you press the button.</p>
+                <pre id="demoBox">No demo data loaded yet.</pre>
+            </section>
+        </aside>
+    </div>
+</div>
+
+<script>
+    const apiBase = "/api/cbam";
+
+    const serverStatus = document.getElementById("serverStatus");
+    const responseBox = document.getElementById("responseBox");
+    const demoBox = document.getElementById("demoBox");
+    const messageBox = document.getElementById("messageBox");
+    const summaryBox = document.getElementById("summaryBox");
+    const compareHint = document.getElementById("compareHint");
+
+    const defaultForm = document.getElementById("defaultForm");
+    const actualForm = document.getElementById("actualForm");
+    const compareForm = document.getElementById("compareForm");
+    const scenarioForm = document.getElementById("scenarioForm");
+    const advancedForm = document.getElementById("advancedForm");
+    const validateForm = document.getElementById("validateForm");
+
+    const latestResults = {
+        defaultEmissions: null,
+        actualEmissions: null
+    };
+
+    function numberValue(form, name) {
+        return Number(form.elements[name].value);
+    }
+
+    function textValue(form, name) {
+        return form.elements[name].value.trim();
+    }
+
+    function renderSummary(endpoint, status, result) {
+        summaryBox.innerHTML = `
+            <div class="summary-item">
+                <strong>Endpoint</strong>
+                <span>${endpoint}</span>
+            </div>
+            <div class="summary-item">
+                <strong>Status</strong>
+                <span>${status}</span>
+            </div>
+            <div class="summary-item">
+                <strong>Key result</strong>
+                <span>${result}</span>
+            </div>
+        `;
+    }
+
+    function showMessage(text, isError = false) {
+        messageBox.textContent = text;
+        messageBox.className = `callout ${isError ? "error" : "ok"}`;
+    }
+
+    function showCompareHint(text, isError = false) {
+        compareHint.textContent = text;
+        compareHint.className = `callout ${isError ? "error" : "ok"}`;
+    }
+
+    function formatJson(value) {
+        return JSON.stringify(value, null, 2);
+    }
+
+    function extractKeyResult(data) {
+        if (data.embeddedEmissionsTco2e !== undefined) {
+            return `${data.embeddedEmissionsTco2e} tCO2e`;
+        }
+        if (data.exportedEmbeddedEmissionsTco2e !== undefined) {
+            return `${data.exportedEmbeddedEmissionsTco2e} tCO2e exported`;
+        }
+        if (data.estimatedCostEur !== undefined) {
+            return `${data.estimatedCostEur} EUR`;
+        }
+        if (data.certificatesToSurrender !== undefined) {
+            return `${data.certificatesToSurrender} certificates`;
+        }
+        if (data.potentialSavingsEur !== undefined) {
+            return `${data.potentialSavingsEur} EUR saved`;
+        }
+        if (Array.isArray(data.scenarios)) {
+            return `${data.scenarios.length} scenario values`;
+        }
+        if (data.valid !== undefined) {
+            return data.valid ? "Valid report" : "Invalid report";
+        }
+        return "Check raw JSON";
+    }
+
+    function syncCompareFormFromLatestResults() {
+        const defaultData = latestResults.defaultEmissions;
+        const actualData = latestResults.actualEmissions;
+
+        if (!defaultData || !actualData) {
+            showCompareHint("Run both default emissions and actual emissions to auto-fill the comparison endpoint.");
+            return false;
+        }
+
+        compareForm.elements.defaultSpecificEmbeddedEmissionsTco2ePerTon.value = defaultData.selectedDefaultValueTco2ePerTon ?? "";
+        compareForm.elements.actualSpecificEmbeddedEmissionsTco2ePerTon.value = actualData.specificEmissionsTco2ePerTon ?? "";
+
+        const defaultExport = Number(defaultData.exportVolumeTons);
+        const actualExport = Number(actualData.exportVolumeTons);
+        const chosenExport = Number.isFinite(actualExport) && actualExport > 0 ? actualExport : defaultExport;
+        compareForm.elements.exportVolumeTons.value = chosenExport || "";
+
+        if (Number.isFinite(defaultExport) && Number.isFinite(actualExport) && defaultExport !== actualExport) {
+            showCompareHint(`Latest values loaded. Export volume differs between endpoints: default=${defaultExport}, actual=${actualExport}. The compare form is using actual export volume ${actualExport}.`, true);
+        } else {
+            showCompareHint("Latest default and measured values loaded into the compare endpoint form.");
+        }
+
+        return true;
+    }
+
+    function rememberEndpointResult(endpoint, data) {
+        if (endpoint === "/default-emissions") {
+            latestResults.defaultEmissions = data;
+            syncCompareFormFromLatestResults();
+        }
+
+        if (endpoint === "/actual-emissions") {
+            latestResults.actualEmissions = data;
+            syncCompareFormFromLatestResults();
+        }
+    }
+
+    async function callApi(endpoint, payload) {
+        showMessage(`Calling ${endpoint}...`);
+        renderSummary(endpoint, "Loading", "Waiting for response");
+        responseBox.textContent = "Loading...";
+
+        try {
+            const response = await fetch(`${apiBase}${endpoint}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            responseBox.textContent = formatJson(data);
+
+            if (!response.ok) {
+                showMessage(data.message || `Request failed with status ${response.status}`, true);
+                renderSummary(endpoint, `Error ${response.status}`, extractKeyResult(data));
+                return;
+            }
+
+            rememberEndpointResult(endpoint, data);
+            showMessage("Request finished successfully.");
+            renderSummary(endpoint, `OK ${response.status}`, extractKeyResult(data));
+        } catch (error) {
+            responseBox.textContent = String(error);
+            showMessage(`Could not reach backend: ${error.message}`, true);
+            renderSummary(endpoint, "Connection error", "Backend unavailable");
+        }
+    }
+
+    async function checkServer() {
+        try {
+            const response = await fetch(`${apiBase}/demo-data`);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            serverStatus.innerHTML = "Server status: <strong>online</strong>";
+        } catch (error) {
+            serverStatus.innerHTML = "Server status: <strong>offline</strong>";
+        }
+    }
+
+    document.getElementById("loadDemoData").addEventListener("click", async () => {
+        demoBox.textContent = "Loading demo data...";
+        try {
+            const response = await fetch(`${apiBase}/demo-data`);
+            const data = await response.json();
+            demoBox.textContent = formatJson(data);
+            if (!response.ok) {
+                showMessage(data.message || "Could not load demo data.", true);
+                return;
+            }
+            showMessage("Demo data loaded.");
+        } catch (error) {
+            demoBox.textContent = String(error);
+            showMessage(`Could not load demo data: ${error.message}`, true);
+        }
+    });
+
+    document.getElementById("fillDefaultDemo").addEventListener("click", () => {
+        defaultForm.elements.country.value = "Turkey";
+        defaultForm.elements.cnCode.value = "25233000";
+        defaultForm.elements.year.value = 2026;
+        defaultForm.elements.exportVolumeTons.value = 100;
+        compareForm.elements.defaultSpecificEmbeddedEmissionsTco2ePerTon.value = 2.145;
+        showMessage("Default emissions demo values filled.");
+    });
+
+    document.getElementById("fillActualDemo").addEventListener("click", () => {
+        actualForm.elements.product.value = "steel";
+        actualForm.elements.productionVolumeTons.value = 100;
+        actualForm.elements.exportVolumeTons.value = 40;
+        actualForm.elements.includeIndirectEmissions.value = "true";
+        actualForm.elements.activities.value = `[
+  { "activityType": "NATURAL_GAS", "amount": 5000, "unit": "m3" },
+  { "activityType": "DIESEL", "amount": 1200, "unit": "liter" },
+  { "activityType": "ELECTRICITY", "amount": 25000, "unit": "kWh" }
+]`;
+        showMessage("Actual emissions demo values filled.");
+    });
+
+    document.getElementById("fillValidationDemo").addEventListener("click", () => {
+        validateForm.elements.goodsItemNumber.value = "1";
+        validateForm.elements.sequenceNumber.value = "1";
+        validateForm.elements.cnCode.value = "25233000";
+        validateForm.elements.country.value = "Turkey";
+        validateForm.elements.period.value = "2026";
+        validateForm.elements.directEmissionsTco2e.value = 1.82;
+        validateForm.elements.indirectEmissionsTco2e.value = 0.14;
+        validateForm.elements.totalEmissionsTco2e.value = 1.96;
+        validateForm.elements.netMassTons.value = 100;
+        showMessage("Validation demo values filled.");
+    });
+
+    document.getElementById("useLatestComparison").addEventListener("click", () => {
+        if (!syncCompareFormFromLatestResults()) {
+            showMessage("Compare endpoint needs both latest default and latest measured results.", true);
+            return;
+        }
+        showMessage("Compare form updated from the latest calculated values.");
+    });
+
+    defaultForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        callApi("/default-emissions", {
+            country: textValue(defaultForm, "country"),
+            cnCode: textValue(defaultForm, "cnCode"),
+            year: numberValue(defaultForm, "year"),
+            exportVolumeTons: numberValue(defaultForm, "exportVolumeTons")
+        });
+    });
+
+    actualForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        try {
+            const activities = JSON.parse(actualForm.elements.activities.value);
+            callApi("/actual-emissions", {
+                product: textValue(actualForm, "product"),
+                productionVolumeTons: numberValue(actualForm, "productionVolumeTons"),
+                exportVolumeTons: numberValue(actualForm, "exportVolumeTons"),
+                includeIndirectEmissions: actualForm.elements.includeIndirectEmissions.value === "true",
+                activities
+            });
+        } catch (error) {
+            showMessage(`Activities JSON is invalid: ${error.message}`, true);
+        }
+    });
+
+    compareForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        callApi("/compare-default-vs-actual", {
+            defaultSpecificEmbeddedEmissionsTco2ePerTon: numberValue(compareForm, "defaultSpecificEmbeddedEmissionsTco2ePerTon"),
+            actualSpecificEmbeddedEmissionsTco2ePerTon: numberValue(compareForm, "actualSpecificEmbeddedEmissionsTco2ePerTon"),
+            exportVolumeTons: numberValue(compareForm, "exportVolumeTons"),
+            euEtsWeeklyAveragePriceEurPerTco2e: numberValue(compareForm, "euEtsWeeklyAveragePriceEurPerTco2e")
+        });
+    });
+
+    scenarioForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const prices = textValue(scenarioForm, "euEtsWeeklyAveragePricesEurPerTco2e")
+            .split(",")
+            .map((value) => Number(value.trim()))
+            .filter((value) => !Number.isNaN(value));
+
+        callApi("/scenarios", {
+            embeddedEmissionsTco2e: numberValue(scenarioForm, "embeddedEmissionsTco2e"),
+            euEtsWeeklyAveragePricesEurPerTco2e: prices
+        });
+    });
+
+    advancedForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        callApi("/advanced-certificates", {
+            actualSpecificEmbeddedEmissionsTco2ePerTon: numberValue(advancedForm, "actualSpecificEmbeddedEmissionsTco2ePerTon"),
+            specificEmbeddedFreeAllocationTco2ePerTon: numberValue(advancedForm, "specificEmbeddedFreeAllocationTco2ePerTon"),
+            effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e: numberValue(advancedForm, "effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e"),
+            euEtsWeeklyAveragePriceEurPerTco2e: numberValue(advancedForm, "euEtsWeeklyAveragePriceEurPerTco2e"),
+            importedQuantityTons: numberValue(advancedForm, "importedQuantityTons")
+        });
+    });
+
+    validateForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        callApi("/validate-report", {
+            goodsItemNumber: textValue(validateForm, "goodsItemNumber"),
+            sequenceNumber: textValue(validateForm, "sequenceNumber"),
+            cnCode: textValue(validateForm, "cnCode"),
+            country: textValue(validateForm, "country"),
+            period: textValue(validateForm, "period"),
+            directEmissionsTco2e: numberValue(validateForm, "directEmissionsTco2e"),
+            indirectEmissionsTco2e: numberValue(validateForm, "indirectEmissionsTco2e"),
+            totalEmissionsTco2e: numberValue(validateForm, "totalEmissionsTco2e"),
+            netMassTons: numberValue(validateForm, "netMassTons")
+        });
+    });
+
+    checkServer();
+</script>
+</body>
+</html>

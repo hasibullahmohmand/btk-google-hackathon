@@ -2,67 +2,17 @@ package com.carbonai.cbam.service;
 
 import com.carbonai.cbam.dto.CompareDefaultVsActualRequest;
 import com.carbonai.cbam.dto.CompareDefaultVsActualResponse;
-import com.carbonai.cbam.dto.SimpleCostRequest;
-import com.carbonai.cbam.dto.SimpleCostResponse;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 /**
- * Service for cost-related calculations.
- *
- * Beginner-friendly explanation:
- * These methods translate emissions into money. They do not decide any legal
- * obligation by themselves, but they help the business understand likely carbon
- * cost exposure in EUR.
+ * Service for cost-related comparison calculations.
  */
 @Service
 public class CbamCostService {
 
     private static final BigDecimal ONE_HUNDRED = new BigDecimal("100");
-
-    /**
-     * Calculates simple estimated CBAM financial exposure.
-     *
-     * Business meaning:
-     * Multiplies embedded emissions by the certificate price.
-     *
-     * Parameters:
-     * request.embeddedEmissionsTco2e = emissions amount, example 214.5
-     * request.certificatePriceEurPerTco2e = EUR carbon price, example 76
-     *
-     * Example input values:
-     * embeddedEmissionsTco2e = 214.5
-     * certificatePriceEurPerTco2e = 76
-     *
-     * Example output values:
-     * estimatedCostEur = 16302.00
-     *
-     * Formula used:
-     * estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e
-     *
-     * Step-by-step example calculation:
-     * 1. Embedded emissions = 214.5 tCO2e
-     * 2. Certificate price = 76 EUR/tCO2e
-     * 3. Multiply:
-     *    214.5 x 76 = 16302 EUR
-     *
-     * Output example:
-     * {
-     *   "estimatedCostEur": 16302.00
-     * }
-     */
-    public SimpleCostResponse calculateSimpleCost(SimpleCostRequest request) {
-        BigDecimal estimatedCost = request.getEmbeddedEmissionsTco2e()
-                .multiply(request.getCertificatePriceEurPerTco2e());
-
-        SimpleCostResponse response = new SimpleCostResponse();
-        response.setEmbeddedEmissionsTco2e(CalculationSupport.roundEmissions(request.getEmbeddedEmissionsTco2e()));
-        response.setCertificatePriceEurPerTco2e(request.getCertificatePriceEurPerTco2e());
-        response.setEstimatedCostEur(CalculationSupport.roundMoney(estimatedCost));
-        response.setFormula("estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e");
-        return response;
-    }
 
     /**
      * Compares default-value cost with actual-data cost and computes savings.
@@ -72,10 +22,10 @@ public class CbamCostService {
      * shows the EUR difference and percentage savings from using actual data.
      *
      * Parameters:
-     * request.defaultSpecificEmissionsTco2ePerTon = default emission intensity, example 2.145
-     * request.actualSpecificEmissionsTco2ePerTon = actual emission intensity, example 1.6
+     * request.defaultSpecificEmbeddedEmissionsTco2ePerTon = default emission intensity, example 2.145
+     * request.actualSpecificEmbeddedEmissionsTco2ePerTon = actual emission intensity, example 1.6
      * request.exportVolumeTons = quantity, example 100
-     * request.certificatePriceEurPerTco2e = price, example 76
+     * request.euEtsWeeklyAveragePriceEurPerTco2e = ETS-linked price, example 76
      *
      * Example output values:
      * defaultCostEur = 16302.00
@@ -84,8 +34,8 @@ public class CbamCostService {
      * savingsPercent = 25.41
      *
      * Formula used:
-     * defaultCost = defaultSpecificEmissions x exportVolume x certificatePrice
-     * actualCost = actualSpecificEmissions x exportVolume x certificatePrice
+     * defaultCost = defaultSpecificEmbeddedEmissions x exportVolume x euEtsWeeklyAveragePrice
+     * actualCost = actualSpecificEmbeddedEmissions x exportVolume x euEtsWeeklyAveragePrice
      * potentialSavings = defaultCost - actualCost
      * savingsPercent = (potentialSavings / defaultCost) x 100
      *
@@ -108,12 +58,16 @@ public class CbamCostService {
      * }
      */
     public CompareDefaultVsActualResponse compareDefaultVsActual(CompareDefaultVsActualRequest request) {
-        BigDecimal defaultCost = request.getDefaultSpecificEmissionsTco2ePerTon()
+        // Source traceability:
+        // - pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md
+        //   states that actual values can lower the CBAM payment compared with default values.
+        // This endpoint turns that policy idea into a project-specific comparison calculation.
+        BigDecimal defaultCost = request.getDefaultSpecificEmbeddedEmissionsTco2ePerTon()
                 .multiply(request.getExportVolumeTons())
-                .multiply(request.getCertificatePriceEurPerTco2e());
-        BigDecimal actualCost = request.getActualSpecificEmissionsTco2ePerTon()
+                .multiply(request.getEuEtsWeeklyAveragePriceEurPerTco2e());
+        BigDecimal actualCost = request.getActualSpecificEmbeddedEmissionsTco2ePerTon()
                 .multiply(request.getExportVolumeTons())
-                .multiply(request.getCertificatePriceEurPerTco2e());
+                .multiply(request.getEuEtsWeeklyAveragePriceEurPerTco2e());
         BigDecimal savings = defaultCost.subtract(actualCost);
         BigDecimal savingsPercent = defaultCost.compareTo(BigDecimal.ZERO) == 0
                 ? BigDecimal.ZERO
@@ -124,7 +78,7 @@ public class CbamCostService {
         response.setActualCostEur(CalculationSupport.roundMoney(actualCost));
         response.setPotentialSavingsEur(CalculationSupport.roundMoney(savings));
         response.setSavingsPercent(CalculationSupport.roundPercent(savingsPercent));
-        response.setMessage("Using actual emissions data instead of default values may reduce estimated CBAM exposure.");
+        response.setMessage("Using actual embedded emissions instead of default values may reduce ETS-linked CBAM certificate cost exposure.");
         return response;
     }
 }

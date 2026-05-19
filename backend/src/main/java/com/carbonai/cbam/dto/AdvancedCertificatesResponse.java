@@ -5,63 +5,67 @@ import java.math.BigDecimal;
 /**
  * Response body for /api/cbam/advanced-certificates.
  *
- * Beginner-friendly explanation:
- * This response shows the deduction values, the final estimated certificate
- * quantity, and the related EUR exposure.
+ * CBAM source-of-truth alignment:
+ * The response exposes the steps described in the raw markdown:
+ * - total embedded emissions for the import;
+ * - free-allocation-adjusted certificate obligation;
+ * - reduction for the effective carbon price paid abroad;
+ * - final certificates to surrender and the ETS-linked cost.
  *
  * Example response:
  * {
- *   "actualSpecificEmissionsTco2ePerTon": 2.1450,
- *   "freeAllowanceDeductionTco2ePerTon": 1.4625,
- *   "thirdCountryCarbonPriceDeductionTco2ePerTon": 0.0000,
+ *   "actualSpecificEmbeddedEmissionsTco2ePerTon": 2.1450,
+ *   "specificEmbeddedFreeAllocationTco2ePerTon": 1.4625,
  *   "importedQuantityTons": 100,
+ *   "totalEmbeddedEmissionsTco2e": 214.5000,
+ *   "certificateSurrenderObligationBeforeCarbonPriceAdjustment": 68.2500,
+ *   "carbonPriceReductionInCertificates": 0.0000,
  *   "certificatesToSurrender": 68.2500,
- *   "cbamCertificatePriceEurPerTco2e": 76,
+ *   "effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e": 0,
+ *   "euEtsWeeklyAveragePriceEurPerTco2e": 76,
  *   "estimatedCostEur": 5187.00,
- *   "formula": "certificates = max(0, (A - B - C) x D)"
+ *   "formula": "certificatesBeforeCarbonPriceAdjustment = max(0, (specificEmbeddedEmissions - specificEmbeddedFreeAllocation) x importedQuantity)"
  * }
  */
 public class AdvancedCertificatesResponse {
 
-    /** A in the formula: actual specific emissions. */
-    private BigDecimal actualSpecificEmissionsTco2ePerTon;
-    /** B in the formula: free allowance deduction. */
-    private BigDecimal freeAllowanceDeductionTco2ePerTon;
-    /** C in the formula: third-country carbon price deduction. */
-    private BigDecimal thirdCountryCarbonPriceDeductionTco2ePerTon;
-    /** D in the formula: imported quantity in tons. */
+    /** Specific embedded emissions of the imported good, in tCO2e per tonne. */
+    private BigDecimal actualSpecificEmbeddedEmissionsTco2ePerTon;
+    /** Specific embedded free allocation adjustment, in tCO2e per tonne. */
+    private BigDecimal specificEmbeddedFreeAllocationTco2ePerTon;
+    /** Imported quantity in tonnes. */
     private BigDecimal importedQuantityTons;
+    /** Total embedded emissions for the import before any adjustments. */
+    private BigDecimal totalEmbeddedEmissionsTco2e;
+    /** Certificate obligation after free allocation adjustment but before carbon price reduction. */
+    private BigDecimal certificateSurrenderObligationBeforeCarbonPriceAdjustment;
+    /** Reduction in certificates due to the effective carbon price paid in the country of origin. */
+    private BigDecimal carbonPriceReductionInCertificates;
     /** Final estimated number of certificates to surrender. */
     private BigDecimal certificatesToSurrender;
-    /** Certificate price in EUR per tCO2e. */
-    private BigDecimal cbamCertificatePriceEurPerTco2e;
+    /** Carbon price effectively paid in the country of origin, in EUR per tCO2e. */
+    private BigDecimal effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e;
+    /** ETS-linked certificate price in EUR per tCO2e. */
+    private BigDecimal euEtsWeeklyAveragePriceEurPerTco2e;
     /** Estimated EUR exposure after calculating certificates. */
     private BigDecimal estimatedCostEur;
     /** Human-readable formula string. */
     private String formula;
 
-    public BigDecimal getActualSpecificEmissionsTco2ePerTon() {
-        return actualSpecificEmissionsTco2ePerTon;
+    public BigDecimal getActualSpecificEmbeddedEmissionsTco2ePerTon() {
+        return actualSpecificEmbeddedEmissionsTco2ePerTon;
     }
 
-    public void setActualSpecificEmissionsTco2ePerTon(BigDecimal actualSpecificEmissionsTco2ePerTon) {
-        this.actualSpecificEmissionsTco2ePerTon = actualSpecificEmissionsTco2ePerTon;
+    public void setActualSpecificEmbeddedEmissionsTco2ePerTon(BigDecimal actualSpecificEmbeddedEmissionsTco2ePerTon) {
+        this.actualSpecificEmbeddedEmissionsTco2ePerTon = actualSpecificEmbeddedEmissionsTco2ePerTon;
     }
 
-    public BigDecimal getFreeAllowanceDeductionTco2ePerTon() {
-        return freeAllowanceDeductionTco2ePerTon;
+    public BigDecimal getSpecificEmbeddedFreeAllocationTco2ePerTon() {
+        return specificEmbeddedFreeAllocationTco2ePerTon;
     }
 
-    public void setFreeAllowanceDeductionTco2ePerTon(BigDecimal freeAllowanceDeductionTco2ePerTon) {
-        this.freeAllowanceDeductionTco2ePerTon = freeAllowanceDeductionTco2ePerTon;
-    }
-
-    public BigDecimal getThirdCountryCarbonPriceDeductionTco2ePerTon() {
-        return thirdCountryCarbonPriceDeductionTco2ePerTon;
-    }
-
-    public void setThirdCountryCarbonPriceDeductionTco2ePerTon(BigDecimal thirdCountryCarbonPriceDeductionTco2ePerTon) {
-        this.thirdCountryCarbonPriceDeductionTco2ePerTon = thirdCountryCarbonPriceDeductionTco2ePerTon;
+    public void setSpecificEmbeddedFreeAllocationTco2ePerTon(BigDecimal specificEmbeddedFreeAllocationTco2ePerTon) {
+        this.specificEmbeddedFreeAllocationTco2ePerTon = specificEmbeddedFreeAllocationTco2ePerTon;
     }
 
     public BigDecimal getImportedQuantityTons() {
@@ -72,6 +76,30 @@ public class AdvancedCertificatesResponse {
         this.importedQuantityTons = importedQuantityTons;
     }
 
+    public BigDecimal getTotalEmbeddedEmissionsTco2e() {
+        return totalEmbeddedEmissionsTco2e;
+    }
+
+    public void setTotalEmbeddedEmissionsTco2e(BigDecimal totalEmbeddedEmissionsTco2e) {
+        this.totalEmbeddedEmissionsTco2e = totalEmbeddedEmissionsTco2e;
+    }
+
+    public BigDecimal getCertificateSurrenderObligationBeforeCarbonPriceAdjustment() {
+        return certificateSurrenderObligationBeforeCarbonPriceAdjustment;
+    }
+
+    public void setCertificateSurrenderObligationBeforeCarbonPriceAdjustment(BigDecimal certificateSurrenderObligationBeforeCarbonPriceAdjustment) {
+        this.certificateSurrenderObligationBeforeCarbonPriceAdjustment = certificateSurrenderObligationBeforeCarbonPriceAdjustment;
+    }
+
+    public BigDecimal getCarbonPriceReductionInCertificates() {
+        return carbonPriceReductionInCertificates;
+    }
+
+    public void setCarbonPriceReductionInCertificates(BigDecimal carbonPriceReductionInCertificates) {
+        this.carbonPriceReductionInCertificates = carbonPriceReductionInCertificates;
+    }
+
     public BigDecimal getCertificatesToSurrender() {
         return certificatesToSurrender;
     }
@@ -80,12 +108,20 @@ public class AdvancedCertificatesResponse {
         this.certificatesToSurrender = certificatesToSurrender;
     }
 
-    public BigDecimal getCbamCertificatePriceEurPerTco2e() {
-        return cbamCertificatePriceEurPerTco2e;
+    public BigDecimal getEffectiveCarbonPricePaidInCountryOfOriginEurPerTco2e() {
+        return effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e;
     }
 
-    public void setCbamCertificatePriceEurPerTco2e(BigDecimal cbamCertificatePriceEurPerTco2e) {
-        this.cbamCertificatePriceEurPerTco2e = cbamCertificatePriceEurPerTco2e;
+    public void setEffectiveCarbonPricePaidInCountryOfOriginEurPerTco2e(BigDecimal effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e) {
+        this.effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e = effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e;
+    }
+
+    public BigDecimal getEuEtsWeeklyAveragePriceEurPerTco2e() {
+        return euEtsWeeklyAveragePriceEurPerTco2e;
+    }
+
+    public void setEuEtsWeeklyAveragePriceEurPerTco2e(BigDecimal euEtsWeeklyAveragePriceEurPerTco2e) {
+        this.euEtsWeeklyAveragePriceEurPerTco2e = euEtsWeeklyAveragePriceEurPerTco2e;
     }
 
     public BigDecimal getEstimatedCostEur() {

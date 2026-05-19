@@ -35,9 +35,9 @@ public class DefaultEmissionsRequest {
     @NotBlank(message = "cnCode is required")
     private String cnCode;
 
-    /** CBAM year used to choose the correct seeded default value. Example: 2026. */
+    /** CBAM year used to choose the correct CSV-backed default value. Example: 2026. */
     @NotNull(message = "year is required")
-    @Min(value = 2026, message = "year must be >= 2026")
+    @Min(value = 2023, message = "year must be >= 2023")
     private Integer year;
 
     /** Export quantity in tons. Example: 100. */

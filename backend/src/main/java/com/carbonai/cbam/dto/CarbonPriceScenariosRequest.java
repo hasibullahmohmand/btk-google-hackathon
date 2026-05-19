@@ -17,7 +17,7 @@ import java.util.List;
  * Example request:
  * {
  *   "embeddedEmissionsTco2e": 214.5,
- *   "pricesEurPerTco2e": [76, 100, 120]
+ *   "euEtsWeeklyAveragePricesEurPerTco2e": [76, 100, 120]
  * }
  */
 public class CarbonPriceScenariosRequest {
@@ -27,9 +27,9 @@ public class CarbonPriceScenariosRequest {
     @DecimalMin(value = "0.0", inclusive = true, message = "embeddedEmissionsTco2e must be >= 0")
     private BigDecimal embeddedEmissionsTco2e;
 
-    /** List of price scenarios in EUR per tCO2e. Example: [76, 100, 120]. */
-    @NotEmpty(message = "pricesEurPerTco2e cannot be empty")
-    private List<@DecimalMin(value = "0.0001", message = "each price must be > 0") BigDecimal> pricesEurPerTco2e;
+    /** List of ETS-linked certificate price scenarios in EUR per tCO2e. */
+    @NotEmpty(message = "euEtsWeeklyAveragePricesEurPerTco2e cannot be empty")
+    private List<@DecimalMin(value = "0.0001", message = "each ETS-linked price must be > 0") BigDecimal> euEtsWeeklyAveragePricesEurPerTco2e;
 
     public BigDecimal getEmbeddedEmissionsTco2e() {
         return embeddedEmissionsTco2e;
@@ -39,11 +39,11 @@ public class CarbonPriceScenariosRequest {
         this.embeddedEmissionsTco2e = embeddedEmissionsTco2e;
     }
 
-    public List<BigDecimal> getPricesEurPerTco2e() {
-        return pricesEurPerTco2e;
+    public List<BigDecimal> getEuEtsWeeklyAveragePricesEurPerTco2e() {
+        return euEtsWeeklyAveragePricesEurPerTco2e;
     }
 
-    public void setPricesEurPerTco2e(List<BigDecimal> pricesEurPerTco2e) {
-        this.pricesEurPerTco2e = pricesEurPerTco2e;
+    public void setEuEtsWeeklyAveragePricesEurPerTco2e(List<BigDecimal> euEtsWeeklyAveragePricesEurPerTco2e) {
+        this.euEtsWeeklyAveragePricesEurPerTco2e = euEtsWeeklyAveragePricesEurPerTco2e;
     }
 }

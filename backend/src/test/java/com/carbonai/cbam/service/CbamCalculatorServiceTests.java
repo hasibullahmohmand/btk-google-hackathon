@@ -5,9 +5,9 @@ import com.carbonai.cbam.dto.ActualEmissionsRequest;
 import com.carbonai.cbam.dto.AdvancedCertificatesRequest;
 import com.carbonai.cbam.dto.CompareDefaultVsActualRequest;
 import com.carbonai.cbam.dto.DefaultEmissionsRequest;
-import com.carbonai.cbam.dto.SimpleCostRequest;
 import com.carbonai.cbam.dto.ValidateReportRequest;
 import com.carbonai.cbam.model.ActivityInput;
+import com.carbonai.cbam.store.CsvDefaultValueRepository;
 import com.carbonai.cbam.store.DemoDataStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,9 @@ class CbamCalculatorServiceTests {
     void setUp() {
         DemoDataStore demoDataStore = new DemoDataStore();
         new SeedDataConfig(demoDataStore).seedData();
-        defaultValueService = new DefaultValueService(demoDataStore);
+        CsvDefaultValueRepository csvDefaultValueRepository = new CsvDefaultValueRepository();
+        csvDefaultValueRepository.load();
+        defaultValueService = new DefaultValueService(csvDefaultValueRepository);
         actualEmissionCalculationService = new ActualEmissionCalculationService(demoDataStore);
         cbamCostService = new CbamCostService();
         advancedCertificateService = new AdvancedCertificateService();
@@ -37,7 +39,7 @@ class CbamCalculatorServiceTests {
     }
 
     @Test
-    void shouldCalculateDefaultEmissions() {
+    void shouldCalculateDefaultEmissionsFromCountryFile() {
         DefaultEmissionsRequest request = new DefaultEmissionsRequest();
         request.setCountry("Turkey");
         request.setCnCode("25233000");
@@ -47,6 +49,32 @@ class CbamCalculatorServiceTests {
         BigDecimal result = defaultValueService.calculateDefaultEmissions(request).getEmbeddedEmissionsTco2e();
 
         assertThat(result).isEqualByComparingTo("214.5000");
+    }
+
+    @Test
+    void shouldCalculateDefaultEmissionsFromTransitionalFile() {
+        DefaultEmissionsRequest request = new DefaultEmissionsRequest();
+        request.setCountry("Turkey");
+        request.setCnCode("25233000");
+        request.setYear(2024);
+        request.setExportVolumeTons(new BigDecimal("100"));
+
+        BigDecimal result = defaultValueService.calculateDefaultEmissions(request).getEmbeddedEmissionsTco2e();
+
+        assertThat(result).isEqualByComparingTo("190.0000");
+    }
+
+    @Test
+    void shouldFallbackToBenchmarkFileWhenCountryValueMissing() {
+        DefaultEmissionsRequest request = new DefaultEmissionsRequest();
+        request.setCountry("Turkey");
+        request.setCnCode("25232100");
+        request.setYear(2026);
+        request.setExportVolumeTons(new BigDecimal("100"));
+
+        BigDecimal result = defaultValueService.calculateDefaultEmissions(request).getEmbeddedEmissionsTco2e();
+
+        assertThat(result).isEqualByComparingTo("85.9000");
     }
 
     @Test
@@ -116,28 +144,19 @@ class CbamCalculatorServiceTests {
     }
 
     @Test
-    void shouldCalculateSimpleCost() {
-        SimpleCostRequest request = new SimpleCostRequest();
-        request.setEmbeddedEmissionsTco2e(new BigDecimal("214.5"));
-        request.setCertificatePriceEurPerTco2e(new BigDecimal("76"));
-
-        BigDecimal result = cbamCostService.calculateSimpleCost(request).getEstimatedCostEur();
-
-        assertThat(result).isEqualByComparingTo("16302.00");
-    }
-
-    @Test
     void shouldCalculateAdvancedCertificates() {
         AdvancedCertificatesRequest request = new AdvancedCertificatesRequest();
-        request.setActualSpecificEmissionsTco2ePerTon(new BigDecimal("2.145"));
-        request.setCbamBenchmarkTco2ePerTon(new BigDecimal("1.5"));
-        request.setCbamFactor(new BigDecimal("0.975"));
-        request.setThirdCountryCarbonPriceEurPerTco2e(BigDecimal.ZERO);
-        request.setCbamCertificatePriceEurPerTco2e(new BigDecimal("76"));
+        request.setActualSpecificEmbeddedEmissionsTco2ePerTon(new BigDecimal("2.145"));
+        request.setSpecificEmbeddedFreeAllocationTco2ePerTon(new BigDecimal("1.4625"));
+        request.setEffectiveCarbonPricePaidInCountryOfOriginEurPerTco2e(BigDecimal.ZERO);
+        request.setEuEtsWeeklyAveragePriceEurPerTco2e(new BigDecimal("76"));
         request.setImportedQuantityTons(new BigDecimal("100"));
 
         var response = advancedCertificateService.calculateAdvancedCertificates(request);
 
+        assertThat(response.getTotalEmbeddedEmissionsTco2e()).isEqualByComparingTo("214.5000");
+        assertThat(response.getCertificateSurrenderObligationBeforeCarbonPriceAdjustment()).isEqualByComparingTo("68.2500");
+        assertThat(response.getCarbonPriceReductionInCertificates()).isEqualByComparingTo("0.0000");
         assertThat(response.getCertificatesToSurrender()).isEqualByComparingTo("68.2500");
         assertThat(response.getEstimatedCostEur()).isEqualByComparingTo("5187.00");
     }
@@ -145,10 +164,10 @@ class CbamCalculatorServiceTests {
     @Test
     void shouldCompareDefaultVsActual() {
         CompareDefaultVsActualRequest request = new CompareDefaultVsActualRequest();
-        request.setDefaultSpecificEmissionsTco2ePerTon(new BigDecimal("2.145"));
-        request.setActualSpecificEmissionsTco2ePerTon(new BigDecimal("1.6"));
+        request.setDefaultSpecificEmbeddedEmissionsTco2ePerTon(new BigDecimal("2.145"));
+        request.setActualSpecificEmbeddedEmissionsTco2ePerTon(new BigDecimal("1.6"));
         request.setExportVolumeTons(new BigDecimal("100"));
-        request.setCertificatePriceEurPerTco2e(new BigDecimal("76"));
+        request.setEuEtsWeeklyAveragePriceEurPerTco2e(new BigDecimal("76"));
 
         var response = cbamCostService.compareDefaultVsActual(request);
 

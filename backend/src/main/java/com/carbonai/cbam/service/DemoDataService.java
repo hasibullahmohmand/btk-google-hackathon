@@ -1,6 +1,7 @@
 package com.carbonai.cbam.service;
 
 import com.carbonai.cbam.dto.DemoDataResponse;
+import com.carbonai.cbam.store.CsvDefaultValueRepository;
 import com.carbonai.cbam.store.DemoDataStore;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,11 @@ import org.springframework.stereotype.Service;
 public class DemoDataService {
 
     private final DemoDataStore demoDataStore;
+    private final CsvDefaultValueRepository csvDefaultValueRepository;
 
-    public DemoDataService(DemoDataStore demoDataStore) {
+    public DemoDataService(DemoDataStore demoDataStore, CsvDefaultValueRepository csvDefaultValueRepository) {
         this.demoDataStore = demoDataStore;
+        this.csvDefaultValueRepository = csvDefaultValueRepository;
     }
 
     /**
@@ -47,7 +50,7 @@ public class DemoDataService {
      */
     public DemoDataResponse getDemoData() {
         DemoDataResponse response = new DemoDataResponse();
-        response.setDefaultValues(demoDataStore.getDefaultValues());
+        response.setDefaultValues(csvDefaultValueRepository.getAllDefaultValues());
         response.setEmissionFactors(demoDataStore.getEmissionFactors());
         response.setDemoCarbonPrices(demoDataStore.getDemoCarbonPrices());
         response.setDemoProducts(demoDataStore.getDemoProducts());

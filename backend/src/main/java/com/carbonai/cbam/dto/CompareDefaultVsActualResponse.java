@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 /**
  * Response body for /api/cbam/compare-default-vs-actual.
  *
- * Beginner-friendly explanation:
- * This response shows the cost of the default-value path, the cost of the
- * actual-data path, and the possible savings from using actual data.
+ * Source-of-truth explanation:
+ * This response compares ETS-linked certificate cost exposure for the default
+ * embedded-emissions path and the actual embedded-emissions path.
  */
 public class CompareDefaultVsActualResponse {
 

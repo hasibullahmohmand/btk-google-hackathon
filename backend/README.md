@@ -87,32 +87,46 @@ Main formulas:
 - `specificEmissions = totalFacilityEmissions / productionVolumeTons`
 - `exportedEmbeddedEmissions = specificEmissions x exportVolumeTons`
 
-### Simple cost mode
-
-Use this when embedded emissions are already known and only a quick EUR estimate is needed.
-
-Formula:
-
-`estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e`
-
 ### Advanced certificate formula
 
 Use this when more detailed inputs are available.
 
 Definitions:
 
-- `A = actual specific emissions`
-- `B = free allowance deduction = cbamBenchmark x cbamFactor`
-- `C = third-country carbon price deduction`
-- `D = imported quantity`
+- `specificEmbeddedEmissions = actual specific embedded emissions`
+- `specificEmbeddedFreeAllocation = SEFA-aligned free allocation adjustment`
+- `importedQuantity = imported quantity`
+- `effectiveCarbonPricePaidInCountryOfOrigin = carbon price effectively paid abroad`
+- `euEtsWeeklyAveragePrice = ETS-linked CBAM certificate price`
 
-Formula:
+Core formulas:
 
-`certificates = max(0, (A - B - C) x D)`
+`certificatesBeforeCarbonPriceAdjustment = max(0, (specificEmbeddedEmissions - specificEmbeddedFreeAllocation) x importedQuantity)`
 
-Then:
+`carbonPriceReductionInCertificates = certificatesBeforeCarbonPriceAdjustment x effectiveCarbonPricePaidInCountryOfOrigin / euEtsWeeklyAveragePrice`
 
-`estimatedCostEur = certificates x cbamCertificatePriceEurPerTco2e`
+`certificatesToSurrender = max(0, certificatesBeforeCarbonPriceAdjustment - carbonPriceReductionInCertificates)`
+
+`estimatedCostEur = certificatesToSurrender x euEtsWeeklyAveragePrice`
+
+## Formula traceability
+
+The table below records the exact Markdown source file used for each backend formula or formula family.
+
+| Backend formula or situation | Exact source `.md` file(s) | Traceability note |
+|---|---|---|
+| `embeddedEmissions = exportVolumeTons x defaultValueTco2ePerTon` in default-value mode | `pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md` | Derived from the regulation definitions of `default value` and `embedded emissions`. The shipment multiplication is the backend's deterministic simplification for one exported batch. |
+| Actual-data mode must include both direct and indirect emissions in embedded emissions totals | `pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md`, `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Direct source for the definitions of `embedded emissions` and the guidance that both direct and indirect emissions are to be reported. |
+| Actual-data mode electricity emissions use quantity x electricity emission factor | `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | The importer guidance explicitly says to report electricity quantities and multiply them by the relevant electricity emission factor. |
+| Actual-data mode specific emissions = total emissions / production volume | `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | The guidance says attributed emissions are divided by the activity level to obtain specific embedded emissions. |
+| Actual-data mode exported embedded emissions = specific emissions x exported quantity | `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Derived from the guidance's specific-embedded-emissions-per-ton concept together with goods quantities used in reporting. |
+| Use of actual data versus default values | `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md` | Direct policy source explaining that actual embedded emissions are preferred and defaults are fallback or conditional. |
+| Advanced-certificate free-allocation adjustment concept | `pdfs/outputs/raw_markdown/OJ_L_202502620_EN_TXT.md` | Main source for the 2026+ free allocation adjustment framework and benchmark-based adjustment logic. |
+| Advanced-certificate carbon price deduction concept | `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md`, `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Source for the rule that the effective carbon price paid outside the EU reduces the CBAM obligation. |
+| `/advanced-certificates` formula sequence | `pdfs/outputs/raw_markdown/OJ_L_202502620_EN_TXT.md`, `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md`, `pdfs/outputs/raw_markdown/OJ_L_202502548_EN_TXT.md` | Project-level simplification derived from the free allocation adjustment framework, foreign-carbon-price deduction rule, and certificate pricing rules. It is not a verbatim legal equation. |
+| Default-vs-actual comparison formula family | `pdfs/outputs/raw_markdown/CBAM Frequently Asked Questions_November 2023.md` | Project convenience calculation derived from the FAQ statement that actual values can lower the CBAM payment compared with default values. |
+| Scenario analysis formula family | `pdfs/outputs/raw_markdown/OJ_L_202502548_EN_TXT.md` | Project convenience calculation derived from the official certificate price mechanism and multiple possible ETS-linked price points. |
+| Report validation rule `total = direct + indirect` | `pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md`, `pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md` | Derived from the legal definitions and importer guidance that embedded emissions reporting accounts for both direct and indirect emissions. |
 
 ## Seeded demo data
 
@@ -163,7 +177,6 @@ This is why the system treats CBAM as a financial exposure tool as well as an em
 
 - `POST /api/cbam/default-emissions`
 - `POST /api/cbam/actual-emissions`
-- `POST /api/cbam/simple-cost`
 - `POST /api/cbam/advanced-certificates`
 - `POST /api/cbam/compare-default-vs-actual`
 - `POST /api/cbam/scenarios`
@@ -256,39 +269,16 @@ Response:
 }
 ```
 
-### 3. Simple cost
-
-```bash
-curl -X POST http://localhost:8080/api/cbam/simple-cost \
-  -H "Content-Type: application/json" \
-  -d '{
-    "embeddedEmissionsTco2e": 214.5,
-    "certificatePriceEurPerTco2e": 76
-  }'
-```
-
-Response:
-
-```json
-{
-  "embeddedEmissionsTco2e": 214.5000,
-  "certificatePriceEurPerTco2e": 76,
-  "estimatedCostEur": 16302.00,
-  "formula": "estimatedCostEur = embeddedEmissionsTco2e x certificatePriceEurPerTco2e"
-}
-```
-
-### 4. Advanced certificates
+### 3. Advanced certificates
 
 ```bash
 curl -X POST http://localhost:8080/api/cbam/advanced-certificates \
   -H "Content-Type: application/json" \
   -d '{
-    "actualSpecificEmissionsTco2ePerTon": 2.145,
-    "cbamBenchmarkTco2ePerTon": 1.5,
-    "cbamFactor": 0.975,
-    "thirdCountryCarbonPriceEurPerTco2e": 0,
-    "cbamCertificatePriceEurPerTco2e": 76,
+    "actualSpecificEmbeddedEmissionsTco2ePerTon": 2.145,
+    "specificEmbeddedFreeAllocationTco2ePerTon": 1.4625,
+    "effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e": 0,
+    "euEtsWeeklyAveragePriceEurPerTco2e": 76,
     "importedQuantityTons": 100
   }'
 ```
@@ -297,27 +287,30 @@ Response:
 
 ```json
 {
-  "actualSpecificEmissionsTco2ePerTon": 2.1450,
-  "freeAllowanceDeductionTco2ePerTon": 1.4625,
-  "thirdCountryCarbonPriceDeductionTco2ePerTon": 0.0000,
+  "actualSpecificEmbeddedEmissionsTco2ePerTon": 2.1450,
+  "specificEmbeddedFreeAllocationTco2ePerTon": 1.4625,
   "importedQuantityTons": 100,
+  "totalEmbeddedEmissionsTco2e": 214.5000,
+  "certificateSurrenderObligationBeforeCarbonPriceAdjustment": 68.2500,
+  "carbonPriceReductionInCertificates": 0.0000,
   "certificatesToSurrender": 68.2500,
-  "cbamCertificatePriceEurPerTco2e": 76,
+  "effectiveCarbonPricePaidInCountryOfOriginEurPerTco2e": 0,
+  "euEtsWeeklyAveragePriceEurPerTco2e": 76,
   "estimatedCostEur": 5187.00,
-  "formula": "certificates = max(0, (A - B - C) x D)"
+  "formula": "certificatesBeforeCarbonPriceAdjustment = max(0, (specificEmbeddedEmissions - specificEmbeddedFreeAllocation) x importedQuantity); carbonPriceReductionInCertificates = certificatesBeforeCarbonPriceAdjustment x effectiveCarbonPricePaidInCountryOfOrigin / euEtsWeeklyAveragePrice; certificatesToSurrender = max(0, certificatesBeforeCarbonPriceAdjustment - carbonPriceReductionInCertificates)"
 }
 ```
 
-### 5. Compare default vs actual
+### 4. Compare default vs actual
 
 ```bash
 curl -X POST http://localhost:8080/api/cbam/compare-default-vs-actual \
   -H "Content-Type: application/json" \
   -d '{
-    "defaultSpecificEmissionsTco2ePerTon": 2.145,
-    "actualSpecificEmissionsTco2ePerTon": 1.6,
+    "defaultSpecificEmbeddedEmissionsTco2ePerTon": 2.145,
+    "actualSpecificEmbeddedEmissionsTco2ePerTon": 1.6,
     "exportVolumeTons": 100,
-    "certificatePriceEurPerTco2e": 76
+    "euEtsWeeklyAveragePriceEurPerTco2e": 76
   }'
 ```
 
@@ -329,18 +322,18 @@ Response:
   "actualCostEur": 12160.00,
   "potentialSavingsEur": 4142.00,
   "savingsPercent": 25.41,
-  "message": "Using actual emissions data instead of default values may reduce estimated CBAM exposure."
+  "message": "Using actual embedded emissions instead of default values may reduce ETS-linked CBAM certificate cost exposure."
 }
 ```
 
-### 6. Scenario analysis
+### 5. Scenario analysis
 
 ```bash
 curl -X POST http://localhost:8080/api/cbam/scenarios \
   -H "Content-Type: application/json" \
   -d '{
     "embeddedEmissionsTco2e": 214.5,
-    "pricesEurPerTco2e": [76, 100, 120]
+    "euEtsWeeklyAveragePricesEurPerTco2e": [76, 100, 120]
   }'
 ```
 
@@ -351,22 +344,22 @@ Response:
   "embeddedEmissionsTco2e": 214.5000,
   "scenarios": [
     {
-      "priceEurPerTco2e": 76,
+      "euEtsWeeklyAveragePriceEurPerTco2e": 76,
       "estimatedCostEur": 16302.00
     },
     {
-      "priceEurPerTco2e": 100,
+      "euEtsWeeklyAveragePriceEurPerTco2e": 100,
       "estimatedCostEur": 21450.00
     },
     {
-      "priceEurPerTco2e": 120,
+      "euEtsWeeklyAveragePriceEurPerTco2e": 120,
       "estimatedCostEur": 25740.00
     }
   ]
 }
 ```
 
-### 7. Validate report
+### 6. Validate report
 
 ```bash
 curl -X POST http://localhost:8080/api/cbam/validate-report \
@@ -411,7 +404,7 @@ Invalid response example:
 }
 ```
 
-### 8. Demo data
+### 7. Demo data
 
 ```bash
 curl http://localhost:8080/api/cbam/demo-data

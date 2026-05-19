@@ -114,6 +114,10 @@ public class ActualEmissionCalculationService {
                             "No emission factor found for activityType=" + activity.getActivityType() + " and unit=" + activity.getUnit()
                     ));
 
+            // Source traceability:
+            // - pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md
+            //   says electricity quantities are multiplied by the relevant emission factor.
+            // The same deterministic quantity x factor pattern is used here for demo factors.
             // Step 1: convert physical activity into kilograms of CO2 equivalent.
             BigDecimal activityEmissionsKg = activity.getAmount().multiply(factor.getFactorKgCo2ePerUnit());
             // Step 2: convert kilograms into tonnes because CBAM calculations are
@@ -139,12 +143,23 @@ public class ActualEmissionCalculationService {
             breakdownList.add(breakdown);
         }
 
+        // Source traceability:
+        // - pdfs/outputs/raw_markdown/CELEX_32023R0956_EN_TXT.md
+        //   defines embedded emissions as direct plus indirect electricity emissions.
+        // - pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md
+        //   says both direct and indirect emissions are part of reporting.
         // CBAM embedded emissions include both direct and indirect emissions.
         BigDecimal totalFacilityEmissions = directEmissions.add(indirectEmissions);
 
+        // Source traceability:
+        // - pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md
+        //   states that attributed emissions are divided by activity level to get specific embedded emissions.
         // Specific emissions tell us how many tonnes of CO2e were emitted per
         // one ton of product produced at the facility.
         BigDecimal specificEmissions = totalFacilityEmissions.divide(request.getProductionVolumeTons(), 8, CalculationSupport.ROUNDING_MODE);
+        // Source traceability:
+        // - pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md
+        //   uses specific embedded emissions together with goods quantities in reporting.
         // Exported embedded emissions take that per-ton intensity and apply it
         // only to the exported quantity.
         BigDecimal exportedEmbeddedEmissions = specificEmissions.multiply(request.getExportVolumeTons());
