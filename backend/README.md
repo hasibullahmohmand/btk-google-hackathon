@@ -4,6 +4,8 @@ This module is a Spring Boot backend for deterministic CBAM calculations. It is 
 
 The backend does not use AI for any calculation.
 
+This repository no longer ships a Spring-served frontend placeholder. The intended UI is a separate React application that calls this backend over HTTP.
+
 ## What CBAM certificates are
 
 CBAM certificates are units that EU importers or authorized CBAM declarants may need to buy and surrender to cover the embedded emissions of imported goods.
@@ -145,9 +147,21 @@ The table below records the exact Markdown source file used for each backend for
 
 ### Emission factors
 
-- `NATURAL_GAS`: unit `m3`, factor `2.0 kgCO2e/m3`
-- `DIESEL`: unit `liter`, factor `2.68 kgCO2e/liter`
-- `ELECTRICITY`: unit `kWh`, factor `0.42 kgCO2e/kWh`
+The actual-emissions endpoint does not accept a simplified fixed enum such as
+`NATURAL_GAS` or `ELECTRICITY`.
+
+It performs an exact lookup against the CSV-backed factor repository using:
+
+- `activityType`
+- `unit`
+- `year`
+
+The safest way to discover supported values is to inspect `GET /api/cbam/demo-data`.
+
+Examples that match the current repository data and tests:
+
+- `Natural gas`: unit `t`, factor `2692.8 kgCO2e/t`, derived from `emission_tables_csv/table_1_fuel_emission_factors.csv`
+- `Gas/Diesel oil`: unit `t`, factor `3186.3 kgCO2e/t`, derived from `emission_tables_csv/table_1_fuel_emission_factors.csv`
 
 ### Demo carbon prices
 
@@ -191,6 +205,10 @@ OpenAPI JSON:
 
 - `http://localhost:8080/v3/api-docs`
 
+React integration contract:
+
+- See [FRONTEND_API_CONTRACT.md](C:/Users/anisa/btk-google-hackathon/backend/FRONTEND_API_CONTRACT.md)
+
 ## Endpoint examples
 
 ### 1. Default emissions
@@ -228,14 +246,15 @@ Response:
 curl -X POST http://localhost:8080/api/cbam/actual-emissions \
   -H "Content-Type: application/json" \
   -d '{
-    "product": "steel",
+    "cnCode": "72142000",
+    "country": "Turkey",
+    "year": 2026,
     "productionVolumeTons": 100,
     "exportVolumeTons": 40,
     "includeIndirectEmissions": true,
     "activities": [
-      { "activityType": "NATURAL_GAS", "amount": 5000, "unit": "m3" },
-      { "activityType": "DIESEL", "amount": 1200, "unit": "liter" },
-      { "activityType": "ELECTRICITY", "amount": 25000, "unit": "kWh" }
+      { "activityType": "Natural gas", "amount": 50, "unit": "t" },
+      { "activityType": "Gas/Diesel oil", "amount": 5, "unit": "t" }
     ]
   }'
 ```
@@ -244,24 +263,35 @@ Response:
 
 ```json
 {
-  "product": "steel",
+  "cnCode": "72142000",
+  "country": "Turkey",
+  "year": 2026,
   "productionVolumeTons": 100,
   "exportVolumeTons": 40,
-  "directEmissionsTco2e": 13.2160,
-  "indirectEmissionsTco2e": 10.5000,
-  "totalFacilityEmissionsTco2e": 23.7160,
-  "specificEmissionsTco2ePerTon": 0.2372,
-  "exportedEmbeddedEmissionsTco2e": 9.4864,
+  "directEmissionsTco2e": 150.5715,
+  "indirectEmissionsTco2e": 0.0000,
+  "totalFacilityEmissionsTco2e": 150.5715,
+  "specificEmissionsTco2ePerTon": 1.5057,
+  "exportedEmbeddedEmissionsTco2e": 60.2286,
   "includeIndirectEmissions": true,
   "calculationMode": "ACTUAL_DATA",
   "activityBreakdown": [
     {
-      "activityType": "NATURAL_GAS",
-      "amount": 5000,
-      "unit": "m3",
-      "factor": 2.0,
-      "factorUnit": "kgCO2e/m3",
-      "emissionsTco2e": 10.0000,
+      "activityType": "Natural gas",
+      "amount": 50,
+      "unit": "t",
+      "factor": 2692.8,
+      "factorUnit": "kgCO2e/t",
+      "emissionsTco2e": 134.6400,
+      "emissionCategory": "DIRECT"
+    },
+    {
+      "activityType": "Gas/Diesel oil",
+      "amount": 5,
+      "unit": "t",
+      "factor": 3186.3,
+      "factorUnit": "kgCO2e/t",
+      "emissionsTco2e": 15.9315,
       "emissionCategory": "DIRECT"
     }
   ],
@@ -423,15 +453,20 @@ Response:
   ],
   "emissionFactors": [
     {
-      "activityType": "NATURAL_GAS",
-      "unit": "m3",
-      "factorKgCo2ePerUnit": 2.0
+      "activityType": "Natural gas",
+      "unit": "t",
+      "factorKgCo2ePerUnit": 2692.8
     }
   ],
   "demoCarbonPrices": [76, 100, 120],
   "demoProducts": ["Aluminous cement", "Steel", "Aluminium", "Fertiliser", "Hydrogen"]
 }
 ```
+
+Note:
+
+- `GET /api/cbam/demo-data` returns the loaded factor catalogue, not a small hand-curated enum list.
+- Some returned factor rows are reference values only and have `"calculable": false`; those rows are not valid direct inputs for `/actual-emissions`.
 
 ## Example validation error shape
 

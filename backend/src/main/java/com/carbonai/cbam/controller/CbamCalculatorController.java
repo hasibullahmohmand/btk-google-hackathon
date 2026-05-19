@@ -112,11 +112,13 @@ public class CbamCalculatorController {
      * Embedded emissions are calculated with both direct and indirect emissions.
      *
      * Parameters:
-     * request.product = product label, example "steel"
+     * request.cnCode = customs CN code, example "72142000"
+     * request.country = installation country, example "Turkey"
+     * request.year = reporting year, example 2026
      * request.productionVolumeTons = total produced quantity, example 100
      * request.exportVolumeTons = exported quantity, example 40
-     * request.includeIndirectEmissions = backward-compatible request flag retained by the API
-     * request.activities = list of factory activities, example natural gas, diesel, electricity
+     * request.includeIndirectEmissions = optional backward-compatible request flag retained by the API
+     * request.activities = list of activities where activityType must exactly match a row label from emission_tables_csv
      *
      * Formula:
      * activityEmissionsKg = amount x factor
@@ -125,13 +127,13 @@ public class CbamCalculatorController {
      * exportedEmbeddedEmissions = specificEmissions x exportVolumeTons
      *
      * Step-by-step example calculation:
-     * 23.716 total tCO2e / 100 tons = 0.23716 tCO2e/t
-     * 0.23716 x 40 = 9.4864 tCO2e
+     * 150.5715 total tCO2e / 100 tons = 1.505715 tCO2e/t
+     * 1.505715 x 40 = 60.2286 tCO2e
      *
      * Output example:
      * {
-     *   "specificEmissionsTco2ePerTon": 0.2372,
-     *   "exportedEmbeddedEmissionsTco2e": 9.4864
+     *   "specificEmissionsTco2ePerTon": 1.5057,
+     *   "exportedEmbeddedEmissionsTco2e": 60.2286
      * }
      */
     @Operation(summary = "Calculate actual emissions from factory activity data")

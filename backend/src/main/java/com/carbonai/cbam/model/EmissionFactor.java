@@ -7,20 +7,24 @@ import java.math.BigDecimal;
  *
  * Beginner-friendly explanation:
  * An emission factor tells the system how much CO2e is associated with one unit
- * of a given activity, such as one liter of diesel or one kWh of electricity.
+ * of a given activity, such as one ton of Natural gas or one ton of Gas/Diesel oil.
  */
 public class EmissionFactor {
 
-    /** Activity category. Example: DIESEL. */
+    /** Activity category. Example: Natural gas. */
     private String activityType;
-    /** Unit expected for the activity amount. Example: liter. */
+    /** Unit expected for the activity amount. Example: t. */
     private String unit;
     /** Numeric factor in kgCO2e per unit. */
     private BigDecimal factorKgCo2ePerUnit;
-    /** Human-readable factor unit. Example: kgCO2e/liter. */
+    /** Human-readable factor unit. Example: kgCO2e/t. */
     private String factorUnit;
     /** Short explanation of where the factor came from. */
     private String source;
+    /** Name of the CSV table used as the source. */
+    private String tableName;
+    /** True when this row can be used directly in emissions calculations. */
+    private Boolean calculable;
 
     public EmissionFactor() {
     }
@@ -31,6 +35,22 @@ public class EmissionFactor {
         this.factorKgCo2ePerUnit = factorKgCo2ePerUnit;
         this.factorUnit = factorUnit;
         this.source = source;
+    }
+
+    public EmissionFactor(String activityType,
+                          String unit,
+                          BigDecimal factorKgCo2ePerUnit,
+                          String factorUnit,
+                          String source,
+                          String tableName,
+                          Boolean calculable) {
+        this.activityType = activityType;
+        this.unit = unit;
+        this.factorKgCo2ePerUnit = factorKgCo2ePerUnit;
+        this.factorUnit = factorUnit;
+        this.source = source;
+        this.tableName = tableName;
+        this.calculable = calculable;
     }
 
     public String getActivityType() {
@@ -71,5 +91,21 @@ public class EmissionFactor {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public Boolean getCalculable() {
+        return calculable;
+    }
+
+    public void setCalculable(Boolean calculable) {
+        this.calculable = calculable;
     }
 }

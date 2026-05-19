@@ -14,14 +14,16 @@ import java.util.List;
  *
  * Example response:
  * {
- *   "product": "steel",
+ *   "cnCode": "72142000",
+ *   "country": "Turkey",
+ *   "year": 2026,
  *   "productionVolumeTons": 100,
  *   "exportVolumeTons": 40,
- *   "directEmissionsTco2e": 13.2160,
- *   "indirectEmissionsTco2e": 10.5000,
- *   "totalFacilityEmissionsTco2e": 23.7160,
- *   "specificEmissionsTco2ePerTon": 0.2372,
- *   "exportedEmbeddedEmissionsTco2e": 9.4864,
+ *   "directEmissionsTco2e": 150.5715,
+ *   "indirectEmissionsTco2e": 0.0000,
+ *   "totalFacilityEmissionsTco2e": 150.5715,
+ *   "specificEmissionsTco2ePerTon": 1.5057,
+ *   "exportedEmbeddedEmissionsTco2e": 60.2286,
  *   "includeIndirectEmissions": true,
  *   "calculationMode": "ACTUAL_DATA",
  *   "activityBreakdown": [],
@@ -30,8 +32,12 @@ import java.util.List;
  */
 public class ActualEmissionsResponse {
 
-    /** Product label echoed from the request. */
-    private String product;
+    /** CN code echoed from the request. */
+    private String cnCode;
+    /** Country echoed from the request. */
+    private String country;
+    /** Reporting year echoed from the request. */
+    private Integer year;
     /** Total production volume used as the denominator for specific emissions. */
     private BigDecimal productionVolumeTons;
     /** Export volume used to calculate exported embedded emissions. */
@@ -55,12 +61,28 @@ public class ActualEmissionsResponse {
     /** Non-blocking input warnings. */
     private List<String> warnings;
 
-    public String getProduct() {
-        return product;
+    public String getCnCode() {
+        return cnCode;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setCnCode(String cnCode) {
+        this.cnCode = cnCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public BigDecimal getProductionVolumeTons() {

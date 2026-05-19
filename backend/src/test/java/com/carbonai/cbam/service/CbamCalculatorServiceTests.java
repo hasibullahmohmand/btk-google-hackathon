@@ -9,6 +9,7 @@ import com.carbonai.cbam.dto.ValidateReportRequest;
 import com.carbonai.cbam.model.ActivityInput;
 import com.carbonai.cbam.store.CsvDefaultValueRepository;
 import com.carbonai.cbam.store.DemoDataStore;
+import com.carbonai.cbam.store.EmissionTableRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,10 +30,12 @@ class CbamCalculatorServiceTests {
     void setUp() {
         DemoDataStore demoDataStore = new DemoDataStore();
         new SeedDataConfig(demoDataStore).seedData();
+        EmissionTableRepository emissionTableRepository = new EmissionTableRepository();
+        emissionTableRepository.load();
         CsvDefaultValueRepository csvDefaultValueRepository = new CsvDefaultValueRepository();
         csvDefaultValueRepository.load();
         defaultValueService = new DefaultValueService(csvDefaultValueRepository);
-        actualEmissionCalculationService = new ActualEmissionCalculationService(demoDataStore);
+        actualEmissionCalculationService = new ActualEmissionCalculationService(emissionTableRepository);
         cbamCostService = new CbamCostService();
         advancedCertificateService = new AdvancedCertificateService();
         reportValidationService = new ReportValidationService();
@@ -80,65 +83,63 @@ class CbamCalculatorServiceTests {
     @Test
     void shouldCalculateActualEmissions() {
         ActualEmissionsRequest request = new ActualEmissionsRequest();
-        request.setProduct("steel");
+        request.setCnCode("72142000");
+        request.setCountry("Turkey");
+        request.setYear(2026);
         request.setProductionVolumeTons(new BigDecimal("100"));
         request.setExportVolumeTons(new BigDecimal("40"));
         request.setIncludeIndirectEmissions(true);
 
         ActivityInput naturalGas = new ActivityInput();
-        naturalGas.setActivityType("NATURAL_GAS");
-        naturalGas.setAmount(new BigDecimal("5000"));
-        naturalGas.setUnit("m3");
+        naturalGas.setActivityType("Natural gas");
+        naturalGas.setAmount(new BigDecimal("50"));
+        naturalGas.setUnit("t");
 
         ActivityInput diesel = new ActivityInput();
-        diesel.setActivityType("DIESEL");
-        diesel.setAmount(new BigDecimal("1200"));
-        diesel.setUnit("liter");
+        diesel.setActivityType("Gas/Diesel oil");
+        diesel.setAmount(new BigDecimal("5"));
+        diesel.setUnit("t");
 
-        ActivityInput electricity = new ActivityInput();
-        electricity.setActivityType("ELECTRICITY");
-        electricity.setAmount(new BigDecimal("25000"));
-        electricity.setUnit("kWh");
-
-        request.setActivities(List.of(naturalGas, diesel, electricity));
+        request.setActivities(List.of(naturalGas, diesel));
 
         var response = actualEmissionCalculationService.calculateActualEmissions(request);
 
-        assertThat(response.getDirectEmissionsTco2e()).isEqualByComparingTo("13.2160");
-        assertThat(response.getIndirectEmissionsTco2e()).isEqualByComparingTo("10.5000");
-        assertThat(response.getTotalFacilityEmissionsTco2e()).isEqualByComparingTo("23.7160");
-        assertThat(response.getExportedEmbeddedEmissionsTco2e()).isEqualByComparingTo("9.4864");
+        assertThat(response.getCnCode()).isEqualTo("72142000");
+        assertThat(response.getCountry()).isEqualTo("Turkey");
+        assertThat(response.getYear()).isEqualTo(2026);
+        assertThat(response.getDirectEmissionsTco2e()).isEqualByComparingTo("150.5715");
+        assertThat(response.getIndirectEmissionsTco2e()).isEqualByComparingTo("0.0000");
+        assertThat(response.getTotalFacilityEmissionsTco2e()).isEqualByComparingTo("150.5715");
+        assertThat(response.getSpecificEmissionsTco2ePerTon()).isEqualByComparingTo("1.5057");
+        assertThat(response.getExportedEmbeddedEmissionsTco2e()).isEqualByComparingTo("60.2286");
     }
 
     @Test
     void shouldStillIncludeIndirectEmissionsWhenCompatibilityFlagIsFalse() {
         ActualEmissionsRequest request = new ActualEmissionsRequest();
-        request.setProduct("steel");
+        request.setCnCode("72142000");
+        request.setCountry("Turkey");
+        request.setYear(2026);
         request.setProductionVolumeTons(new BigDecimal("100"));
         request.setExportVolumeTons(new BigDecimal("40"));
         request.setIncludeIndirectEmissions(false);
 
         ActivityInput naturalGas = new ActivityInput();
-        naturalGas.setActivityType("NATURAL_GAS");
-        naturalGas.setAmount(new BigDecimal("5000"));
-        naturalGas.setUnit("m3");
+        naturalGas.setActivityType("Natural gas");
+        naturalGas.setAmount(new BigDecimal("50"));
+        naturalGas.setUnit("t");
 
         ActivityInput diesel = new ActivityInput();
-        diesel.setActivityType("DIESEL");
-        diesel.setAmount(new BigDecimal("1200"));
-        diesel.setUnit("liter");
+        diesel.setActivityType("Gas/Diesel oil");
+        diesel.setAmount(new BigDecimal("5"));
+        diesel.setUnit("t");
 
-        ActivityInput electricity = new ActivityInput();
-        electricity.setActivityType("ELECTRICITY");
-        electricity.setAmount(new BigDecimal("25000"));
-        electricity.setUnit("kWh");
-
-        request.setActivities(List.of(naturalGas, diesel, electricity));
+        request.setActivities(List.of(naturalGas, diesel));
 
         var response = actualEmissionCalculationService.calculateActualEmissions(request);
 
         assertThat(response.getIncludeIndirectEmissions()).isTrue();
-        assertThat(response.getTotalFacilityEmissionsTco2e()).isEqualByComparingTo("23.7160");
+        assertThat(response.getTotalFacilityEmissionsTco2e()).isEqualByComparingTo("150.5715");
         assertThat(response.getWarnings())
                 .anyMatch(warning -> warning.contains("includeIndirectEmissions=false is ignored"));
     }

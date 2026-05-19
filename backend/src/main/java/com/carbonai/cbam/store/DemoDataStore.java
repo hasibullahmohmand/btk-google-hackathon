@@ -56,11 +56,11 @@ public class DemoDataStore {
      * how much CO2e is associated with one unit of a given activity.
      *
      * Example input:
-     * activityType = "DIESEL"
-     * unit = "liter"
+     * activityType = "Natural gas"
+     * unit = "t"
      *
      * Example output:
-     * factor = 2.68 kgCO2e/liter
+     * factor = derived kgCO2e/t value for the CSV-backed activity row
      */
     public Optional<EmissionFactor> findEmissionFactor(String activityType, String unit) {
         return emissionFactors.stream()

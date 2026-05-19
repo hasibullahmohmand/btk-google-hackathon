@@ -6,7 +6,7 @@ import com.carbonai.cbam.exception.BusinessException;
 import com.carbonai.cbam.model.ActivityEmissionBreakdown;
 import com.carbonai.cbam.model.ActivityInput;
 import com.carbonai.cbam.model.EmissionFactor;
-import com.carbonai.cbam.store.DemoDataStore;
+import com.carbonai.cbam.store.EmissionTableRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -17,25 +17,26 @@ import java.util.List;
  * Service that converts activity data into actual emissions.
  *
  * Beginner-friendly explanation:
- * This service is for the case where a factory knows what it actually used,
- * such as natural gas, diesel, and electricity. Instead of relying on default
- * values, it calculates emissions from the real activity data row by row.
+ * This service is for the case where a factory knows what it actually used and
+ * maps each activity row to a factor row from emission_tables_csv. Instead of
+ * relying on hardcoded demo values, it calculates emissions row by row from the
+ * CSV-backed factor repository.
  */
 @Service
 public class ActualEmissionCalculationService {
 
     private static final BigDecimal KG_PER_TON = new BigDecimal("1000");
-    private final DemoDataStore demoDataStore;
+    private final EmissionTableRepository emissionTableRepository;
 
-    public ActualEmissionCalculationService(DemoDataStore demoDataStore) {
-        this.demoDataStore = demoDataStore;
+    public ActualEmissionCalculationService(EmissionTableRepository emissionTableRepository) {
+        this.emissionTableRepository = emissionTableRepository;
     }
 
     /**
      * Calculates embedded emissions from real factory activity data.
      *
      * Business meaning:
-     * 1. Looks up a seeded emission factor for each activity type and unit.
+     * 1. Looks up a CSV-derived emission factor for each activity type and unit.
      * 2. Converts activity amounts into kgCO2e.
      * 3. Converts kgCO2e into tCO2e.
      * 4. Splits emissions into direct and indirect categories.
@@ -43,23 +44,24 @@ public class ActualEmissionCalculationService {
      * 6. Computes emissions for only the exported share of production.
      *
      * Parameters:
-     * request.product = product label, example "steel"
+     * request.cnCode = customs code of the good, example "72142000"
+     * request.country = country of the installation, example "Turkey"
+     * request.year = reporting year, example 2026
      * request.productionVolumeTons = total production, example 100
      * request.exportVolumeTons = exported quantity, example 40
-     * request.includeIndirectEmissions = compatibility flag retained by the API
-     * request.activities = activity rows such as natural gas, diesel, electricity
+     * request.includeIndirectEmissions = optional compatibility flag retained by the API
+     * request.activities = rows whose activityType matches a row name from emission_tables_csv
      *
      * Example input values:
-     * NATURAL_GAS = 5000 m3
-     * DIESEL = 1200 liter
-     * ELECTRICITY = 25000 kWh
+     * Natural gas = 50 t
+     * Gas/Diesel oil = 5 t
      *
      * Example output values:
-     * directEmissionsTco2e = 13.2160
-     * indirectEmissionsTco2e = 10.5000
-     * totalFacilityEmissionsTco2e = 23.7160
-     * specificEmissionsTco2ePerTon = 0.2372
-     * exportedEmbeddedEmissionsTco2e = 9.4864
+     * directEmissionsTco2e = 12276.5000
+     * indirectEmissionsTco2e = 0.0000
+     * totalFacilityEmissionsTco2e = 12276.5000
+     * specificEmissionsTco2ePerTon = 122.7650
+     * exportedEmbeddedEmissionsTco2e = 4910.6000
      *
      * Formula used:
      * activityEmissionsKg = amount x factorKgCo2ePerUnit
@@ -69,26 +71,24 @@ public class ActualEmissionCalculationService {
      *
      * Step-by-step example calculation:
      * 1. Natural gas:
-     *    5000 x 2.0 = 10000 kgCO2e = 10.0 tCO2e
+     *    50 x 2692.8 = 134640 kgCO2e = 134.64 tCO2e
      * 2. Diesel:
-     *    1200 x 2.68 = 3216 kgCO2e = 3.216 tCO2e
-     * 3. Electricity:
-     *    25000 x 0.42 = 10500 kgCO2e = 10.5 tCO2e
-     * 4. Direct emissions:
-     *    10.0 + 3.216 = 13.216 tCO2e
-     * 5. Indirect emissions:
-     *    10.5 tCO2e
-     * 6. Total facility emissions:
-     *    13.216 + 10.5 = 23.716 tCO2e
+     *    5 x 3186.3 = 15931.5 kgCO2e = 15.9315 tCO2e
+     * 3. Direct emissions:
+     *    134.64 + 15.9315 = 150.5715 tCO2e
+     * 4. Indirect emissions:
+     *    0 if no indirect-capable activity rows are provided
+     * 5. Total facility emissions:
+     *    150.5715 + 0 = 150.5715 tCO2e
      * 7. Specific emissions per ton:
-     *    23.716 / 100 = 0.23716 tCO2e/t
+     *    150.5715 / 100 = 1.505715 tCO2e/t
      * 8. Exported embedded emissions:
-     *    0.23716 x 40 = 9.4864 tCO2e
+     *    1.505715 x 40 = 60.2286 tCO2e
      *
      * Output example:
      * {
-     *   "specificEmissionsTco2ePerTon": 0.2372,
-     *   "exportedEmbeddedEmissionsTco2e": 9.4864,
+     *   "specificEmissionsTco2ePerTon": 1.5057,
+     *   "exportedEmbeddedEmissionsTco2e": 60.2286,
      *   "calculationMode": "ACTUAL_DATA"
      * }
      */
@@ -108,11 +108,26 @@ public class ActualEmissionCalculationService {
         }
 
         for (ActivityInput activity : request.getActivities()) {
-            EmissionFactor factor = demoDataStore.findEmissionFactor(activity.getActivityType(), activity.getUnit())
+            EmissionFactor factor = emissionTableRepository.findEmissionFactor(
+                            activity.getActivityType(),
+                            activity.getUnit(),
+                            request.getYear()
+                    )
                     .orElseThrow(() -> new BusinessException(
                             "EMISSION_FACTOR_NOT_FOUND",
-                            "No emission factor found for activityType=" + activity.getActivityType() + " and unit=" + activity.getUnit()
+                            "No CSV-backed factor found for activityType=" + activity.getActivityType()
+                                    + ", unit=" + activity.getUnit()
+                                    + ", year=" + request.getYear()
                     ));
+
+            if (Boolean.FALSE.equals(factor.getCalculable())) {
+                throw new BusinessException(
+                        "REFERENCE_VALUE_NOT_DIRECTLY_CALCULABLE",
+                        "The activityType=" + activity.getActivityType()
+                                + " from " + factor.getTableName()
+                                + " is a reference value, not a direct embedded-emissions factor."
+                );
+            }
 
             // Source traceability:
             // - pdfs/outputs/raw_markdown/TAXUD-2023-01189-01-00-EN-ORI-00.md
@@ -132,7 +147,7 @@ public class ActualEmissionCalculationService {
             breakdown.setFactorUnit(factor.getFactorUnit());
             breakdown.setEmissionsTco2e(CalculationSupport.roundEmissions(activityEmissionsTco2e));
 
-            if ("ELECTRICITY".equalsIgnoreCase(activity.getActivityType())) {
+            if (isIndirectActivity(factor)) {
                 indirectEmissions = indirectEmissions.add(activityEmissionsTco2e);
                 breakdown.setEmissionCategory("INDIRECT");
             } else {
@@ -165,7 +180,9 @@ public class ActualEmissionCalculationService {
         BigDecimal exportedEmbeddedEmissions = specificEmissions.multiply(request.getExportVolumeTons());
 
         ActualEmissionsResponse response = new ActualEmissionsResponse();
-        response.setProduct(request.getProduct());
+        response.setCnCode(request.getCnCode());
+        response.setCountry(request.getCountry());
+        response.setYear(request.getYear());
         response.setProductionVolumeTons(request.getProductionVolumeTons());
         response.setExportVolumeTons(request.getExportVolumeTons());
         response.setDirectEmissionsTco2e(CalculationSupport.roundEmissions(directEmissions));
@@ -178,5 +195,10 @@ public class ActualEmissionCalculationService {
         response.setActivityBreakdown(breakdownList);
         response.setWarnings(warnings);
         return response;
+    }
+
+    private boolean isIndirectActivity(EmissionFactor factor) {
+        String activityType = factor.getActivityType() == null ? "" : factor.getActivityType().toLowerCase();
+        return activityType.contains("electricity");
     }
 }

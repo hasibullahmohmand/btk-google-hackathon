@@ -1,0 +1,41 @@
+﻿fuel_type_description;emission_factor_t_CO2_per_TJ;net_calorific_value_TJ_per_Gg;source;notes
+Crude oil;73,3;42,3;IPCC 2006 GL;
+Orimulsion;77,0;27,5;IPCC 2006 GL;
+Natural gas liquids;64,2;44,2;IPCC 2006 GL;
+Motor gasoline;69,3;44,3;IPCC 2006 GL;
+Kerosene (other than jet kerosene);71,9;43,8;IPCC 2006 GL;
+Shale oil;73,3;38,1;IPCC 2006 GL;
+Gas/Diesel oil;74,1;43,0;IPCC 2006 GL;
+Residual fuel oil;77,4;40,4;IPCC 2006 GL;
+Liquefied petroleum gases;63,1;47,3;IPCC 2006 GL;
+Ethane;61,6;46,4;IPCC 2006 GL;
+Naphtha;73,3;44,5;IPCC 2006 GL;
+Bitumen;80,7;40,2;IPCC 2006 GL;
+Lubricants;73,3;40,2;IPCC 2006 GL;
+Petroleum coke;97,5;32,5;IPCC 2006 GL;
+Refinery feedstocks;73,3;43,0;IPCC 2006 GL;
+Refinery gas;57,6;49,5;IPCC 2006 GL;
+Paraffin waxes;73,3;40,2;IPCC 2006 GL;
+White spirit and SBP;73,3;40,2;IPCC 2006 GL;
+Other petroleum products;73,3;40,2;IPCC 2006 GL;
+Anthracite;98,3;26,7;IPCC 2006 GL;
+Coking coal;94,6;28,2;IPCC 2006 GL;
+Other bituminous coal;94,6;25,8;IPCC 2006 GL;
+Sub-bituminous coal;96,1;18,9;IPCC 2006 GL;
+Lignite;101,0;11,9;IPCC 2006 GL;
+Oil shale and tar sands;107,0;8,9;IPCC 2006 GL;
+Patent fuel;97,5;20,7;IPCC 2006 GL;
+Coke oven coke and lignite coke;107,0;28,2;IPCC 2006 GL;
+Gas coke;107,0;28,2;IPCC 2006 GL;
+Coal tar;80,7;28,0;IPCC 2006 GL;
+Gas works gas;44,4;38,7;IPCC 2006 GL;
+Coke oven gas;44,4;38,7;IPCC 2006 GL;
+Blast furnace gas;260;2,47;IPCC 2006 GL;
+Oxygen steel furnace gas;182;7,06;IPCC 2006 GL;
+Natural gas;56,1;48,0;IPCC 2006 GL;
+Industrial wastes;143;n.a.;IPCC 2006 GL;
+Waste oils;73,3;40,2;IPCC 2006 GL;
+Peat;106,0;9,76;IPCC 2006 GL;
+Waste tyres;85,0;n.a.;World Business Council for Sustainable Development - Cement Sustainability Initiative (WBCSD CSI);(1) Preliminary emission factor before application of a biomass fraction, if applicable.
+Carbon monoxide;155,2;10,1;J. Falbe and M. Regitz, Römpp Chemie Lexikon, Stuttgart, 1995;(2) Based on NCV of 10,12 TJ/t.
+Methane;54,9;50,0;J. Falbe and M. Regitz, Römpp Chemie Lexikon, Stuttgart, 1995;(3) Based on NCV of 50,0 TJ/t.

@@ -1,0 +1,12 @@
+﻿biomass_material;preliminary_emission_factor_t_CO2_per_TJ;NCV_GJ_per_t;source;notes
+Wood / Wood waste (air dry);112;15,6;IPCC 2006 GL;(1) The given emission factor assumes around 15% water content of the wood. Fresh wood can have water content up to 50%. For determining the NCV of completely dry wood, use: NCV = NCV_dry · (1 − w) − ΔH_v · w. ΔH_v = 2,4 GJ/t H2O.
+Sulphite lyes (black liquor);95,3;11,8;IPCC 2006 GL;
+Other primary solid biomass;100;11,6;IPCC 2006 GL;
+Charcoal;112;29,5;IPCC 2006 GL;
+Biogasoline;70,8;27,0;IPCC 2006 GL;
+Biodiesels;70,8;37,0;IPCC 2006 GL;(2) The NCV value is taken from Annex III to Directive (EU) 2018/2001.
+Other liquid biofuels;79,6;27,4;IPCC 2006 GL;
+Landfill gas;54,6;50,4;IPCC 2006 GL;(3) Standard values refer to pure biomethane. Correction is required for methane content of the gas.
+Sludge gas;54,6;50,4;IPCC 2006 GL;(3) Standard values refer to pure biomethane. Correction is required for methane content of the gas.
+Other biogas;54,6;50,4;IPCC 2006 GL;(3) Standard values refer to pure biomethane. Correction is required for methane content of the gas.
+Municipal waste (biomass fraction);100;11,6;IPCC 2006 GL;"(4) IPCC guidelines also give values for fossil fraction of municipal waste: EF = 91,7 t CO2/TJ; NCV = 10 GJ/t."

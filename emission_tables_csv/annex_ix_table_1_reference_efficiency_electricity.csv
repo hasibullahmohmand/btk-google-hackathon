@@ -1,0 +1,15 @@
+﻿category;code;type_of_fuel;before_2012;year_2012_to_2015;from_2016
+Solids;S1;Hard coal including anthracite, bituminous coal, sub-bituminous coal, coke, semi-coke, pet coke;44,2;44,2;44,2
+Solids;S2;Lignite, lignite briquettes, shale oil;41,8;41,8;41,8
+Solids;S3;Peat, peat briquettes;39,0;39,0;39,0
+Solids;S4;Dry biomass including wood and other solid biomass including wood pellets and briquettes, dried woodchips, clean and dry waste wood, nut shells and olive and other stones;33,0;33,0;37,0
+Solids;S5;Other solid biomass including all wood not included under S4 and black and brown liquor;25,0;25,0;30,0
+Solids;S6;Municipal and industrial waste (non-renewable) and renewable/bio-degradable waste;25,0;25,0;25,0
+Liquids;L7;Heavy fuel oil, gas/diesel oil, other oil products;44,2;44,2;44,2
+Liquids;L8;Bio-liquids including bio-methanol, bioethanol, bio-butanol, biodiesel, and other bio-liquids;44,2;44,2;44,2
+Liquids;L9;Waste liquids including biodegradable and non-renewable waste (including tallow, fat and spent grain);25,0;25,0;29,0
+Gaseous;G10;Natural gas, LPG, LNG and biomethane;52,5;52,5;53,0
+Gaseous;G11;Refinery gases, hydrogen and synthesis gas;44,2;44,2;44,2
+Gaseous;G12;Biogas produced from anaerobic digestion, landfill, and sewage treatment;42,0;42,0;42,0
+Gaseous;G13;Coke oven gas, blast furnace gas, mining gas, and other recovered gases (excluding refinery gas);35,0;35,0;35,0
+Other;O14;Waste heat (including high temperature process exhaust gases, product from exothermic chemical reactions);;;30,0

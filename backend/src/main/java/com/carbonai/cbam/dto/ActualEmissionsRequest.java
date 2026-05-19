@@ -22,34 +22,38 @@ import java.util.List;
  *
  * Example request:
  * {
- *   "product": "steel",
+ *   "cnCode": "72142000",
+ *   "country": "Turkey",
+ *   "year": 2026,
  *   "productionVolumeTons": 100,
  *   "exportVolumeTons": 40,
- *   "includeIndirectEmissions": true,
  *   "activities": [
  *     {
- *       "activityType": "NATURAL_GAS",
- *       "amount": 5000,
- *       "unit": "m3"
+ *       "activityType": "Natural gas",
+ *       "amount": 50,
+ *       "unit": "t"
  *     },
  *     {
- *       "activityType": "DIESEL",
- *       "amount": 1200,
- *       "unit": "liter"
- *     },
- *     {
- *       "activityType": "ELECTRICITY",
- *       "amount": 25000,
- *       "unit": "kWh"
+ *       "activityType": "Gas/Diesel oil",
+ *       "amount": 5,
+ *       "unit": "t"
  *     }
  *   ]
  * }
  */
 public class ActualEmissionsRequest {
 
-    /** Product label used for display. Example: "steel". */
-    @NotBlank(message = "product is required")
-    private String product;
+    /** CN code of the product whose embedded emissions are being calculated. */
+    @NotBlank(message = "cnCode is required")
+    private String cnCode;
+
+    /** Country of the installation or exporter. */
+    @NotBlank(message = "country is required")
+    private String country;
+
+    /** Reporting year used for year-aware factor tables. */
+    @NotNull(message = "year is required")
+    private Integer year;
 
     /** Total production volume in tons. Example: 100. */
     @NotNull(message = "productionVolumeTons is required")
@@ -62,10 +66,10 @@ public class ActualEmissionsRequest {
     private BigDecimal exportVolumeTons;
 
     /**
-     * Backward-compatible request flag.
-     * The current CBAM-aligned calculation always includes indirect emissions in embedded emissions totals.
+     * Optional backward-compatible request flag.
+     * The current calculation still includes indirect emissions when such rows
+     * are provided, but the field is no longer mandatory.
      */
-    @NotNull(message = "includeIndirectEmissions is required")
     private Boolean includeIndirectEmissions;
 
     /** List of activity rows such as natural gas, diesel, and electricity usage. */
@@ -73,12 +77,28 @@ public class ActualEmissionsRequest {
     @NotEmpty(message = "activities cannot be empty")
     private List<ActivityInput> activities;
 
-    public String getProduct() {
-        return product;
+    public String getCnCode() {
+        return cnCode;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setCnCode(String cnCode) {
+        this.cnCode = cnCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public BigDecimal getProductionVolumeTons() {

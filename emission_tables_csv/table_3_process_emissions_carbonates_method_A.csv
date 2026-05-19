@@ -1,0 +1,11 @@
+﻿carbonate;emission_factor_t_CO2_per_t_carbonate;notes
+CaCO3;0,440;
+MgCO3;0,522;
+Na2CO3;0,415;
+BaCO3;0,223;
+Li2CO3;0,596;
+K2CO3;0,318;
+SrCO3;0,298;
+NaHCO3;0,524;
+FeCO3;0,380;
+General;Emission factor = [M(CO2)] / { [M(X)] · Y + [M(CO3)] · Z };"X = metal; M(x) = molecular weight of X [g/mol]; M(CO2) = molecular weight of CO2 [g/mol]; M(CO3) = molecular weight of CO3 [g/mol]; Y = stoichiometric number of X; Z = stoichiometric number of CO3."

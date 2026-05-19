@@ -3,6 +3,7 @@ package com.carbonai.cbam.service;
 import com.carbonai.cbam.dto.DemoDataResponse;
 import com.carbonai.cbam.store.CsvDefaultValueRepository;
 import com.carbonai.cbam.store.DemoDataStore;
+import com.carbonai.cbam.store.EmissionTableRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,10 +18,14 @@ public class DemoDataService {
 
     private final DemoDataStore demoDataStore;
     private final CsvDefaultValueRepository csvDefaultValueRepository;
+    private final EmissionTableRepository emissionTableRepository;
 
-    public DemoDataService(DemoDataStore demoDataStore, CsvDefaultValueRepository csvDefaultValueRepository) {
+    public DemoDataService(DemoDataStore demoDataStore,
+                           CsvDefaultValueRepository csvDefaultValueRepository,
+                           EmissionTableRepository emissionTableRepository) {
         this.demoDataStore = demoDataStore;
         this.csvDefaultValueRepository = csvDefaultValueRepository;
+        this.emissionTableRepository = emissionTableRepository;
     }
 
     /**
@@ -44,14 +49,14 @@ public class DemoDataService {
      *
      * Example output values:
      * defaultValues = Turkey cement demo record
-     * emissionFactors = NATURAL_GAS, DIESEL, ELECTRICITY
+     * emissionFactors = rows loaded from emission_tables_csv
      * demoCarbonPrices = [76, 100, 120]
      * demoProducts = ["Aluminous cement", "Steel", ...]
      */
     public DemoDataResponse getDemoData() {
         DemoDataResponse response = new DemoDataResponse();
         response.setDefaultValues(csvDefaultValueRepository.getAllDefaultValues());
-        response.setEmissionFactors(demoDataStore.getEmissionFactors());
+        response.setEmissionFactors(emissionTableRepository.getAllFactors());
         response.setDemoCarbonPrices(demoDataStore.getDemoCarbonPrices());
         response.setDemoProducts(demoDataStore.getDemoProducts());
         return response;

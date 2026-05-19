@@ -69,19 +69,19 @@ Main backend endpoints:
 
 Seeded emission factors used by the backend demo:
 
-- Natural gas: `2.0 kgCO2e/m3`
-- Diesel: `2.68 kgCO2e/liter`
+- Natural gas: `2.0196 kgCO2e/m3`
+- Diesel: `2.676492 kgCO2e/liter`
 - Electricity: `0.42 kgCO2e/kWh`
 
 Step-by-step:
 
 1. Natural gas emissions
 
-`5000 m3 x 2.0 kgCO2e/m3 = 10000 kgCO2e = 10 tCO2e`
+`5000 m3 x 2.0196 kgCO2e/m3 = 10098 kgCO2e = 10.098 tCO2e`
 
 2. Diesel emissions
 
-`1200 liter x 2.68 kgCO2e/liter = 3216 kgCO2e = 3.216 tCO2e`
+`1200 liter x 2.676492 kgCO2e/liter = 3211.7904 kgCO2e = 3.2117904 tCO2e`
 
 3. Electricity emissions
 
@@ -89,32 +89,32 @@ Step-by-step:
 
 4. Direct emissions
 
-`10 + 3.216 = 13.216 tCO2e`
+`10.098 + 3.2117904 = 13.3097904 tCO2e`
 
 5. Total emissions including indirect
 
-`13.216 + 10.5 = 23.716 tCO2e`
+`13.3097904 + 10.5 = 23.8097904 tCO2e`
 
 6. Specific emissions
 
-`23.716 / 100 = 0.23716 tCO2e/t`
+`23.8097904 / 100 = 0.238097904 tCO2e/t`
 
 7. Exported embedded emissions
 
-`0.23716 x 40 = 9.4864 tCO2e`
+`0.238097904 x 40 = 9.52391616 tCO2e`
 
 8. Simple cost at `76 EUR/tCO2e`
 
-`9.4864 x 76 = 720.9664 EUR`
+`9.52391616 x 76 = 723.81762816 EUR`
 
 Expected backend result:
 
-- `directEmissionsTco2e = 13.2160`
+- `directEmissionsTco2e = 13.3098`
 - `indirectEmissionsTco2e = 10.5000`
-- `totalFacilityEmissionsTco2e = 23.7160`
-- `specificEmissionsTco2ePerTon = 0.2372`
-- `exportedEmbeddedEmissionsTco2e = 9.4864`
-- `estimatedCostEur = 720.97` if rounded to 2 decimals by the simple cost endpoint
+- `totalFacilityEmissionsTco2e = 23.8098`
+- `specificEmissionsTco2ePerTon = 0.2381`
+- `exportedEmbeddedEmissionsTco2e = 9.5239`
+- `estimatedCostEur = 723.82` if rounded to 2 decimals by the simple cost endpoint
 
 ## Example calculation from `turkish_cement_default_value_demo.csv`
 

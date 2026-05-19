@@ -18,7 +18,7 @@ public class ActivityEmissionBreakdown {
     private String unit;
     /** Emission factor used for the calculation. */
     private BigDecimal factor;
-    /** Unit of the emission factor. Example: kgCO2e/m3. */
+    /** Unit of the emission factor. Example: kgCO2e/t. */
     private String factorUnit;
     /** Calculated emissions for this row in tCO2e. */
     private BigDecimal emissionsTco2e;

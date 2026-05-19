@@ -1,0 +1,12 @@
+﻿category;code;type_of_fuel;before_2016_hot_water;before_2016_steam;before_2016_direct_use_exhaust_gases;from_2016_hot_water;from_2016_steam;from_2016_direct_use_exhaust_gases
+Solids;S1;Hard coal including anthracite, bituminous coal, sub-bituminous coal, coke, semi-coke, pet coke;88;83;80;88;83;80
+Solids;S2;Lignite, lignite briquettes, shale oil;86;81;78;86;81;78
+Solids;S3;Peat, peat briquettes;86;81;78;86;81;78
+Solids;S4;Dry biomass including wood and other solid biomass including wood pellets and briquettes, dried woodchips, clean and dry waste wood, nut shells and olive and other stones;86;81;78;86;81;78
+Solids;S5;Other solid biomass including all wood not included under S4 and black and brown liquor;80;75;72;80;75;72
+Solids;S6;Municipal and industrial waste (non-renewable) and renewable bio-degradable waste;80;75;72;80;75;72
+Liquids;L7;Heavy fuel oil, gas diesel oil, other oil products;89;84;81;85;80;77
+Liquids;L8;Bio-liquids including bio-methanol, bioethanol, bio-butanol, biodiesel, and other bio-liquids;89;84;81;85;80;77
+Liquids;L9;Waste liquids including biodegradable and non-renewable waste (including tallow, fat and spent grain);80;75;72;75;70;67
+Gaseous;G10;Natural gas, LPG, LNG and biomethane;90;85;82;92;87;84
+Gaseous;G11;Refinery gases, hydrogen and synthesis gas;89;84;81;90;85;82

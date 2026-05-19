@@ -1,0 +1,242 @@
+cn_code,description,product_group,default_direct_tco2e_per_ton,default_indirect_tco2e_per_ton,default_total_tco2e_per_ton,source_year_range
+26011200,"Agglomerated iron ores and concentrates, other than roasted iron pyrites",Iron & Steel,0.31,0.05,0.36,2023-2025
+7201,"Pig iron and spiegeleisen in pigs, blocks or other primary forms",Iron & Steel,1.9,0.17,2.07,2023-2025
+72021,Ferro-manganese,Iron & Steel,1.44,2.08,3.51,2023-2025
+72024,Ferro-chromium,Iron & Steel,2.076,3.38,5.45,2023-2025
+72026,Ferro-nickel,Iron & Steel,3.486,2.81,6.26,2023-2025
+7203,Ferrous products obtained by direct reduction of iron ore and other spongy ferrous products,Iron & Steel,4.81,0,4.81,2023-2025
+72061000,Ingots,Iron & Steel,2.52,0.23,2.75,2023-2025
+72069000,Other,Iron & Steel,1.97,0.23,2.2,2023-2025
+72071111,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72071114,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72071116,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72071210,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72071912,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72071980,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72072011,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72072015,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72072017,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72072032,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72072052,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72072080,"Of free-cutting steel Of a thickness not exceeding 130 mm Of a thickness exceeding 130 mm Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other Of free-cutting steel 0,25 % or more but less than 0,6 % of carbon 0,6 % or more of carbon Rolled or obtained by continuous casting Rolled or obtained by continuous casting Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72071190,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72071290,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72071919,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72072019,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72072039,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72072059,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72181000,Ingots and other primary forms Forged,Iron & Steel,2.51,2.1,4.61,2023-2025
+72189919,Ingots and other primary forms Forged,Iron & Steel,2.51,2.1,4.61,2023-2025
+72189980,Ingots and other primary forms Forged,Iron & Steel,2.51,2.1,4.61,2023-2025
+721891,Of rectangular (other than square) cross-section Rolled or obtained by continuous casting Rolled or obtained by continuous casting,Iron & Steel,2.18,1.9,4.08,2023-2025
+72189911,Of rectangular (other than square) cross-section Rolled or obtained by continuous casting Rolled or obtained by continuous casting,Iron & Steel,2.18,1.9,4.08,2023-2025
+72189920,Of rectangular (other than square) cross-section Rolled or obtained by continuous casting Rolled or obtained by continuous casting,Iron & Steel,2.18,1.9,4.08,2023-2025
+722410,Ingots and other primary forms Forged,Iron & Steel,2.41,0.79,3.2,2023-2025
+72249018,Ingots and other primary forms Forged,Iron & Steel,2.41,0.79,3.2,2023-2025
+72249090,Ingots and other primary forms Forged,Iron & Steel,2.41,0.79,3.2,2023-2025
+72249002,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+72249003,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+72249005,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+72249007,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+72249014,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+72249031,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+72249038,"Of tool steel Of high-speed steel Containing by weight not more than 0, % of carbon, 0,5 % or more but not more than 1,2 % of manganese and 0,6 % or more but not more than 2,3 % of silicon; containing by weight 0,0008 % or more of boron with any other element less than the minimum content Other Containing by weight not less than 0, % but not more than 1,15 % of carbon, not less than 0,5 % but not more than 2 % of chromium and, if present, not more than 0,5 % of molybdenum Other",Iron & Steel,1.95,0.4,2.35,2023-2025
+7205,"Granules and powders, of pig iron, spiegeleisen, iron or steel (if not covered under category pig iron)",Iron & Steel,1.9,0.17,2.07,2023-2025
+7208,"Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated",Iron & Steel,2.01,0.27,2.28,2023-2025
+7209,"Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated",Iron & Steel,2.03,0.36,2.39,2023-2025
+7210,"Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated",Iron & Steel,1.97,0.39,2.35,2023-2025
+72111300,"Rolled on four faces or in a closed box pass, of a width exceeding 150 mm and a thickness of not less than 4 mm, not in coils and without patterns in relief Other, of a thickness of 4,75 mm or more Other",Iron & Steel,2.01,0.27,2.28,2023-2025
+72111400,"Rolled on four faces or in a closed box pass, of a width exceeding 150 mm and a thickness of not less than 4 mm, not in coils and without patterns in relief Other, of a thickness of 4,75 mm or more Other",Iron & Steel,2.01,0.27,2.28,2023-2025
+72111900,"Rolled on four faces or in a closed box pass, of a width exceeding 150 mm and a thickness of not less than 4 mm, not in coils and without patterns in relief Other, of a thickness of 4,75 mm or more Other",Iron & Steel,2.01,0.27,2.28,2023-2025
+721123,"Containing by weight less than 0,25 % of carbon Other",Iron & Steel,2.03,0.36,2.39,2023-2025
+72112900,"Containing by weight less than 0,25 % of carbon Other",Iron & Steel,2.03,0.36,2.39,2023-2025
+721190,"Containing by weight less than 0,25 % of carbon Other",Iron & Steel,2.03,0.36,2.39,2023-2025
+7212,"Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated",Iron & Steel,1.97,0.39,2.35,2023-2025
+7213,"Bars and rods, hot-rolled, in irregularly wound coils of iron or non-alloy steel",Iron & Steel,1.89,0.32,2.21,2023-2025
+72141000,Forged,Iron & Steel,2.65,0.62,3.27,2023-2025
+72142000,"Containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling Other, of free-cutting steel Of rectangular (other than square) cross-section Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+72143000,"Containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling Other, of free-cutting steel Of rectangular (other than square) cross-section Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+721491,"Containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling Other, of free-cutting steel Of rectangular (other than square) cross-section Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+721499,"Containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling Other, of free-cutting steel Of rectangular (other than square) cross-section Other",Iron & Steel,1.89,0.32,2.21,2023-2025
+7215,Other bars and rods of iron or non-alloy steel,Iron & Steel,1.89,0.32,2.21,2023-2025
+7216,"Angles, shapes and sections of iron or non-alloy steel",Iron & Steel,1.89,0.32,2.21,2023-2025
+721710,"Not plated or coated, whether or not polished",Iron & Steel,1.88,0.49,2.37,2023-2025
+721720,Plated or coated with zinc Plated or coated with other base metals Other,Iron & Steel,1.95,0.51,2.46,2023-2025
+721730,Plated or coated with zinc Plated or coated with other base metals Other,Iron & Steel,1.95,0.51,2.46,2023-2025
+721790,Plated or coated with zinc Plated or coated with other base metals Other,Iron & Steel,1.95,0.51,2.46,2023-2025
+72191100,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+721912,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+721913,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+721914,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+721921,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+721922,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+72192300,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+72192400,"Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm Of a thickness exceeding mm Of a thickness of 4,75 mm or more but not exceeding mm Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness of less than 3 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+72193100,"Of a thickness of 4,75 mm or more Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness exceeding 1 mm but less than 3 mm Of a thickness of 0,5 mm or more but not exceeding 1 mm Of a thickness of less than 0,5 mm Other",Iron & Steel,2.21,1.99,4.19,2023-2025
+721932,"Of a thickness of 4,75 mm or more Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness exceeding 1 mm but less than 3 mm Of a thickness of 0,5 mm or more but not exceeding 1 mm Of a thickness of less than 0,5 mm Other",Iron & Steel,2.21,1.99,4.19,2023-2025
+721933,"Of a thickness of 4,75 mm or more Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness exceeding 1 mm but less than 3 mm Of a thickness of 0,5 mm or more but not exceeding 1 mm Of a thickness of less than 0,5 mm Other",Iron & Steel,2.21,1.99,4.19,2023-2025
+721934,"Of a thickness of 4,75 mm or more Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness exceeding 1 mm but less than 3 mm Of a thickness of 0,5 mm or more but not exceeding 1 mm Of a thickness of less than 0,5 mm Other",Iron & Steel,2.21,1.99,4.19,2023-2025
+721935,"Of a thickness of 4,75 mm or more Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness exceeding 1 mm but less than 3 mm Of a thickness of 0,5 mm or more but not exceeding 1 mm Of a thickness of less than 0,5 mm Other",Iron & Steel,2.21,1.99,4.19,2023-2025
+721990,"Of a thickness of 4,75 mm or more Of a thickness of 3 mm or more but less than 4,75 mm Of a thickness exceeding 1 mm but less than 3 mm Of a thickness of 0,5 mm or more but not exceeding 1 mm Of a thickness of less than 0,5 mm Other",Iron & Steel,2.21,1.99,4.19,2023-2025
+72201100,"Of a thickness of 4,75 mm or more Of a thickness of less than 4,75 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+72201200,"Of a thickness of 4,75 mm or more Of a thickness of less than 4,75 mm",Iron & Steel,2.18,1.9,4.08,2023-2025
+722020,Not further worked than cold- rolled (cold-reduced) Other,Iron & Steel,2.21,1.99,4.19,2023-2025
+722090,Not further worked than cold- rolled (cold-reduced) Other,Iron & Steel,2.21,1.99,4.19,2023-2025
+7221,"Bars and rods, hot-rolled, in irregularly wound coils, of stainless steel",Iron & Steel,2.14,2.17,4.3,2023-2025
+722211,"Of circular cross-section Other Bars and rods, not further worked than cold-formed or cold-finished Angles, shapes and sections",Iron & Steel,2.14,2.17,4.3,2023-2025
+722219,"Of circular cross-section Other Bars and rods, not further worked than cold-formed or cold-finished Angles, shapes and sections",Iron & Steel,2.14,2.17,4.3,2023-2025
+722220,"Of circular cross-section Other Bars and rods, not further worked than cold-formed or cold-finished Angles, shapes and sections",Iron & Steel,2.14,2.17,4.3,2023-2025
+722240,"Of circular cross-section Other Bars and rods, not further worked than cold-formed or cold-finished Angles, shapes and sections",Iron & Steel,2.14,2.17,4.3,2023-2025
+722230,Other bars and rods,Iron & Steel,2.51,2.1,4.61,2023-2025
+722300,Wire of stainless steel,Iron & Steel,2.13,2.36,4.49,2023-2025
+72251100,"Grain-oriented Hot-rolled Other, not further worked than hot-rolled, in coils Other, not further worked than hot-rolled, not in coils",Iron & Steel,1.95,0.4,2.35,2023-2025
+72251910,"Grain-oriented Hot-rolled Other, not further worked than hot-rolled, in coils Other, not further worked than hot-rolled, not in coils",Iron & Steel,1.95,0.4,2.35,2023-2025
+722530,"Grain-oriented Hot-rolled Other, not further worked than hot-rolled, in coils Other, not further worked than hot-rolled, not in coils",Iron & Steel,1.95,0.4,2.35,2023-2025
+722540,"Grain-oriented Hot-rolled Other, not further worked than hot-rolled, in coils Other, not further worked than hot-rolled, not in coils",Iron & Steel,1.95,0.4,2.35,2023-2025
+72251990,"Cold-rolled Other, not further worked than cold-rolled (cold-reduced)",Iron & Steel,1.98,0.49,2.46,2023-2025
+722550,"Cold-rolled Other, not further worked than cold-rolled (cold-reduced)",Iron & Steel,1.98,0.49,2.46,2023-2025
+72259100,Electrolytically plated or coated with zinc Otherwise plated or coated with zinc Other,Iron & Steel,1.92,0.51,2.43,2023-2025
+72259200,Electrolytically plated or coated with zinc Otherwise plated or coated with zinc Other,Iron & Steel,1.92,0.51,2.43,2023-2025
+72259900,Electrolytically plated or coated with zinc Otherwise plated or coated with zinc Other,Iron & Steel,1.92,0.51,2.43,2023-2025
+72261100,Grain-oriented Not further worked than hot- rolled Of high-speed steel Not further worked than hot- rolled,Iron & Steel,1.95,0.4,2.35,2023-2025
+72261910,Grain-oriented Not further worked than hot- rolled Of high-speed steel Not further worked than hot- rolled,Iron & Steel,1.95,0.4,2.35,2023-2025
+72262000,Grain-oriented Not further worked than hot- rolled Of high-speed steel Not further worked than hot- rolled,Iron & Steel,1.95,0.4,2.35,2023-2025
+722691,Grain-oriented Not further worked than hot- rolled Of high-speed steel Not further worked than hot- rolled,Iron & Steel,1.95,0.4,2.35,2023-2025
+72261980,Other Not further worked than cold- rolled (cold-reduced),Iron & Steel,1.98,0.49,2.46,2023-2025
+72269200,Other Not further worked than cold- rolled (cold-reduced),Iron & Steel,1.98,0.49,2.46,2023-2025
+722699,Other,Iron & Steel,1.92,0.51,2.43,2023-2025
+7227,"Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel",Iron & Steel,1.86,0.57,2.43,2023-2025
+72281020,"Not further worked than hot- rolled, hot-drawn or extruded; hot-rolled, hot-drawn or extruded, not further worked than clad Other Bars and rods, of silico- manganese steel Other bars and rods, not further worked than hot-rolled, hot- drawn or",Iron & Steel,1.86,0.57,2.43,2023-2025
+72281090,"Not further worked than hot- rolled, hot-drawn or extruded; hot-rolled, hot-drawn or extruded, not further worked than clad Other Bars and rods, of silico- manganese steel Other bars and rods, not further worked than hot-rolled, hot- drawn or",Iron & Steel,1.86,0.57,2.43,2023-2025
+722820,"Not further worked than hot- rolled, hot-drawn or extruded; hot-rolled, hot-drawn or extruded, not further worked than clad Other Bars and rods, of silico- manganese steel Other bars and rods, not further worked than hot-rolled, hot- drawn or",Iron & Steel,1.86,0.57,2.43,2023-2025
+722830,"Not further worked than hot- rolled, hot-drawn or extruded; hot-rolled, hot-drawn or extruded, not further worked than clad Other Bars and rods, of silico- manganese steel Other bars and rods, not further worked than hot-rolled, hot- drawn or",Iron & Steel,1.86,0.57,2.43,2023-2025
+72281050,"Forged Other bars and rods, not further worked than forged",Iron & Steel,2.41,0.79,3.2,2023-2025
+722840,"Forged Other bars and rods, not further worked than forged",Iron & Steel,2.41,0.79,3.2,2023-2025
+7229,Wire of other alloy steel,Iron & Steel,1.84,0.75,2.59,2023-2025
+7301,"Sheet piling of iron or steel, whether or not drilled, punched or made from assembled elements; welded angles, shapes and sections, of iron or steel",Iron & Steel,2.03,0.36,2.39,2023-2025
+7302,"Railway or tramway track construction material of iron or steel, the following: rails, check- rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialised for jointing or fixing rails",Iron & Steel,1.93,0.29,2.21,2023-2025
+730300,"Tubes, pipes and hollow profiles, of cast iron",Iron & Steel,2.21,0.35,2.56,2023-2025
+73041100,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+73042200,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+73042400,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+73044100,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+730449,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+730451,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+730459,"Of stainless steel Drill pipe of stainless steel Other, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Other Cold-drawn or cold-rolled (cold- reduced) Other",Iron & Steel,1.86,0.35,2.2,2023-2025
+730419,Other Other drill pipe Other Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.93,0.29,2.21,2023-2025
+73042300,Other Other drill pipe Other Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.93,0.29,2.21,2023-2025
+730429,Other Other drill pipe Other Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.93,0.29,2.21,2023-2025
+730431,Other Other drill pipe Other Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.93,0.29,2.21,2023-2025
+730439,Other Other drill pipe Other Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.93,0.29,2.21,2023-2025
+73049000,Other Other drill pipe Other Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.93,0.29,2.21,2023-2025
+7305,"Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406,4 mm, of iron or steel",Iron & Steel,2.03,0.36,2.39,2023-2025
+73061100,"Welded, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Of stainless steel",Iron & Steel,1.98,0.46,2.44,2023-2025
+73062100,"Welded, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Of stainless steel",Iron & Steel,1.98,0.46,2.44,2023-2025
+73064020,"Welded, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Of stainless steel",Iron & Steel,1.98,0.46,2.44,2023-2025
+73066110,"Welded, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Of stainless steel",Iron & Steel,1.98,0.46,2.44,2023-2025
+73066910,"Welded, of stainless steel Cold-drawn or cold-rolled (cold- reduced) Of stainless steel",Iron & Steel,1.98,0.46,2.44,2023-2025
+73061900,Other Cold-drawn or cold-rolled (cold- reduced),Iron & Steel,2.03,0.36,2.39,2023-2025
+73062900,Other Cold-drawn or cold-rolled (cold- reduced),Iron & Steel,2.03,0.36,2.39,2023-2025
+73063012,Other Cold-drawn or cold-rolled (cold- reduced),Iron & Steel,2.03,0.36,2.39,2023-2025
+73063018,Other,Iron & Steel,2.01,0.27,2.28,2023-2025
+73063041,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73063049,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73063072,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73063077,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73063080,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73066192,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73066199,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73066990,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73069000,"Plated or coated with zinc Other Plated or coated with zinc Other Exceeding 168,3 mm but not exceeding 406,4 mm With a wall thickness not exceeding 2 mm With a wall thickness exceeding 2 mm Other",Iron & Steel,1.97,0.39,2.35,2023-2025
+73064080,Other,Iron & Steel,1.95,0.33,2.28,2023-2025
+73065029,Other,Iron & Steel,1.95,0.33,2.28,2023-2025
+73065021,Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.97,0.41,2.38,2023-2025
+73065080,Cold-drawn or cold-rolled (cold- reduced) Other,Iron & Steel,1.97,0.41,2.38,2023-2025
+730711,Of non-malleable cast iron Of cast iron,Iron & Steel,2.54,0.57,3.11,2023-2025
+73071910,Of non-malleable cast iron Of cast iron,Iron & Steel,2.54,0.57,3.11,2023-2025
+73071990,Other,Iron & Steel,0.61,1.05,1.66,2023-2025
+73072100,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.87,0.43,2.3,2023-2025
+730722,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.87,0.43,2.3,2023-2025
+730723,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.87,0.43,2.3,2023-2025
+730729,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.87,0.43,2.3,2023-2025
+73079100,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.93,0.29,2.21,2023-2025
+730792,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.93,0.29,2.21,2023-2025
+730793,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.93,0.29,2.21,2023-2025
+730799,"Flanges Threaded elbows, bends and sleeves Butt welding fittings Other",Iron & Steel,1.93,0.29,2.21,2023-2025
+7308,"Structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge-sections, lock- gates, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel",Iron & Steel,2.46,2.55,5.01,2023-2025
+7309,"Reservoirs, tanks, vats and similar containers for any material (other than compressed or liquefied gas), of iron or steel, of a capacity exceeding 300 l, whether or not lined or heat- insulated, but not fitted with mechanical or thermal equipment",Iron & Steel,1.97,0.39,2.35,2023-2025
+7310,"Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 l, whether or not lined or heat- insulated, but not fitted with mechanical or thermal equipment",Iron & Steel,1.97,0.39,2.35,2023-2025
+731100,"Containers for compressed or liquefied gas, of iron or steel",Iron & Steel,1.89,0.32,2.21,2023-2025
+73181100,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73181290,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73181300,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73181491,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73181499,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73181900,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73182100,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73182400,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73182900,Coach screws Other Screw hooks and screw rings Spaced-thread screws Other Spring washers and other lock washers Cotters and cotter pins Other,Iron & Steel,1.89,0.32,2.21,2023-2025
+73181210,Of stainless steel,Iron & Steel,2.1,1.99,4.1,2023-2025
+73181410,Of stainless steel,Iron & Steel,2.1,1.99,4.1,2023-2025
+731815,"Other screws and bolts, whether or not with their nuts or washers",Iron & Steel,1.89,0.32,2.21,2023-2025
+731816,Nuts,Iron & Steel,1.89,0.32,2.21,2023-2025
+73182200,Other washers,Iron & Steel,1.89,0.32,2.21,2023-2025
+73182300,Rivets,Iron & Steel,1.89,0.32,2.21,2023-2025
+73261100,Grinding balls and similar articles for mills Other Open-die forged Closed-die forged Sintered,Iron & Steel,2.65,0.62,3.27,2023-2025
+732619,Grinding balls and similar articles for mills Other Open-die forged Closed-die forged Sintered,Iron & Steel,2.65,0.62,3.27,2023-2025
+73269092,Grinding balls and similar articles for mills Other Open-die forged Closed-die forged Sintered,Iron & Steel,2.65,0.62,3.27,2023-2025
+73269094,Grinding balls and similar articles for mills Other Open-die forged Closed-die forged Sintered,Iron & Steel,2.65,0.62,3.27,2023-2025
+73269096,Grinding balls and similar articles for mills Other Open-die forged Closed-die forged Sintered,Iron & Steel,2.65,0.62,3.27,2023-2025
+73262000,Articles of iron or steel wire,Iron & Steel,1.95,0.51,2.46,2023-2025
+73269030,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like Non-mechanical ventilators, guttering, hooks and like articles used in the building industry",Iron & Steel,1.89,0.32,2.21,2023-2025
+73269040,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like Non-mechanical ventilators, guttering, hooks and like articles used in the building industry",Iron & Steel,1.89,0.32,2.21,2023-2025
+73269050,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like Non-mechanical ventilators, guttering, hooks and like articles used in the building industry",Iron & Steel,1.89,0.32,2.21,2023-2025
+73269060,"Ladders and steps Pallets and similar platforms for handling goods Reels for cables, piping and the like Non-mechanical ventilators, guttering, hooks and like articles used in the building industry",Iron & Steel,1.89,0.32,2.21,2023-2025
+73269098,Other articles of iron or steel,Iron & Steel,1.97,0.39,2.35,2023-2025
+25070080,Other kaolinic clays (nb: applicable for calcined clay only),Cement,0.23,0.08,0.32,2023-2025
+25231000,Cement clinkers,Cement,0.83,0.04,0.87,2023-2025
+25232100,"White Portland cement, whether or not artificially coloured",Cement,1.16,0.1,1.26,2023-2025
+25232900,Other Portland cement,Cement,0.81,0.06,0.87,2023-2025
+25239000,Other hydraulic cements,Cement,0.59,0.04,0.63,2023-2025
+25233000,Aluminous cement,Cement,1.75,0.15,1.9,2023-2025
+28080000,Nitric acid; sulphonitric acids,Fertilisers,2.56,0.05,2.6,2023-2025
+2814,"Ammonia, anhydrous or in aqueous solution",Fertilisers,2.68,0.14,2.82,2023-2025
+28342100,Nitrates of potassium,Fertilisers,1.82,0.06,1.88,2023-2025
+310210,"Urea, whether or not in aqueous solution",Fertilisers,1.78,0.12,1.9,2023-2025
+31022100,Ammonium sulphate,Fertilisers,0.86,0.09,0.94,2023-2025
+31022900,Double salts and mixtures of ammonium sulphate and ammonium nitrate,Fertilisers,1.54,0.1,1.63,2023-2025
+310230,"Ammonium nitrate, whether or not in aqueous solution",Fertilisers,2.32,0.07,2.39,2023-2025
+310240,Mixtures of ammonium nitrate with calcium carbonate or other inorganic non-fertilising substances,Fertilisers,1.77,0.06,1.84,2023-2025
+31025000,Sodium nitrate,Fertilisers,3.99,0.07,4.06,2023-2025
+31026000,Double salts and mixtures of calcium nitrate and ammonium nitrate,Fertilisers,1.87,0.08,1.95,2023-2025
+31028000,Mixtures of urea and ammonium nitrate in aqueous or ammoniacal solution,Fertilisers,1.28,0.06,1.34,2023-2025
+31029000,Other including mixtures not specified in the foregoing subheadings,Fertilisers,1.65,0.1,1.74,2023-2025
+31051000,Goods of this chapter in tablets or similar forms or in packages of a gross weight not exceeding kg,Fertilisers,0.94,0.08,1.02,2023-2025
+310520,"Mineral or chemical fertilisers containing the three fertilising elements nitrogen, phosphorus and potassium",Fertilisers,1.23,0.11,1.35,2023-2025
+31053000,Diammonium hydrogenorthophosphate (diammonium phosphate),Fertilisers,0.69,0.06,0.75,2023-2025
+31054000,Ammonium dihydrogenorthophosphate (monoammonium phosphate) and mixtures thereof with diammonium hydrogenorthophosphate (diammonium phosphate),Fertilisers,0.44,0.05,0.49,2023-2025
+31055100,Other mineral or chemical fertilisers containing the two fertilising elements nitrogen and phosphorus (nitrates and phosphates),Fertilisers,1.29,0.11,1.4,2023-2025
+31055900,Other mineral or chemical fertilisers containing the two fertilising elements nitrogen and phosphorus (other),Fertilisers,1.29,0.11,1.4,2023-2025
+310590,Other,Fertilisers,0.94,0.08,1.02,2023-2025
+7601,Unwrought aluminium,Aluminium,2.36,8.14,10.49,2023-2025
+7603,Aluminium powders and flakes,Aluminium,2.48,8.4,10.88,2023-2025
+76041010,"Bars and rods of aluminium, not alloyed",Aluminium,2.31,7.49,9.8,2023-2025
+76041090,"Profiles of aluminium, not alloyed",Aluminium,2.73,9.3,12.04,2023-2025
+76042100,Hollow profiles of aluminium alloys,Aluminium,2.73,9.3,12.04,2023-2025
+76042910,Bars and rods of aluminium alloys,Aluminium,2.31,7.49,9.8,2023-2025
+76042990,Profiles of aluminium alloys,Aluminium,2.73,9.3,12.04,2023-2025
+7605,Aluminium wire,Aluminium,2.31,7.49,9.8,2023-2025
+7606,"Aluminium plates, sheets and strip, of a thickness exceeding 0,2 mm",Aluminium,2.86,9.25,12.11,2023-2025
+7607,"Aluminium foil (whether or not printed or backed with paper, paperboard, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0,2 mm",Aluminium,2.86,9.25,12.11,2023-2025
+7608,Aluminium tubes and pipes,Aluminium,2.73,9.3,12.04,2023-2025
+76090000,"Aluminium tube or pipe fittings (for example, couplings, elbows, sleeves)",Aluminium,2.73,9.3,12.04,2023-2025
+7610,"Aluminium structures (excluding prefabricated buildings of heading 9406) and parts of structures (for example, bridges and bridge- sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminium plates, rods, profiles, tubes and the like, prepared for use in structures",Aluminium,2.73,9.3,12.04,2023-2025
+76110000,"Aluminium reservoirs, tanks, vats and similar containers, for any material (other than compressed or liquefied gas), of a capacity exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment",Aluminium,2.86,9.25,12.11,2023-2025
+7612,"Aluminium casks, drums, cans, boxes and similar containers (including rigid or collapsible tubular containers), for any material (other than compressed or liquefied gas), of a capacity not exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment",Aluminium,2.86,9.25,12.11,2023-2025
+76130000,Aluminium containers for compressed or liquefied gas,Aluminium,2.86,9.25,12.11,2023-2025
+7614,"Stranded wire, cables, plaited bands and the like, of aluminium, not electrically insulated",Aluminium,2.31,7.49,9.8,2023-2025
+76161000,"Nails, tacks, staples (other than those of heading 8305), screws, bolts, nuts, screw hooks, rivets, cotters, cotter pins, washers and similar articles",Aluminium,2.86,9.25,12.11,2023-2025
+76169100,"Cloth, grill, netting and fencing, of aluminium wire",Aluminium,2.86,9.25,12.11,2023-2025
+76169910,Other - Cast,Aluminium,2.48,8.4,10.88,2023-2025
+76169990,Other - Other,Aluminium,2.86,9.25,12.11,2023-2025
+28041000,Hydrogen,Hydrogen,10.4,0,10.4,2023-2025

@@ -1,0 +1,5 @@
+﻿oxide;emission_factor_t_CO2_per_t_oxide;notes
+CaO;0,785;
+MgO;1,092;
+BaO;0,287;
+General XyOz;Emission factor = [M(CO2)] / { [M(X)] · Y + [M(O)] · Z };"X = alkali earth or alkali metal; M(x) = molecular weight of X [g/mol]; M(CO2) = molecular weight of CO2 [g/mol]; M(O) = molecular weight of O [g/mol]; Y = stoichiometric number of X; Y = 1 for alkali earth metals; Y = 2 for alkali metals; Z = stoichiometric number of O = 1."

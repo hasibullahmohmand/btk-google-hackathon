@@ -15,23 +15,23 @@ import java.math.BigDecimal;
  *
  * Example:
  * {
- *   "activityType": "NATURAL_GAS",
- *   "amount": 5000,
- *   "unit": "m3"
+ *   "activityType": "Natural gas",
+ *   "amount": 50,
+ *   "unit": "t"
  * }
  */
 public class ActivityInput {
 
-    /** Activity category. Example: NATURAL_GAS, DIESEL, ELECTRICITY. */
+    /** Activity category as loaded from the CSV-backed factor repository. Example: Natural gas. */
     @NotBlank(message = "activityType is required")
     private String activityType;
 
-    /** Physical amount used or consumed. Example: 5000. */
+    /** Physical amount used or consumed. Example: 50. */
     @NotNull(message = "amount is required")
     @DecimalMin(value = "0.0001", message = "activity amount must be > 0")
     private BigDecimal amount;
 
-    /** Unit of the physical amount. Example: m3, liter, kWh. */
+    /** Unit of the physical amount. Example: t. */
     @NotBlank(message = "unit is required")
     private String unit;
 
