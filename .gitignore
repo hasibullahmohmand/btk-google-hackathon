@@ -3,5 +3,4 @@ __pycache__
 .codex
 .agents
 .env
-venv
-/venv
+/venv/
