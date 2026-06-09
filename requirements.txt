@@ -1,13 +1,15 @@
 fastapi
 uvicorn[standard]
-pydantic
 gradio
+pydantic
+
 langchain-core
 langchain-community
 langchain-classic
-langchain-chroma
 langchain-ollama
 langchain-google-genai
+langchain-chroma
 langgraph
 chromadb
+rank-bm25
 docling

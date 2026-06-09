@@ -13,7 +13,6 @@ This project answers those questions with a hybrid architecture that combines de
 ## Application Screenshot
 
 ![CarbonAI TR application screenshot](images/img2.png)
-
 ## Why This Matters
 
 CBAM turns carbon emissions into financial exposure.
