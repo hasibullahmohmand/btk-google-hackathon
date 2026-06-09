@@ -10,6 +10,10 @@ CBAM is no longer only a reporting topic. The transitional period covered 2023 t
 
 This project answers those questions with a hybrid architecture that combines deterministic emissions and cost calculation with AI-powered regulatory intelligence.
 
+## Application Screenshot
+
+![CarbonAI TR application screenshot](images/img2.png)
+
 ## Why This Matters
 
 CBAM turns carbon emissions into financial exposure.
